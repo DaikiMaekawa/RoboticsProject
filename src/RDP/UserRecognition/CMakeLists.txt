@@ -80,6 +80,7 @@ include_directories(
 
 set(UserRecognition_SRC
     UserDetector.cpp
+    #PoseManager.cpp
     UserRecognitionServer.cpp
     UserRecognitionClient.cpp
     Motion.cpp
@@ -91,6 +92,7 @@ set(UserRecognition_SRC
 
 set(UserRecognition_HDR
     UserDetector.h
+    #PoseManager.h
     UserStatus.h
     UserRecognitionServer.h
     UserRecognitionClient.h

@@ -14,7 +14,7 @@
 	<ProductionNodes>
 		<Node type="Depth" name="Depth1" stopOnError="false">
 			<Configuration>
-				<MapOutputMode xRes="320" yRes="240" FPS="30"/>
+				<MapOutputMode xRes="640" yRes="480" FPS="30"/>
 				<Mirror on="true"/>
 			</Configuration>
 		</Node>

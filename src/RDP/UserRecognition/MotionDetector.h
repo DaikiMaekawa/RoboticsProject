@@ -9,20 +9,30 @@
 
 #pragma once
 
-#include <vector>
 #include "Motion.h"
+//#include "PoseManager.h"
+#include <vector>
 #include <string>
+#include <boost/function.hpp>
+#include <boost/functional.hpp>
+#include <boost/shared_ptr.hpp>
+#include <RDP/UserStatus.h>
+//#include <RDP/DetectMotion.h>
 
 namespace nui{
 
+typedef boost::function<void(int)> DetectMotion;
+
 class MotionDetector{
-	std::vector<Motion> m_motions;
-	const Motion& motion(unsigned int id);
+    std::vector<Motion> m_motions;
+    DetectMotion m_detectCb;
 
 public:
-	void loadFromMotionFiles(const std::string &dirpath);
-	void detectAll();
-	void detect(unsigned int id);
+    MotionDetector();
+    void loadFromMotionFiles(const std::string &dirpath);
+    void setDetectCb(DetectMotion callback){ m_detectCb = callback; }
+    void updateUsers(const std::vector<RDP::UserStatus> &users, unsigned int elapsedTime); //elapsedTime[sec]
+    bool isDetectedPose(Motion &target, const RDP::UserStatus &user, unsigned int elapsedTime);
 
 };
 

@@ -8,49 +8,55 @@ using namespace std;
 namespace nui{
 
 Motion::Motion() : 
-	m_motionId(0)
+	m_motionId(0),
+    m_detectTime(0),
+    m_detectingPoseId(1),
+    m_allPosesIsDetected(false)
 {
+
 }
 
-void Motion::saveAs(const string &file){
+bool Motion::saveAs(const string &file){
 	using boost::lexical_cast;
 	ofstream ofs(file.c_str());
 	if(ofs){
 		ofs << m_poses.size() << endl;
 
-		for(int id=0; id < m_poses.size() ;id++){
+		for(int id=1; id <= m_poses.size() ;id++){
 			
-			if(m_poses.find(id) == m_poses.end()){
+			if(!poseIsExist(id)){
 				cout << "m_poses[" << id << "] is not found" << endl;
 			}else{
-				const RDP::UserPose &pose = m_poses[id];
-				assert(Motion::MAX_JOINT_NUM == pose.joints.size());
-				ofs << pose.waitTime << ",";
+				//const RDP::UserPose &pose = m_poses[id];
+				const RDP::UserPose &uPose = pose(id);
+                assert(Motion::MAX_JOINT_NUM == uPose.joints.size());
+				ofs << uPose.waitTime << ",";
 				for(int jointNo=0; jointNo < Motion::MAX_JOINT_NUM; jointNo++){
-					ofs << pose.joints[jointNo].pos.x << ","
-						<< pose.joints[jointNo].pos.y << ","
-						<< pose.joints[jointNo].pos.z << ","
-						<< static_cast<int>(pose.joints[jointNo].xIsKey) << ","
-						<< static_cast<int>(pose.joints[jointNo].yIsKey) << ","
-						<< static_cast<int>(pose.joints[jointNo].zIsKey) << ",";
+					ofs << uPose.joints[jointNo].pos.x << ","
+						<< uPose.joints[jointNo].pos.y << ","
+						<< uPose.joints[jointNo].pos.z << ","
+						<< static_cast<int>(uPose.joints[jointNo].xIsKey) << ","
+						<< static_cast<int>(uPose.joints[jointNo].yIsKey) << ","
+						<< static_cast<int>(uPose.joints[jointNo].zIsKey) << ",";
 				}
 				ofs << "0x0" << endl;
 			}
 		}
+		return true;
 	}else{
-		assert(false);
+		return false;
 	}
+
 }
 
-void Motion::loadFrom(const std::string &file){
+bool Motion::loadFrom(const std::string &file){
 	using boost::lexical_cast;
 	std::ifstream ifs(file.c_str());
 
 	if(ifs){
-		sscanf(file.substr(0, 3).c_str(), "%d", &m_motionId);
-		std::cout << "No." << m_motionId << " " << file << std::endl;
+		sscanf(file.substr(0, 3).c_str(), "%d", &m_motionId); //TODO: erase '/'
+        std::cout << "No." << m_motionId << " " << file << std::endl;
 
-		//m_poses.clear();
 		m_poses.clear();
 		
 		char str[256];
@@ -60,52 +66,145 @@ void Motion::loadFrom(const std::string &file){
 		std::string linestr(linebuf);
 		const unsigned int maxPoseNum = lexical_cast<int>(linestr);
 
-		for(int poseId=0; poseId < maxPoseNum; poseId++){
+		for(int poseId=1; poseId <= maxPoseNum; poseId++){
 			ifs.getline(linebuf, 1024);
 			std::string linestr(linebuf);
 			std::istringstream sstrm(linestr);
-			//m_poses[poseId] = vector<RDP::UserJoint>(Motion::MAX_JOINT_NUM);
-			m_poses[poseId] = RDP::UserPose();
-			m_poses[poseId].joints.resize(Motion::MAX_JOINT_NUM);
-			
+            
+            RDP::UserPose uPose;
+            uPose.joints.resize(Motion::MAX_JOINT_NUM);
+            uPose.id = poseId;
+
 			sstrm.getline(str, 10, ',');
-			m_poses[poseId].waitTime = lexical_cast<int>(str);
+            uPose.waitTime = lexical_cast<int>(str);
 
 			for(int jointNo=0; jointNo < Motion::MAX_JOINT_NUM; jointNo++){
 				sstrm.getline(str, 10, ',');
-				m_poses[poseId].joints[jointNo].pos.x = lexical_cast<float>(str);
+				uPose.joints[jointNo].pos.x = lexical_cast<float>(str);
 				sstrm.getline(str, 10, ',');
-				m_poses[poseId].joints[jointNo].pos.y = lexical_cast<float>(str);
+				uPose.joints[jointNo].pos.y = lexical_cast<float>(str);
 				sstrm.getline(str, 10, ',');
-				m_poses[poseId].joints[jointNo].pos.z = lexical_cast<float>(str);
+				uPose.joints[jointNo].pos.z = lexical_cast<float>(str);
 				sstrm.getline(str, 10, ',');
-				m_poses[poseId].joints[jointNo].xIsKey = lexical_cast<int>(str);
+				uPose.joints[jointNo].xIsKey = lexical_cast<int>(str);
 				sstrm.getline(str, 10, ',');
-				m_poses[poseId].joints[jointNo].yIsKey = lexical_cast<int>(str);
+				uPose.joints[jointNo].yIsKey = lexical_cast<int>(str);
 				sstrm.getline(str, 10, ',');
-				m_poses[poseId].joints[jointNo].zIsKey = lexical_cast<int>(str);
+				uPose.joints[jointNo].zIsKey = lexical_cast<int>(str);
 			}
+
+            m_poses.push_back(uPose);
 		}
+		return true;
 	}else{
-		assert(false);
+		return false;
 	}
 }
 
-void Motion::setPose(unsigned int poseId, RDP::UserPose &pose){
-	m_poses[poseId] = pose;
+bool Motion::setPose(const RDP::UserPose &pose){
+	
+    for(int i=0; i < m_poses.size(); i++){
+        if(pose.id == m_poses[i].id){
+            m_poses[i] = pose;
+            return true;
+        }
+    }
+
+    std::cout << "m_poses.id" << pose.id << " is not found" << std::endl;
+    return false;
+    
 }
 
 const RDP::UserPose& Motion::pose(unsigned int poseId){
-	if(m_poses.find(poseId) == m_poses.end()){
+
+	for(int i=0; i < m_poses.size(); i++){
+        if(poseId == m_poses[i].id){
+            return m_poses[i];
+        }
+    }
+    
+    std::cout << "m_poses.id" << poseId << " is not found" << std::endl;
+    assert(false);
+    /* 
+    if(poseIsExist(poseId)){
+        pose = m_poses[poseId];
+		ret = true;
+	}else{
 		std::cout << "m_poses[" << poseId << "] is not found" << std::endl;
-		RDP::UserPose pose;
-		pose.joints.resize(Motion::MAX_JOINT_NUM);
-		m_poses[poseId] = pose;
-		//m_poses[poseId] = vector<RDP::UserJoint>(Motion::MAX_JOINT_NUM);
-	}	
+		ret = false;
+	}
+
+	return ret;
+    */
+}
+
+bool Motion::addPose(const RDP::UserPose &pose){
 	
-	return m_poses[poseId];
+    if(poseIsExist(pose.id)){
+        std::cout << "Add m_poses.id" << pose.id << "failed" << std::endl;
+        return false;
+    }
+
+    m_poses.push_back(pose);
+    return true;
+    
+}
+
+bool Motion::erasePose(unsigned int poseId){
+	//TODO implementation
+	
+    return false;
+}
+
+void Motion::update(unsigned int elapsedTime, bool isDetectedPose){
+    //TODO implementation
+    m_detectTime += elapsedTime;
+    assert(poseIsExist(m_detectingPoseId));
+    
+    if(m_detectTime > pose(m_detectingPoseId).waitTime){
+        cout << "timeout" << endl;
+        m_detectingPoseId = 1;
+        m_detectTime = 0;
+        assert(poseIsExist(m_detectingPoseId));
+        return;
+    }
+    
+    if(isDetectedPose){
+        if(poseIsExist(m_detectingPoseId+1)){
+            cout << "shift next pose" << endl;
+            m_detectingPoseId = ++m_detectingPoseId;
+        }else{
+            cout << "return first pose" << endl;
+            m_detectingPoseId = 1;
+            m_allPosesIsDetected = true;
+            assert(poseIsExist(m_detectingPoseId));
+        }
+    }
+
+}
+
+const RDP::UserPose& Motion::shouldDetectPose(){
+    //TODO
+    assert(poseIsExist(m_detectingPoseId));
+    return pose(m_detectingPoseId);
+}
+
+bool Motion::poseIsExist(unsigned int poseId){
+    
+    for(int i=0; i < m_poses.size(); i++){
+        if(m_poses[i].id == poseId) return true;
+    }
+    
+    return false;
+}
+
+bool Motion::allPosesIsDetected(){
+    if(m_allPosesIsDetected){
+        m_allPosesIsDetected = false;
+        return true;
+    }
+
+    return false;
 }
 
 } //namespace nui
-
