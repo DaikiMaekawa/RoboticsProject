@@ -1,6 +1,5 @@
 project(Unity)
 
-
 set(Atlas_INCLUDE_DIR ../)
 
 set(Boost_FIND_REQUIRED TRUE)
@@ -9,8 +8,11 @@ set(Boost_USE_MULTITHREADED TRUE)
 set(Boost_USE_STATIC_RUNTIME OFF)
 set(Boost_DEBUG TRUE)
 
-set(Boost_USE_STATIC_LIBS ${OGRE_STATIC})
-#set(Boost_USE_STATIC_LIBS TRUE)
+if(UNIX)
+    set(Boost_USE_STATIC_LIBS ${OGRE_STATIC})
+else()
+    set(Boost_USE_STATIC_LIBS TRUE)
+endif(UNIX)
 
 find_package(Boost COMPONENTS system thread date_time serialization filesystem regex)
 find_package(PkgConfig)
@@ -19,7 +21,7 @@ find_package(PythonLibs 2.7)
 find_package(SWIG REQUIRED)
 
 include(${SWIG_USE_FILE})
-include(GenerateExportHeader)
+#include(GenerateExportHeader)
 
 if(${CMAKE_VERSION} VERSION_LESS 2.8.2)
      pkg_check_modules(PC_OPENNI openni-dev)
@@ -83,18 +85,14 @@ include_directories(
     ${Atlas_INCLUDE_DIR}
     /usr/local/lib
     /usr/local/include
+    /usr/lib
+    /usr/include
 )
 
 link_directories(
     ${Boost_LIBRARY_DIRS}
     ${Boost_LIBRARY_DIR}
 )
-
-#add_executable(Unity
-#    test.cpp
-#    Unity.h
-#    Unity.cpp
-#)
 
 set(Unity_SRCS
     Unity.h
@@ -133,8 +131,3 @@ install(TARGETS _unity
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${outdir}unity.py DESTINATION UnityScript)
 
-#target_link_libraries(Unity
-#    UserRecognition
-#    SpeechRecognition
-#    ${Boost_LIBRARIES}
-#)

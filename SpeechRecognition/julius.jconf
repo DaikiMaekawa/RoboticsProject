@@ -4,8 +4,8 @@
 -hlist model/phone_m/logicalTri
 -n 5
 -output 1
-#-input rawfile
--input mic
+-input rawfile
+#-input mic
 -zmeanframe
 #-record dir
 -rejectshort 800

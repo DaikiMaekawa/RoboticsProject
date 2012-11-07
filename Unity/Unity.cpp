@@ -2,7 +2,6 @@
 #include <boost/lambda/lambda.hpp>
 #include <boost/bind.hpp>
 #include <iostream>
-#include <SpeechRecognition.h>
 
 using namespace nui;
 

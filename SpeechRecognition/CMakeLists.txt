@@ -1,4 +1,12 @@
+cmake_minimum_required(VERSION 2.8)
 project(SpeechRecognition)
+
+#set(CMAKE_CXX_FLAGS ${CMAKE_CSS_FLAGS} "-fPIC")
+set(EXTRA_OPTIONS "-O3 -Wno-deprecated -fPIC -DLINUX")
+set_source_files_properties(${SRC_FILES}
+    PROPERTIES
+    COMPILE_FLAGS "${EXTRA_OPTIONS}"
+)
 
 set(Atlas_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
@@ -12,7 +20,7 @@ set(Boost_USE_STATIC_LIBS ${OGRE_STATIC})
 
 FIND_PACKAGE(Boost COMPONENTS system thread filesystem regex)
 
-include_directories(
+set(Include_DIR 
     ${PROJECT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}
@@ -20,9 +28,24 @@ include_directories(
     ${BOOST_INCLUDE_DIRS}
     ${Boost_INCLUDE_DIR}
     ${PROJECT_BINARY_DIR}
-    /usr/local/lib
-    /usr/local/include
 )
+
+if(UNIX)
+    set(Include_DIR
+        ${Include_DIR}
+        /usr/local/lib
+        /usr/local/include
+        /usr/lib
+        /usr/include
+    )
+else()
+    set(Include_DIR
+        ${Include_DIR}
+        ${Julius_INCLUDE_DIRS}
+    )
+endif(UNIX)
+
+include_directories(${Include_DIR})
 
 set(Atlas_Source
     ${Atlas_INCLUDE_DIR}/Atlas/Timer.cpp
@@ -36,7 +59,7 @@ set(UserRecognition_SRCS
 )
 
 add_library(SpeechRecognition
-    ${UserRecognition_SRCS}
+    SHARED ${UserRecognition_SRCS}
 )
 
 link_directories(
@@ -55,6 +78,9 @@ target_link_libraries(SpeechRecognition
     dl
     z
     pulse
+    pulse-simple
+    esd
+    sndfile
     icuuc
 )
 

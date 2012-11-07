@@ -12,6 +12,8 @@ set(Boost_DEBUG TRUE)
 set(Boost_USE_STATIC_LIBS ${OGRE_STATIC})
 #set(Boost_USE_STATIC_LIBS TRUE)
 
+add_definitions(-fPIC)
+
 find_package(Boost COMPONENTS system thread date_time serialization)
 find_package(PkgConfig)
 find_package(OpenCV)
