@@ -1,23 +1,26 @@
+#include "i2c.h"
 #include "_i2c.h"
 #include "_lcd.h"
 
 #define IDLE_I2C do{ }while(I2CCONbits.SEN || I2CCONbits.PEN || I2CCONbits.RCEN || I2CCONbits.ACKEN || I2CSTATbits.TRSTAT)
 #define NACK_I2C do{I2CCONbits.ACKDT = 1; I2CCONbits.ACKEN = 1;}while(0)
 
-static void _CloseI2C(void);
-static void WriteI2C(I2CData address,I2CData data);
+static void    _CloseI2C(void);
+static void    WriteI2C(I2CData address,I2CData data);
 static I2CData ReadI2C(I2CData address);
-static void SendDataToIMU(I2CData I2CAddress,I2CData RegisterAddress,I2CData data);
+static void    SendDataToIMU(I2CData I2CAddress,I2CData RegisterAddress,I2CData data);
 static I2CData ReadDataFromIMU(I2CData I2CAddress,I2CData RegisterAddress);
-static void SendDataI2C(I2CData data);
-static void SendAddressI2C(I2CData address,char AddressType);
-static void CalibrationIMU(IMU *imu);
-static void UpdateIMUStatus(IMU *imu,const unsigned int time);
-enum AddressType{SEND,READ};
+static void    SendDataI2C(I2CData data);
+static I2CData ReadDataI2C(void);
+static void    SendAddressI2C(I2CData address,char AddressType);
+static void    CalibrationIMU(IMU *imu);
+static void    UpdateIMUStatus(IMU *imu,const unsigned int time);
+enum AddressType{SEND, READ};
 
 I2C I2CInitFunc(void){
 	I2C i2c;
 	
+	unsigned int config1 = MI2C_INT_OFF & SI2C_INT_OFF;
 	unsigned int config2 = 399;
 	static short first = TRUE;
 	
@@ -43,7 +46,14 @@ I2C I2CInitFunc(void){
 
 		IDLE_I2C;
 		I2CADD = 0x09;
-		ConfigIntI2C(MI2C_INT_OFF & SI2C_INT_OFF);
+		
+		//ConfigIntI2C(MI2C_INT_OFF & SI2C_INT_OFF);
+		_SI2CIF = 0;
+	    _MI2CIF = 0;
+	    _SI2CIP = (config1 & 0x0007);
+	    _MI2CIP = (config1 & 0x0070) >> 4;  
+	    _SI2CIE = (config1 & 0x0008) >> 3;  
+	    _MI2CIE = (config1 & 0x0080) >> 7;	
 		
 		SendDataToIMU(GYRO,0x16,0x0);
 		SendDataToIMU(GYRO,0x3D,0x28);			
@@ -106,13 +116,20 @@ static void SendDataI2C(I2CData data){
     	
  	}else{
         while(I2CSTATbits.TRSTAT);   
-        IdleI2C();                  
+        IDLE_I2C;                  
     }
 	
 	while(I2CSTATbits.TBF);
 	while(I2CSTATbits.ACKSTAT);
-	IdleI2C();
+	IDLE_I2C;
 }
+
+static I2CData ReadDataI2C(void){
+	I2CCONbits.RCEN = 1;
+	while(I2CCONbits.RCEN);
+	I2CSTATbits.I2COV = 0;
+	return (I2CRCV);
+}	
 
 static void WriteI2C(I2CData address,I2CData data){
 	
@@ -138,7 +155,8 @@ static I2CData ReadDataFromIMU(I2CData I2CAddress,I2CData RegisterAddress){
 	while(I2CCONbits.RSEN);
 	
 	SendAddressI2C(I2CAddress,READ);
-	buffer = MasterReadI2C();
+	//buffer = MasterReadI2C();
+	buffer = ReadDataI2C();
 	while(I2CSTATbits.ACKSTAT);
 	IDLE_I2C;
 	
@@ -159,7 +177,8 @@ static I2CData ReadI2C(I2CData address){
 	IDLE_I2C;
 	
 	SendAddressI2C(address,READ);
-	received_data = MasterReadI2C();
+	//received_data = MasterReadI2C();
+	received_data = ReadDataI2C();
 	IDLE_I2C;
 	
 	I2CCONbits.ACKDT = 1;

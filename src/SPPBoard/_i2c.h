@@ -2,7 +2,7 @@
 #define _I2C_H
 
 #define GYRO 0x68         
-#define INT_MAX             32767  
+#define INT_MAX             32767
 #define ANGLE_RATE_MAX      250
 
 typedef unsigned char I2CData;
@@ -32,7 +32,7 @@ typedef struct{
 	
 }I2C;
 
-#include "i2c.h"
+//#include "i2c.h"
 #include "maekawa.h"
 
 I2C I2CInitFunc(void);
