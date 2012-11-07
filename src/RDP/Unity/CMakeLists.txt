@@ -15,7 +15,7 @@ find_package(PythonLibs 2.7)
 find_package(SWIG REQUIRED)
 
 include(${SWIG_USE_FILE})
-include(GenerateExportHeader)
+#include(GenerateExportHeader)
 
 set(Include_DIR 
     ${PROJECT_SOURCE_DIR}
