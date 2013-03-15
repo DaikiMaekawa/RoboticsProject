@@ -13,31 +13,31 @@ namespace nui{
 
     public:
         Impl(){
-		    try{
-			    //xnErrorCheck(m_context.InitFromXmlFile("../SamplesConfig.xml"));
+            try{
+                //xnErrorCheck(m_context.InitFromXmlFile("../SamplesConfig.xml"));
                 xnErrorCheck(m_context.InitFromXmlFile("../InitDevice.xml"));
-			    xnErrorCheck(xnPrintRegisteredLicenses());
-			    m_context.SetGlobalMirror(true);
+                xnErrorCheck(xnPrintRegisteredLicenses());
+                m_context.SetGlobalMirror(true);
                 
                 m_device = boost::shared_ptr<Xtion>(new Xtion(m_context));
-			    m_userDetector = boost::shared_ptr<UserDetector>(new UserDetector(*m_device,m_context));
-		    }catch(std::exception &ex){
-			    std::cout << ex.what() << std::endl;
-		    }
-	    }
+                m_userDetector = boost::shared_ptr<UserDetector>(new UserDetector(*m_device,m_context));
+            }catch(std::exception &ex){
+                std::cout << ex.what() << std::endl;
+            }
+        }
     	
-	    void startProcessing(){
-		    try{
-			    xnErrorCheck(m_context.StartGeneratingAll());
-		    }catch(std::exception &ex){
-			    std::cout << ex.what() << std::endl;
-		    }
-	    }
+        void startProcessing(){
+            try{
+                xnErrorCheck(m_context.StartGeneratingAll());
+            }catch(std::exception &ex){
+                std::cout << ex.what() << std::endl;
+            }
+        }
 
-	    void waitUpdateAll(){
-		    m_context.WaitAndUpdateAll();
+        void waitUpdateAll(){
+            m_context.WaitAndUpdateAll();
             //std::cout << m_device->audioBuffer() << std::endl;
-	    }
+        }
 
         NIMat depthImage(){
             return m_device->depthImage();
@@ -47,22 +47,22 @@ namespace nui{
             return m_device->rgbImage();
         }
 
-	    NIMat userDepthImage(const UserStatus &user){
-		    return m_userDetector->userDepthMetaData(user);
-	    }
+        NIMat userDepthImage(const UserStatus &user){
+            return m_userDetector->userDepthMetaData(user);
+        }
 
-	    const std::vector<UserStatus>& detectUsers(){
+        const std::vector<UserStatus>& detectUsers(){
             m_userDetector->updateAllUserStatus();
-		    return m_userDetector->detectUsers();
-	    }
+            return m_userDetector->detectUsers();
+        }
     	
         bool isValid() const{
             return m_userDetector->isValid() && m_device->isValid();
         }
 
-	    ~Impl(){
-		    m_context.Shutdown();
-	    }
+        ~Impl(){
+            m_context.Shutdown();
+        }
 
     };
 
@@ -72,11 +72,11 @@ namespace nui{
     }
 
     void NUI::startProcessing(){
-	    return pImpl->startProcessing();
+        return pImpl->startProcessing();
     }
 
     void NUI::waitUpdateAll(){
-	    return pImpl->waitUpdateAll();
+        return pImpl->waitUpdateAll();
     }	
 
     NIMat NUI::depthImage(){
@@ -88,11 +88,11 @@ namespace nui{
     }
 
     NIMat NUI::userDepthImage(const UserStatus &user){
-	    return pImpl->userDepthImage(user);
+        return pImpl->userDepthImage(user);
     }
 
     const std::vector<UserStatus>& NUI::detectUsers(){
-	    return pImpl->detectUsers();
+        return pImpl->detectUsers();
     }
 
     bool NUI::isValid() const{
