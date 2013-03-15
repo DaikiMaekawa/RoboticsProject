@@ -16,6 +16,10 @@ namespace atlas{
         }
     }
 
+    void Timer::sleep(unsigned long sec){
+        boost::this_thread::sleep(boost::posix_time::seconds(sec));
+    }
+
     void Timer::singleShot(unsigned long sec, boost::function<void()> callback){
         m_endFlag = false;
         boost::thread thread(boost::bind(&Timer::roop, this, sec, callback, 1));

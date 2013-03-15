@@ -22,6 +22,7 @@ namespace atlas{
     public:
         Timer() : m_endFlag(false) { }
         ~Timer();
+        static void sleep(unsigned long sec);
         void singleShot(unsigned long sec, boost::function<void()> callback);
         void start(unsigned long cycle, boost::function<void()>); //cycle[sec]
         void stop();

@@ -22,21 +22,40 @@ namespace nui{
 
         callback_add(m_recog.get(), CALLBACK_RESULT,&SpeechRecognition::callWhenResult, this);
         callback_add(m_recog.get(), CALLBACK_EVENT_PAUSE, &SpeechRecognition::callInPause, this);
+        callback_add(m_recog.get(), CALLBACK_EVENT_RESUME, &SpeechRecognition::callWhenResume, this);
 
         return j_adin_init(m_recog.get()) != FALSE;
     }
 
+    void SpeechRecognition::finishRecognition(){
+        if(m_isOpenStream){
+            m_isOpenStream = false;
+            j_close_stream(m_recog.get());
+        }
+    }
+
     void SpeechRecognition::pauseRecognition(){
-        j_request_pause(m_recog.get());
+        if(m_isOpenStream) j_request_pause(m_recog.get());
     }
 
     void SpeechRecognition::callInPause(Recog *recog, void *receiver){
-        cout << "callInPause" << endl;
+        SpeechRecognition* srObj = (SpeechRecognition*)receiver;
+        srObj->m_isPausedStream = true;
+        while(true){
+            atlas::Timer::sleep(1);
+            cout << "callInPause" << endl;
+        }
+    }
+
+    void SpeechRecognition::callWhenResume(Recog *recog, void *receiver){
+        SpeechRecognition* srObj = (SpeechRecognition*)receiver;
+        srObj->m_isPausedStream = false;
+        cout << "callWhenResume" << endl;
     }
 
     void SpeechRecognition::callWhenResult(Recog *recog, void *receiver){
         std::cout << "callWhenResult" << std::endl;
-        SpeechRecognition* vrObj = (SpeechRecognition*)receiver;
+        SpeechRecognition* srObj = (SpeechRecognition*)receiver;
         
         for(RecogProcess *process = recog->process_list; process ; process = process->next){
             if(! process->live) continue;
@@ -79,15 +98,18 @@ namespace nui{
                 }
 
                 cout << "Result String" << n+1 << " = " << ret << endl;
-                vrObj->m_resultsString.push_back(ret);
+                srObj->m_resultsString.push_back(ret);
             }
         }
     }
 
     bool SpeechRecognition::startRecognition(unsigned long timeout){
+        
+        if(m_isPausedStream) j_request_resume(m_recog.get());
 
         switch(j_open_stream(m_recog.get(), NULL)) {
         case 0:	
+            m_isOpenStream = true;
             break;
         case -1:      		
             fprintf(stderr, "error in input stream\n");
@@ -97,12 +119,10 @@ namespace nui{
             return false;
         }
 
-        m_timer.singleShot(timeout, boost::bind(&SpeechRecognition::pauseRecognition, this));
+        m_timer.singleShot(timeout, boost::bind(&SpeechRecognition::finishRecognition, this));
         int ret = j_recognize_stream(m_recog.get());
-        cout << "j_recognize_stream : end" << endl;
         if(ret == -1) return false;
 
-        j_close_stream(m_recog.get());
         return true;
     }
 
