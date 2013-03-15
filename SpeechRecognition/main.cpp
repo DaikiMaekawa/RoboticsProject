@@ -13,7 +13,7 @@ int main(int argc, char *argv[]){
     
     recog.startRecognition(5);
     cout << "startRecognition : end" << endl;
-    
+
     vector<string> results = recog.resultsString();
     for(int i=0; i < results.size(); i++){
         cout << "ret[" << i << "] = " << results[i] << endl;
