@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
     
     cout << "recog.isValid() = " << recog.isValid() << endl;
     
-    recog.startRecognition(5);
+    cout <<  recog.startRecognition(5) << endl;;
     cout << "startRecognition : end" << endl;
 
     vector<string> results = recog.resultsString();
