@@ -15,7 +15,7 @@ void XN_CALLBACK_TYPE UserDetector::NewUser(xn::UserGenerator &generator,XnUserI
 
 void XN_CALLBACK_TYPE UserDetector::LostUser(xn::UserGenerator &generator,XnUserID id,void* pCookie){
     for(unsigned int i=0; i < g_users.size(); i++)
-		if(g_users[i].id == id) g_users.erase(g_users.begin() + i);
+        if(g_users[i].id == id) g_users.erase(g_users.begin() + i);
 }
 
 void XN_CALLBACK_TYPE UserDetector::StartCalibration(xn::SkeletonCapability& capability, XnUserID id, void* pCookie){
@@ -27,21 +27,21 @@ void XN_CALLBACK_TYPE UserDetector::EndCalibration(xn::SkeletonCapability& capab
 }
 
 UserDetector::UserDetector(ImageDevice& device,const xn::Context &context) : 
-	m_device(device),
+    m_device(device),
     m_userGenerator(initUserGenerator(context)),
-	m_skeleton(initSkeletonGenerator())
+    m_skeleton(initSkeletonGenerator())
 {
 
 }
 
 xn::UserGenerator UserDetector::initUserGenerator(const xn::Context &context){
     g_users.clear();
-	xn::UserGenerator userGenerator;
+    xn::UserGenerator userGenerator;
     xnErrorCheck(context.FindExistingNode(XN_NODE_TYPE_USER,userGenerator));
     XnCallbackHandle userCallbacks;
     xnErrorCheck(userGenerator.RegisterUserCallbacks(&UserDetector::NewUser,&UserDetector::LostUser,NULL,userCallbacks));
 	
-	return userGenerator;
+    return userGenerator;
 }
 
 xn::SkeletonCapability UserDetector::initSkeletonGenerator(){
@@ -65,15 +65,15 @@ NIMat UserDetector::userDepthMetaData(const UserStatus &user){
 	
 	unsigned int pos = 0;
 	for(unsigned int y=0; y < smd.YRes(); y++){
-		for(unsigned int x=0; x < smd.XRes(); x++){
-			XnLabel label = smd(x,y);
+    	    for(unsigned int x=0; x < smd.XRes(); x++){
+                XnLabel label = smd(x,y);
 			
-			if(label == user.id){
-				depth->data[pos++] = 0;
-			}else{
-				depth->data[pos++] = 255;
-			}
-		}
+                if(label == user.id){
+		    depth->data[pos++] = 0;
+                }else{
+                    depth->data[pos++] = 255;
+                }
+            }
 	}
 
     return depth;
