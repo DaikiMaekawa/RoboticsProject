@@ -7,8 +7,10 @@ using namespace std;
 
 namespace nui{
 
-    SpeechRecognition::SpeechRecognition(int argc, char *argv[])
-        : m_isValid(initJulius(argc,argv))
+    SpeechRecognition::SpeechRecognition(int argc, char *argv[]) : 
+        m_isValid(initJulius(argc,argv)),
+        m_isOpenStream(false),
+        m_isPausedStream(false)
     {
         
     }
@@ -105,7 +107,10 @@ namespace nui{
 
     bool SpeechRecognition::startRecognition(unsigned long timeout){
         
-        if(m_isPausedStream) j_request_resume(m_recog.get());
+        if(m_isPausedStream){
+            j_request_resume(m_recog.get());
+            return true;
+        }
 
         switch(j_open_stream(m_recog.get(), NULL)) {
         case 0:	
@@ -120,10 +125,8 @@ namespace nui{
         }
 
         m_timer.singleShot(timeout, boost::bind(&SpeechRecognition::finishRecognition, this));
-        int ret = j_recognize_stream(m_recog.get());
-        if(ret == -1) return false;
+        return j_recognize_stream(m_recog.get()) != -1;
 
-        return true;
     }
 
 } //namespace nui
