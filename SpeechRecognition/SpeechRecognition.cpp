@@ -20,13 +20,22 @@ namespace nui{
         m_recog = boost::shared_ptr<Recog>(j_create_instance_from_jconf(jconf),boost::bind(j_recog_free, boost::lambda::_1));
         if(m_recog == NULL) return false;
 
-        callback_add(m_recog.get(), CALLBACK_RESULT, &SpeechRecognition::resultOut, this);
+        callback_add(m_recog.get(), CALLBACK_RESULT,&SpeechRecognition::callWhenResult, this);
+        callback_add(m_recog.get(), CALLBACK_EVENT_PAUSE, &SpeechRecognition::callInPause, this);
 
         return j_adin_init(m_recog.get()) != FALSE;
     }
 
-    void SpeechRecognition::resultOut(Recog *recog, void *receiver){
-        std::cout << "resultOut" << std::endl;
+    void SpeechRecognition::pauseRecognition(){
+        j_request_pause(m_recog.get());
+    }
+
+    void SpeechRecognition::callInPause(Recog *recog, void *receiver){
+        cout << "callInPause" << endl;
+    }
+
+    void SpeechRecognition::callWhenResult(Recog *recog, void *receiver){
+        std::cout << "callWhenResult" << std::endl;
         SpeechRecognition* vrObj = (SpeechRecognition*)receiver;
         
         for(RecogProcess *process = recog->process_list; process ; process = process->next){
@@ -69,13 +78,13 @@ namespace nui{
                     ret += string(winfo->woutput[seq[i]]);
                 }
 
-                cout << "sentence" << n+1 << " = " << ret << endl;
+                cout << "Result String" << n+1 << " = " << ret << endl;
                 vrObj->m_resultsString.push_back(ret);
             }
         }
     }
 
-    bool SpeechRecognition::startRecognition(){
+    bool SpeechRecognition::startRecognition(unsigned long timeout){
 
         switch(j_open_stream(m_recog.get(), NULL)) {
         case 0:	
@@ -87,7 +96,10 @@ namespace nui{
             fprintf(stderr, "failed to begin input stream\n");
             return false;
         }
+
+        m_timer.singleShot(timeout, boost::bind(&SpeechRecognition::pauseRecognition, this));
         int ret = j_recognize_stream(m_recog.get());
+        cout << "j_recognize_stream : end" << endl;
         if(ret == -1) return false;
 
         j_close_stream(m_recog.get());
