@@ -2,6 +2,7 @@
 #include <boost/lambda/lambda.hpp>
 #include <boost/bind.hpp>
 #include <iostream>
+#include <unicode/unistr.h>
 
 using namespace std;
 
@@ -95,8 +96,13 @@ namespace nui{
                 
                 string ret;
                 for(int i=0; i < seqnum; i++){
-                    cout << "woutput[" << i << "] = " << winfo->woutput[seq[i]] << endl;
-                    ret += string(winfo->woutput[seq[i]]);
+                    icu::UnicodeString src(winfo->woutput[seq[i]], "euc-jp");
+                    const int32_t len = src.extract(0, src.length(), NULL, "utf8");
+                    char* woutput = new char[len + 1];
+                    src.extract(0, src.length(), woutput, "utf8");
+                    cout << "woutput[" << i << "] = " << woutput << endl;
+                    ret += string(woutput);
+                    delete []woutput;
                 }
 
                 cout << "Result String" << n+1 << " = " << ret << endl;

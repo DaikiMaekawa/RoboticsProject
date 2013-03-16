@@ -51,4 +51,5 @@ target_link_libraries(SpeechRecognition
     dl
     z
     pulse
+    icuuc
 )
