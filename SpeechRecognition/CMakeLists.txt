@@ -29,7 +29,7 @@ set(Atlas_Source
 )
 
 add_executable(SpeechRecognition 
-    main.cpp
+    SpeechRecognitionTest.cpp
     SpeechRecognition.h
     SpeechRecognition.cpp
     ${Atlas_Source}
@@ -43,8 +43,8 @@ link_directories(
 target_link_libraries(SpeechRecognition
     ${Boost_LIBRARIES}
     #${Boost_SYSTEM_LIBRARY}
-    libjulius.a
-    libsent.a
+    julius
+    sent
     asound
     m
     pthread

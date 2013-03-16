@@ -1,4 +1,4 @@
-#include "NUI.h"
+#include "UserRecognition.h"
 #include <XnCppWrapper.h>
 #include "UserDetector.h"
 #include "Xtion.h"
@@ -6,7 +6,7 @@
 
 namespace nui{
 
-    class NUI::Impl{
+    class UserRecognition::Impl{
         xn::Context m_context;
         boost::shared_ptr<Xtion>           m_device;
         boost::shared_ptr<UserDetector>    m_userDetector;
@@ -66,36 +66,36 @@ namespace nui{
 
     };
 
-    NUI::NUI() : pImpl(new Impl())
+    UserRecognition::UserRecognition() : pImpl(new Impl())
     {
 
     }
 
-    void NUI::startProcessing(){
+    void UserRecognition::startProcessing(){
         return pImpl->startProcessing();
     }
 
-    void NUI::waitUpdateAll(){
+    void UserRecognition::waitUpdateAll(){
         return pImpl->waitUpdateAll();
     }	
 
-    NIMat NUI::depthImage(){
+    NIMat UserRecognition::depthImage(){
         return pImpl->depthImage();
     }
 
-    NIMat NUI::rgbImage(){
+    NIMat UserRecognition::rgbImage(){
         return pImpl->rgbImage();
     }
 
-    NIMat NUI::userDepthImage(const UserStatus &user){
+    NIMat UserRecognition::userDepthImage(const UserStatus &user){
         return pImpl->userDepthImage(user);
     }
 
-    const std::vector<UserStatus>& NUI::detectUsers(){
+    const std::vector<UserStatus>& UserRecognition::detectUsers(){
         return pImpl->detectUsers();
     }
 
-    bool NUI::isValid() const{
+    bool UserRecognition::isValid() const{
         return pImpl->isValid();
     }
 

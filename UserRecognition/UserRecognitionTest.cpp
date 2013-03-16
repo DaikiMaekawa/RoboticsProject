@@ -1,22 +1,22 @@
 #include <iostream>
-#include "NUI.h"
+#include "UserRecognition.h"
 
 using namespace nui;
 using namespace std;
 
 int main(){
     
-    NUI nui;
-	nui.startProcessing();
+    UserRecognition recog;
+	recog.startProcessing();
 
 	while( 'e' != cv::waitKey(3) ){
             cout << "ok" << endl;
-            nui.waitUpdateAll();
+            recog.waitUpdateAll();
             
-            cout << nui.isValid() << endl;
+            cout << recog.isValid() << endl;
 
-            vector<UserStatus> users = nui.detectUsers();
-            NIMat depth = nui.depthImage();
+            vector<UserStatus> users = recog.detectUsers();
+            NIMat depth = recog.depthImage();
             for(int i=0; i < users.size(); i++){
                 if(users[i].isTracking){
                     UserJoint joint = users[i].joint(XN_SKEL_HEAD);
