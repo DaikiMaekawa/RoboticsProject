@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(NUI)
+project(UserRecognition)
 
 set(Atlas_INCLUDE_DIR ../)
 
@@ -67,29 +67,29 @@ set(OPENNI_INCLUDE_DIRS ${OPENNI_INCLUDE_DIR} ${NITE_INCLUDE_DIR})
         endif(OPENNI_FOUND)
 
 
-set(NUI_SRC
-    main.cpp
+set(UserRecognition_SRC
+    UserRecognitionTest.cpp
     UserDetector.cpp
-    NUI.cpp
+    UserRecognition.cpp
     Xtion.cpp
     XnErrorChecker.cpp
 )
 
-set(NUI_HDR
+set(UserRecognition_HDR
     UserDetector.h
     UserStatus.h
-    NUI.h
+    UserRecognition.h
     AudioDevice.h
     ImageDevice.h
     Xtion.h
     XnErrorChecker.h
 )
-add_executable(NUI
-    ${NUI_SRC}
-    ${NUI_HDR}
+add_executable(UserRecognition
+    ${UserRecognition_SRC}
+    ${UserRecognition_HDR}
 )
 
-target_link_libraries(NUI 
+target_link_libraries(UserRecognition 
     ${OPENNI_LIBRARY}
     ${OpenCV_LIBS}
     ${Boost_LIBRARIES}

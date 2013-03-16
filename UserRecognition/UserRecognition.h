@@ -16,12 +16,12 @@
 
 namespace nui{
 
-    class NUI{
+    class UserRecognition{
         class Impl;
         boost::shared_ptr<Impl> pImpl;
 
     public:
-        NUI();
+        UserRecognition();
         void startProcessing();
         void waitUpdateAll();
         NIMat depthImage();
