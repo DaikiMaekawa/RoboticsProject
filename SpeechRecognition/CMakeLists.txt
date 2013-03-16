@@ -10,7 +10,7 @@ set(Boost_DEBUG TRUE)
 
 set(Boost_USE_STATIC_LIBS ${OGRE_STATIC})
 
-FIND_PACKAGE(Boost COMPONENTS system thread filesystem)
+FIND_PACKAGE(Boost COMPONENTS system thread filesystem regex)
 
 include_directories(
     ${PROJECT_SOURCE_DIR}

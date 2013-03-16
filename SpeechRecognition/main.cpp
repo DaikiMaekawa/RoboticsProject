@@ -1,11 +1,13 @@
 #include "SpeechRecognition.h"
 #include <iostream>
 #include <string>
+#include <boost/regex.hpp>
 
 using namespace nui;
 using namespace std;
 
 int main(int argc, char *argv[]){
+        
     SpeechRecognition recog(argc,argv);
     cout << "recog.isValid() = " << recog.isValid() << endl;
     
@@ -13,7 +15,12 @@ int main(int argc, char *argv[]){
 
     vector<string> results = recog.resultsString();
     for(int i=0; i < results.size(); i++){
-        cout << "ret[" << i << "] = " << results[i] << endl;
+        boost::regex regex("こんにちは");
+        boost::smatch match;
+        
+        if(boost::regex_search(results[i], match, regex)){
+            cout << "Recognized : " << match << endl;
+        }
     }
     
     return 0;
