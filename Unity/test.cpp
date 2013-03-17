@@ -1,9 +1,17 @@
-#include <SpeechRecognition.h>
-#include <UserRecognition.h>
+#include "Unity.h"
+#include <iostream>
+
+using namespace std;
+using namespace nui;
 
 int main(int argc, char *argv[]){
-    nui::SpeechRecognition recog(argc,argv);
-    nui::UserRecognition user;
+    Unity unity(argc,argv);
+    
+    while(1){
+        unity.waitStatusUpdate();
+        vector<UserStatus> users = unity.detectUsers();
+        cout << "user num = " << users.size() << endl;
+    }
 
     return 0;
 }

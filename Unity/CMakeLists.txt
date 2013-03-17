@@ -13,7 +13,7 @@ set(Boost_DEBUG TRUE)
 set(Boost_USE_STATIC_LIBS ${OGRE_STATIC})
 #set(Boost_USE_STATIC_LIBS TRUE)
 
-find_package(Boost COMPONENTS system thread date_time serialization)
+find_package(Boost COMPONENTS system thread date_time serialization filesystem regex)
 find_package(PkgConfig)
 find_package(OpenCV)
 
@@ -67,21 +67,41 @@ if(OPENNI_FOUND)
     message(STATUS "OpenNI found (include: ${OPENNI_INCLUDE_DIR}, lib: ${OPENNI_LIBRARY})")
 endif(OPENNI_FOUND)
 
-
 include_directories(
+    ${BOOST_INCLUDE_DIRS}
+    ${Boost_INCLUDE_DIR}
     ${OPENNI_INCLUDE_DIRS}
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/../SpeechRecognition
     ${CMAKE_CURRENT_SOURCE_DIR}/../UserRecognition
     ${Atlas_INCLUDE_DIR}
+    /usr/local/lib
+    /usr/local/include
+)
+
+link_directories(
+    ${Boost_LIBRARY_DIRS}
+    ${Boost_LIBRARY_DIR}
 )
 
 add_executable(Unity
     test.cpp
+    Unity.h
+    Unity.cpp
 )
 
 target_link_libraries(Unity
     UserRecognition
     SpeechRecognition
+    ${Boost_LIBRARIES}
+    julius
+    sent
+    asound
+    m
+    pthread
+    dl
+    z
+    pulse
+    icuuc
 )
