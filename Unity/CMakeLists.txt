@@ -1,6 +1,5 @@
 project(Unity)
 
-#include(GenerateExportHeader)
 
 set(Atlas_INCLUDE_DIR ../)
 
@@ -16,6 +15,11 @@ set(Boost_USE_STATIC_LIBS ${OGRE_STATIC})
 find_package(Boost COMPONENTS system thread date_time serialization filesystem regex)
 find_package(PkgConfig)
 find_package(OpenCV)
+find_package(PythonLibs 2.7)
+find_package(SWIG REQUIRED)
+
+include(${SWIG_USE_FILE})
+include(GenerateExportHeader)
 
 if(${CMAKE_VERSION} VERSION_LESS 2.8.2)
      pkg_check_modules(PC_OPENNI openni-dev)
@@ -68,6 +72,7 @@ if(OPENNI_FOUND)
 endif(OPENNI_FOUND)
 
 include_directories(
+    ${PYTHON_INCLUDE_PATH}
     ${BOOST_INCLUDE_DIRS}
     ${Boost_INCLUDE_DIR}
     ${OPENNI_INCLUDE_DIRS}
@@ -85,14 +90,51 @@ link_directories(
     ${Boost_LIBRARY_DIR}
 )
 
-add_executable(Unity
-    test.cpp
+#add_executable(Unity
+#    test.cpp
+#    Unity.h
+#    Unity.cpp
+#)
+
+set(Unity_SRCS
     Unity.h
     Unity.cpp
 )
 
-target_link_libraries(Unity
+set(INTERFACE_FILES
+    unity.i
+)
+
+set_source_files_properties(${INTERFACE_FILES} PROPERTIES CPLUSPLUS ON)
+set_source_files_properties(${INTERFACE_FILES} PROPERTIES SWIG_FLAGS "")
+
+SWIG_ADD_MODULE(unity python ${INTERFACE_FILES}
+    ${Unity_SRCS}
+)
+
+set(Unity_LINKS
+    ${Boost_LIBRARIES}
+    ${PYTHON_LIBRARIES}
     UserRecognition
     SpeechRecognition
-    ${Boost_LIBRARIES}
 )
+
+SWIG_LINK_LIBRARIES(unity
+    ${Unity_LINKS}
+)
+
+set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}../)
+
+install(TARGETS _unity
+    RUNTIME DESTINATION UnityScript
+    LIBRARY DESTINATION UnityScript
+    ARCHIVE DESTINATION UnityScript
+)
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${outdir}unity.py DESTINATION UnityScript)
+
+#target_link_libraries(Unity
+#    UserRecognition
+#    SpeechRecognition
+#    ${Boost_LIBRARIES}
+#)
