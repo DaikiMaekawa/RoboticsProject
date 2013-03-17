@@ -15,7 +15,7 @@ extern "C"{
 #include <boost/shared_ptr.hpp>
 #include <string>
 #include <vector>
-#include "Timer.h"
+#include "Atlas/Timer.h"
 
 namespace nui{
 

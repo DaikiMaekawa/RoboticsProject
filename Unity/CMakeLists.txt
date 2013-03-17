@@ -1,7 +1,8 @@
-cmake_minimum_required(VERSION 2.8)
-project(UserRecognition)
+project(Unity)
 
-set(Atlas_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
+#include(GenerateExportHeader)
+
+set(Atlas_INCLUDE_DIR ../)
 
 set(Boost_FIND_REQUIRED TRUE)
 set(Boost_FIND_QUIETLY TRUE) 
@@ -66,57 +67,21 @@ if(OPENNI_FOUND)
     message(STATUS "OpenNI found (include: ${OPENNI_INCLUDE_DIR}, lib: ${OPENNI_LIBRARY})")
 endif(OPENNI_FOUND)
 
+
 include_directories(
-    ${PROJECT_SOURCE_DIR}
     ${OPENNI_INCLUDE_DIRS}
-    ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${BOOST_INCLUDE_DIRS}
-    ${Boost_INCLUDE_DIRS}
-    ${Boost_INCLUDE_DIR}
     ${PROJECT_BINARY_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/../SpeechRecognition
+    ${CMAKE_CURRENT_SOURCE_DIR}/../UserRecognition
     ${Atlas_INCLUDE_DIR}
 )
 
-set(UserRecognition_SRC
-    UserDetector.cpp
-    UserRecognition.cpp
-    Xtion.cpp
-    XnErrorChecker.cpp
+add_executable(Unity
+    test.cpp
 )
 
-set(UserRecognition_HDR
-    UserDetector.h
-    UserStatus.h
-    UserRecognition.h
-    AudioDevice.h
-    ImageDevice.h
-    Xtion.h
-    XnErrorChecker.h
-)
-
-add_library(UserRecognition
-    ${UserRecognition_SRC}
-    ${UserRecognition_HDR}
-)
-
-target_link_libraries(UserRecognition 
-    ${OPENNI_LIBRARY}
-    ${OpenCV_LIBS}
-    ${Boost_LIBRARIES}
-    ${Boost_SYSTEM_LIBRARY}
-)
-
-add_executable(UserRecognitionTest
-    UserRecognitionTest.cpp
-)
-
-target_link_libraries(UserRecognitionTest
+target_link_libraries(Unity
     UserRecognition
+    SpeechRecognition
 )
-
-link_directories(
-   ${Boost_LIBRARY_DIRS}
-   ${Boost_LIBRARY_DIR}
-)
-
