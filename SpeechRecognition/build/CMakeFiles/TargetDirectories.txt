@@ -1,0 +1,2 @@
+/home/maekawadaiki/GitHub/ToyProgram/SpeechRecognition/build/CMakeFiles/SpeechRecognition.dir
+/home/maekawadaiki/GitHub/ToyProgram/SpeechRecognition/build/CMakeFiles/SpeechRecognitionTest.dir
