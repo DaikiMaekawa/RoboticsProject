@@ -3,11 +3,13 @@
 #include <SpeechRecognition.h>
 #include <UserRecognition.h>
 #include <Atlas/Timer.h>
+#include <UserStatus.h>
+#include <boost/shared_ptr.hpp>
 
 class Unity{
     nui::SpeechRecognition m_sRecog;
     nui::UserRecognition   m_uRecog;
-    atlas::Timer           m_timer;
+    atlas::Timer m_timer;
 
 public: 
     Unity(int argc, char *argv[]);

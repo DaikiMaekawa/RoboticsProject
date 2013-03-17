@@ -2,11 +2,13 @@
 #include <boost/lambda/lambda.hpp>
 #include <boost/bind.hpp>
 #include <iostream>
+#include <SpeechRecognition.h>
 
 using namespace nui;
 
 Unity::Unity(int argc, char *argv[]) : 
-    m_sRecog(argc,argv)
+    m_sRecog(argc,argv),
+    m_uRecog()
 {
     m_uRecog.startProcessing();
 }
