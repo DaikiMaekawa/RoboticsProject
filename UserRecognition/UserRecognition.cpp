@@ -14,8 +14,7 @@ namespace nui{
     public:
         Impl(){
             try{
-                //xnErrorCheck(m_context.InitFromXmlFile("../SamplesConfig.xml"));
-                xnErrorCheck(m_context.InitFromXmlFile("../InitDevice.xml"));
+                xnErrorCheck(m_context.InitFromXmlFile("InitDevice.xml"));
                 xnErrorCheck(xnPrintRegisteredLicenses());
                 m_context.SetGlobalMirror(true);
                 

@@ -1,6 +1,6 @@
 project(SpeechRecognition)
 
-set(Atlas_Include_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../Atlas)
+set(Atlas_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 set(Boost_FIND_REQUIRED TRUE)
 set(Boost_FIND_QUIETLY TRUE)
@@ -16,7 +16,7 @@ include_directories(
     ${PROJECT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${Atlas_Include_DIR}
+    ${Atlas_INCLUDE_DIR}
     ${BOOST_INCLUDE_DIRS}
     ${Boost_INCLUDE_DIR}
     ${PROJECT_BINARY_DIR}
@@ -25,14 +25,18 @@ include_directories(
 )
 
 set(Atlas_Source
-    ${Atlas_Include_DIR}/Timer.cpp
+    ${Atlas_INCLUDE_DIR}/Atlas/Timer.cpp
 )
 
-add_executable(SpeechRecognition 
+set(UserRecognition_SRCS
     SpeechRecognitionTest.cpp
     SpeechRecognition.h
     SpeechRecognition.cpp
     ${Atlas_Source}
+)
+
+add_library(SpeechRecognition
+    ${UserRecognition_SRCS}
 )
 
 link_directories(
@@ -53,3 +57,12 @@ target_link_libraries(SpeechRecognition
     pulse
     icuuc
 )
+
+add_executable(SpeechRecognitionTest
+    SpeechRecognitionTest.cpp
+)
+
+target_link_libraries(SpeechRecognitionTest
+    SpeechRecognition
+)
+

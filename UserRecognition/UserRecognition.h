@@ -1,8 +1,8 @@
 /*******************************************************************
  * Copyright (c) 2012 Daiki Maekawa
  *
- * @file NUI.h
- * @brief NUI interface class
+ * @file UserRecognition.h
+ * @brief User Recognition
  * @author Daiki Maekawa
  * @date 2012-01-10
  *******************************************************************/
