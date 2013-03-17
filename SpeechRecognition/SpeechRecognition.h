@@ -30,6 +30,7 @@ namespace nui{
         static void callWhenResult(Recog *recog, void *receiver);
         static void callInPause(Recog *recog, void *receiver);
         static void callWhenResume(Recog *recog, void *receiver);
+
     public:
         SpeechRecognition(int argc, char *argv[]); 
         bool isValid() const{ return m_isValid; }
