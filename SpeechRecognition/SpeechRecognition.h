@@ -9,13 +9,12 @@
 
 #pragma once
 
-extern "C"{ 
-    #include <julius/juliuslib.h> 
-}
 #include <boost/shared_ptr.hpp>
 #include <string>
 #include <vector>
 #include "Atlas/Timer.h"
+
+typedef struct __Recog__ Recog;
 
 namespace nui{
 
@@ -44,5 +43,5 @@ namespace nui{
         }
     };
 
-} //namespace nui
+}; //namespace nui
 

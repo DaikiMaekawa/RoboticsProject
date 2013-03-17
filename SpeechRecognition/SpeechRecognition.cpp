@@ -3,7 +3,9 @@
 #include <boost/bind.hpp>
 #include <iostream>
 #include <unicode/unistr.h>
-
+extern "C"{ 
+    #include <julius/juliuslib.h> 
+}
 using namespace std;
 
 namespace nui{
