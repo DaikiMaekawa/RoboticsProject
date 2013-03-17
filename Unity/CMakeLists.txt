@@ -95,13 +95,4 @@ target_link_libraries(Unity
     UserRecognition
     SpeechRecognition
     ${Boost_LIBRARIES}
-    julius
-    sent
-    asound
-    m
-    pthread
-    dl
-    z
-    pulse
-    icuuc
 )

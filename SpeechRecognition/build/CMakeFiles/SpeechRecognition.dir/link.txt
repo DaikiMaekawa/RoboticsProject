@@ -1,0 +1,2 @@
+/usr/bin/ar cr libSpeechRecognition.a  CMakeFiles/SpeechRecognition.dir/SpeechRecognitionTest.o CMakeFiles/SpeechRecognition.dir/SpeechRecognition.o CMakeFiles/SpeechRecognition.dir/home/maekawadaiki/GitHub/ToyProgram/Atlas/Timer.o
+/usr/bin/ranlib libSpeechRecognition.a
