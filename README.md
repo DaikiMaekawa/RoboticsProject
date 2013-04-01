@@ -1,4 +1,4 @@
-ToyProgram
+RoboticsProject
 ==========
 
-This is making as a hobby
+千葉工業大学　中島研究室　ロボティクスプロジェクト
