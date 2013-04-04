@@ -5,10 +5,13 @@ RoboticsProject
 
 --------------------------------------------------
 動作環境
+
 OS: ubuntu12.04
+
 CPU: Intel(R) Core(TM) i5-2410M CPU @ 2.30GHz
 
 ライブラリ
+
 julius-4.2.1
 Qt4.8.1
 boost1.46.1
