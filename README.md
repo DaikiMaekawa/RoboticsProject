@@ -8,7 +8,9 @@ OS: ubuntu12.04
 CPU: Intel(R) Core(TM) i5-2410M CPU @ 2.30GHz
 
 julius-4.2.1
+
 Qt4.8.1
+
 boost1.46.1
 OpenNI1.5.4.0
 NiTE1.5.0.1
