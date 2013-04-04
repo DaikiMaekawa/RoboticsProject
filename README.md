@@ -6,9 +6,12 @@ RoboticsProject
 --------------------------------------------------
                                                                  開発環境
 
-■OS: ubuntu12.04
+■ハードウェア
+beagleboard-xm
+sppboard
 
-■CPU: Intel(R) Core(TM) i5-2410M CPU @ 2.30GHz
+OS: ubuntu11.10
+CPU: ARM Coretex-A8
 
 ■ライブラリ
 
