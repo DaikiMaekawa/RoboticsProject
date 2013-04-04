@@ -8,9 +8,11 @@ RoboticsProject
 
 ■ハードウェア
 beagleboard-xm
+
 sppboard
 
 OS: ubuntu11.10
+
 CPU: ARM Coretex-A8
 
 ■ライブラリ
