@@ -3,10 +3,12 @@ RoboticsProject
 
 千葉工業大学　中島研究室　ロボティクスプロジェクト
 
+==========
 動作環境
 OS: ubuntu12.04
 CPU: Intel(R) Core(TM) i5-2410M CPU @ 2.30GHz
 
+ライブラリ
 julius-4.2.1
 Qt4.8.1
 boost1.46.1
@@ -29,3 +31,5 @@ zlib1.2.3.4
 flex2.5.35
 esd0.2.41
 sndfile1.0.25-4
+
+==========
