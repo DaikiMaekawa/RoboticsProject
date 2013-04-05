@@ -4,68 +4,78 @@ RoboticsProject
 千葉工業大学　中島研究室　ロボティクスプロジェクト
 
 --------------------------------------------------
-                                                                 開発環境
+                                                       ロボティクスプロジェクトとは？
+                                                       
+BeagleBoard上でSPPboardとxtionを操作するためのPythonスクリプトを提供することを目的としたプロジェクトである。
+ 
+                                                       　　　提供する機能の一覧
+ - DCモータ×2のPWM制御及び回転数のカウント
+ - XBeeを用いたPCとのシリアル通信
+ - LCDに任意の文字列を表示
+ - AD変換によるセンサ値の取得×３
+ - サーボモータの角度制御
+ - IMU3000を用いた3軸の姿勢検出(I2Cインタフェースをサポート)
+ - ユーザの姿勢検出
+ - モーション認識
+ - 日本語音声認識
+ 
+                                                                  動作環境
 
-■ハードウェア
+ 
+ - beagleboard-xm(ubuntu11.10 ARM Coretex-A8)
 
-beagleboard-xm
+ - sppboard
 
-sppboard
 
-OS: ubuntu11.10
 
-CPU: ARM Coretex-A8
+ - julius-4.2.1
 
-■ライブラリ
+ - Qt4.8.1
+ 
+ - boost1.46.1
 
-julius-4.2.1
+ - OpenNI1.5.4.0
 
-Qt4.8.1
+ - NiTE1.5.0.1
 
-boost1.46.1
+ - Sensor5.1.2.1
 
-OpenNI1.5.4.0
+ - OpenCV2.3.1
 
-NiTE1.5.0.1
+ - ffmpeg0.8.10
 
-Sensor5.1.2.1
+ - gtk2.0
 
-OpenCV2.3.1
+ - x264
 
-ffmpeg0.8.10
+ - gstreamer0.10
 
-gtk2.0
+ - SDL1.2
 
-x264
+ - v4l-0.8.5
 
-gstreamer0.10
+ - WIG2.0
 
-SDL1.2
+ - Python2.7
 
-v4l-0.8.5
+ - CMake2.8.7
 
-SWIG2.0
+ - ICU4.8.1.1-3
 
-Python2.7
+ - PulseAudio1.1
 
-CMake2.8.7
+ - zlib1.2.3.4
 
-ICU4.8.1.1-3
+ - flex2.5.35
 
-PulseAudio1.1
+ - esd0.2.41
 
-zlib1.2.3.4
-
-flex2.5.35
-
-esd0.2.41
-
-sndfile1.0.25-4
+ - sndfile1.0.25-4
 
 ■コンパイラ
 
-gcc4.6.3
+ - gcc4.6.3
 
-MPLAB C30 C Compiler v3.23
+ - MPLAB C30 C Compiler v3.23
 
 ---------------------------------------------------
