@@ -21,12 +21,15 @@ BeagleBoard上でSPPboardとxtionを操作するためのPythonスクリプト�
  
                                                                   動作環境
 
- 
+
+
+#### ハードウェア
+
  - beagleboard-xm(ubuntu11.10 ARM Coretex-A8)
 
  - sppboard
 
-
+#### ソフトウェア
 
  - julius-4.2.1
 
@@ -72,10 +75,18 @@ BeagleBoard上でSPPboardとxtionを操作するためのPythonスクリプト�
 
  - sndfile1.0.25-4
 
-■コンパイラ
+#### コンパイラ
 
  - gcc4.6.3
 
  - MPLAB C30 C Compiler v3.23
 
+
+
+
+
+免責事項
+=====
+
+このプログラムによって発生した、いかなる障害・損害も作成者は一切責任を負わないものとする。
 ---------------------------------------------------
