@@ -6,7 +6,7 @@ RoboticsProject
 --------------------------------------------------
                                                        ロボティクスプロジェクトとは？
                                                        
-BeagleBoard上でSPPboardとxtionを操作するためのPythonスクリプトを提供することを目的としたプロジェクトである。
+BeagleBoard上でSPPboardとXtionを操作するためのPythonAPIを提供することを目的としたプロジェクトである。
  
                                                        　　　提供する機能の一覧
  - DCモータ×2のPWM制御及び回転数のカウント
@@ -28,6 +28,8 @@ BeagleBoard上でSPPboardとxtionを操作するためのPythonスクリプト�
  - beagleboard-xm(ubuntu11.10 ARM Coretex-A8)
 
  - sppboard
+
+ - Xtion PRO LIVE
 
 #### ソフトウェア
 
