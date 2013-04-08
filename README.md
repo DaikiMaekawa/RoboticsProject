@@ -57,7 +57,7 @@ BeagleBoard上でSPPboardとxtionを操作するためのPythonスクリプト�
 
  - v4l-0.8.5
 
- - WIG2.0
+ - SWIG2.0
 
  - Python2.7
 
