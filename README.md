@@ -33,7 +33,7 @@ BeagleBoard上でSPPboardとXtionを操作するためのPythonAPIを提供す�
 
 #### ソフトウェア
 
- - julius-4.2.1
+ - julius-4.2.2
 
  - Qt4.8.1
  
