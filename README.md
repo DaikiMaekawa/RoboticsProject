@@ -83,9 +83,13 @@ BeagleBoard上でSPPboardとXtionを操作するためのPythonAPIを提供す�
 
  - MPLAB C30 C Compiler v3.23
 
+                                                               インストール手順
 
+git clone https://github.com/DaikiMaekawa/RoboticsProject
 
+cd installer
 
+sudo ./install.sh
 
 免責事項
 =====
