@@ -94,11 +94,6 @@ add_subdirectory(Unity)
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 
-install(FILES
-   SpeechRecognition/julius.jconf
-   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
-
 #############
 ## Testing ##
 #############
