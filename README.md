@@ -33,6 +33,8 @@ BeagleBoard上でSPPboardとXtionを操作するためのPythonAPIを提供す�
 
 #### ソフトウェア
 
+ - ROS Groovy
+
  - julius-4.2.2
 
  - Qt4.8.1
@@ -87,9 +89,9 @@ BeagleBoard上でSPPboardとXtionを操作するためのPythonAPIを提供す�
 
 git clone https://github.com/DaikiMaekawa/RoboticsProject
 
-cd installer
+cd RoboticsProject
 
-sudo ./install.sh
+catkin_make install
 
 免責事項
 =====
