@@ -4,11 +4,10 @@ RoboticsProject
 千葉工業大学　中島研究室　ロボティクスプロジェクト
 
 --------------------------------------------------
-                                                       ロボティクスプロジェクトとは？
-                                                       
+##ロボティクスプロジェクトとは？
+
 BeagleBoard上でSPPboardとXtionを操作するためのPythonAPIを提供することを目的としたプロジェクトである。
- 
-                                                       　　　提供する機能の一覧
+##提供する機能の一覧
  - DCモータ×2のPWM制御及び回転数のカウント
  - XBeeを用いたPCとのシリアル通信
  - LCDに任意の文字列を表示
@@ -19,7 +18,7 @@ BeagleBoard上でSPPboardとXtionを操作するためのPythonAPIを提供す�
  - モーション認識
  - 日本語音声認識
  
-                                                                  動作環境
+##動作環境
 
 
 
@@ -85,7 +84,7 @@ BeagleBoard上でSPPboardとXtionを操作するためのPythonAPIを提供す�
 
  - MPLAB C30 C Compiler v3.23
 
-                                                               インストール手順
+##インストール手順
 
 git clone https://github.com/DaikiMaekawa/RoboticsProject
 
@@ -93,8 +92,8 @@ cd RoboticsProject
 
 catkin_make install
 
-免責事項
-=====
+##免責事項
+
 
 このプログラムによって発生した、いかなる障害・損害も作成者は一切責任を負わないものとする。
 ---------------------------------------------------
