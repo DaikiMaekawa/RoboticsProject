@@ -19,16 +19,14 @@ namespace nui{
 
     class UserRecognitionServer{
         class Impl;
-        boost::shared_ptr<Impl> pImpl;
-
+        boost::shared_ptr<Impl> pImpl;    
+        void waitUpdateAll();
     public:
         UserRecognitionServer(ros::NodeHandle &node);
-	void runServer();
-        void waitUpdateAll();
+		void runServer();
         NIMat depthImage();
         NIMat rgbImage();
         NIMat userDepthImage(const UserStatus &user);
-        unsigned int detectUserNum();
         const std::vector<UserStatus>& detectUsers();
         bool isValid() const;
     };

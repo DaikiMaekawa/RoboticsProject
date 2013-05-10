@@ -48,6 +48,7 @@ catkin_package(
 
 add_subdirectory(SpeechRecognition)
 add_subdirectory(UserRecognition)
+add_subdirectory(MotionCapture)
 add_subdirectory(Unity)
 
 #include_directories(include

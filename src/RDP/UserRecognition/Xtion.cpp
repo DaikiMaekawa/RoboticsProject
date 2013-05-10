@@ -9,11 +9,10 @@ namespace nui{
     }
     
     Xtion::Xtion(xn::Context &context){
-
         try{
             initImageGenerator(context);
 	        initDepthGenerator(context);
-            initAudioGenerator(context);
+            //initAudioGenerator(context);
         }catch(std::exception &ex){
             std::cout << ex.what() << std::endl;
         }

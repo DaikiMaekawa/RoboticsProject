@@ -14,19 +14,19 @@ namespace nui{
         xn::Context m_context;
         boost::shared_ptr<Xtion>           m_device;
         boost::shared_ptr<UserDetector>    m_userDetector;
-	ros::Subscriber m_startSub;
-	image_transport::Publisher m_imagePub;
-	image_transport::ImageTransport m_imageTran;
+		ros::Subscriber m_startSub;
+		//image_transport::Publisher m_imagePub;
+		//image_transport::ImageTransport m_imageTran;
 
     public:
-        Impl(ros::NodeHandle &node) : 
-	    m_imageTran(node),
-            m_startSub(node.subscribe(START_USER_RECOGNITION, 100, &Impl::startRecognition, this)),
-	    m_imagePub(m_imageTran.advertise("out", 1))
+        Impl(ros::NodeHandle &node)// : 
+	    //m_imageTran(node),
+        //m_startSub(node.subscribe(START_USER_RECOGNITION, 100, &Impl::startRecognition, this)),
+	    //m_imagePub(m_imageTran.advertise("out", 1))
 	{
             try{
-	        std::string initFile = std::string(SHARE_DIR) + "/InitDevice.xml";
-	        ROS_INFO("UserRecognition Initfile = %s", initFile.c_str());
+				std::string initFile = std::string(SHARE_DIR) + "/InitDevice.xml";
+				ROS_INFO("UserRecognition Initfile = %s", initFile.c_str());
                 xnErrorCheck(m_context.InitFromXmlFile(initFile.c_str()));
                 xnErrorCheck(xnPrintRegisteredLicenses());
                 m_context.SetGlobalMirror(true);
@@ -73,16 +73,17 @@ namespace nui{
         }
 
 	void runServer(){
-            ros::Rate loopRate(5);
+        ros::Rate loopRate(5);
 	    while(ros::ok()){
+		    /*
 	        waitUpdateAll();
-                ros::spinOnce();
-		cv_bridge::CvImage depth;
-		depth.image = *depthImage();
-		m_imagePub.publish(depth.toImageMsg());
-
-		loopRate.sleep();
-	    }
+            ros::spinOnce();
+			cv_bridge::CvImage depth;
+			depth.image = *depthImage();
+			m_imagePub.publish(depth.toImageMsg());
+		    loopRate.sleep();
+	    	*/
+		}
 	}
 
         ~Impl(){
