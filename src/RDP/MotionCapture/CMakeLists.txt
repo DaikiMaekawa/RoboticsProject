@@ -14,7 +14,8 @@ set(Boost_USE_MULTITHREADED      ON)
 set(Boost_USE_STATIC_RUNTIME    OFF)
 
 find_package(Boost COMPONENTS system thread REQUIRED)
-find_package(catkin REQUIRED COMPONENTS roscpp std_msgs message_generation)
+find_package(catkin REQUIRED COMPONENTS roscpp std_msgs message_generation cv_bridge)
+find_package(OpenCV)
 
 include_directories(
     ${QT_INCLUDE_DIR}
@@ -23,6 +24,7 @@ include_directories(
     ${PROJECT_BINARY_DIR}
     ${BOOST_INCLUDE_DIRS}
     ${Boost_INCLUDE_DIR}
+	../UserRecognition
 )
 
 link_directories(
@@ -60,5 +62,6 @@ target_link_libraries(MotionCapture
 	${QT_LIBRARIES}
 	${Boost_LIBRARIES}
 	${catkin_LIBRARIES}
+	${OpenCV_LIBS}
 )
 

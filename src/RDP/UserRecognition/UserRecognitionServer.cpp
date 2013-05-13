@@ -5,7 +5,7 @@
 #include "Xtion.h"
 #include "XnErrorChecker.h"
 #include <cv_bridge/cv_bridge.h>
-#include <image_transport/image_transport.h>
+//#include <image_transport/image_transport.h>
 #include <string>
 
 namespace nui{
@@ -15,15 +15,15 @@ namespace nui{
         boost::shared_ptr<Xtion>           m_device;
         boost::shared_ptr<UserDetector>    m_userDetector;
 		ros::Subscriber m_startSub;
-		//image_transport::Publisher m_imagePub;
-		//image_transport::ImageTransport m_imageTran;
+		ros::Publisher m_rgbPub;
+		ros::Publisher m_depthPub;
 
     public:
-        Impl(ros::NodeHandle &node)// : 
-	    //m_imageTran(node),
-        //m_startSub(node.subscribe(START_USER_RECOGNITION, 100, &Impl::startRecognition, this)),
-	    //m_imagePub(m_imageTran.advertise("out", 1))
-	{
+        Impl(ros::NodeHandle &node) : 
+			m_startSub(node.subscribe(START_USER_RECOGNITION, 100, &Impl::startRecognition, this)),
+			m_rgbPub(node.advertise<cv_bridge::CvImage>(RGB_IMAGE, 100)),
+			m_depthPub(node.advertise<cv_bridge::CvImage>(DEPTH_IMAGE, 100))
+		{
             try{
 				std::string initFile = std::string(SHARE_DIR) + "/InitDevice.xml";
 				ROS_INFO("UserRecognition Initfile = %s", initFile.c_str());
@@ -40,23 +40,27 @@ namespace nui{
     	
         void startRecognition(const std_msgs::EmptyConstPtr &msg){
             ROS_INFO("receive startRecognition");
-	    try{
-                xnErrorCheck(m_context.StartGeneratingAll());
-            }catch(std::exception &ex){
-                std::cout << ex.what() << std::endl;
-            }
+			try{
+				xnErrorCheck(m_context.StartGeneratingAll());
+			}catch(std::exception &ex){
+				std::cout << ex.what() << std::endl;
+			}
         }
 
         void waitUpdateAll(){
             m_context.WaitAndUpdateAll();
         }
 
-        NIMat depthImage(){
-            return m_device->depthImage();
+        cv_bridge::CvImagePtr depthImage(){
+            cv_bridge::CvImagePtr depth;
+			depth->image = *m_device->depthImage();
+			return depth;
         }
         
-        NIMat rgbImage(){
-            return m_device->rgbImage();
+        cv_bridge::CvImagePtr rgbImage(){
+		    cv_bridge::CvImagePtr rgb;
+            rgb->image = *m_device->rgbImage();
+			return rgb;
         }
 
         NIMat userDepthImage(const UserStatus &user){
@@ -72,19 +76,14 @@ namespace nui{
             return m_userDetector->isValid() && m_device->isValid();
         }
 
-	void runServer(){
-        ros::Rate loopRate(5);
-	    while(ros::ok()){
-		    /*
-	        waitUpdateAll();
-            ros::spinOnce();
-			cv_bridge::CvImage depth;
-			depth.image = *depthImage();
-			m_imagePub.publish(depth.toImageMsg());
-		    loopRate.sleep();
-	    	*/
+		void runServer(){
+			ros::Rate loopRate(5);
+			while(ros::ok()){
+				waitUpdateAll();
+				ros::spinOnce();
+				loopRate.sleep();
+			}
 		}
-	}
 
         ~Impl(){
             m_context.Shutdown();
@@ -95,18 +94,6 @@ namespace nui{
     UserRecognitionServer::UserRecognitionServer(ros::NodeHandle &node) : pImpl(new Impl(node))
     {
 
-    }
-
-    void UserRecognitionServer::waitUpdateAll(){
-        return pImpl->waitUpdateAll();
-    }	
-
-    NIMat UserRecognitionServer::depthImage(){
-        return pImpl->depthImage();
-    }
-
-    NIMat UserRecognitionServer::rgbImage(){
-        return pImpl->rgbImage();
     }
 
     NIMat UserRecognitionServer::userDepthImage(const UserStatus &user){

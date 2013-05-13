@@ -14,25 +14,25 @@ namespace nui{
 
     SpeechRecognitionServer::SpeechRecognitionServer(int argc, char *argv[], ros::NodeHandle &node) : 
         m_isValid(initJulius(argc, argv)),
-	m_node(node),
+		m_node(node),
         m_isOpenStream(false),
         m_isPausedStream(false),
         m_resultPub(m_node.advertise<std_msgs::String>(RESULT_SPEECH_RECOGNITION, 100)),
-	m_startSub(m_node.subscribe(START_SPEECH_RECOGNITION, 100, &SpeechRecognitionServer::startRecognition, this)),
-	m_pauseSub(m_node.subscribe(PAUSE_SPEECH_RECOGNITION, 100, &SpeechRecognitionServer::pauseRecognition, this)),
-	m_finishSub(m_node.subscribe(FINISH_SPEECH_RECOGNITION, 100, &SpeechRecognitionServer::finishRecognition, this))
+		m_startSub(m_node.subscribe(START_SPEECH_RECOGNITION, 100, &SpeechRecognitionServer::startRecognition, this)),
+		m_pauseSub(m_node.subscribe(PAUSE_SPEECH_RECOGNITION, 100, &SpeechRecognitionServer::pauseRecognition, this)),
+		m_finishSub(m_node.subscribe(FINISH_SPEECH_RECOGNITION, 100, &SpeechRecognitionServer::finishRecognition, this))
     {
         sleep(1);
     }
 
     bool SpeechRecognitionServer::initJulius(int argc, char *argv[]){
         const int insArgc = 3;
-	char *insArgv[3];
-	insArgv[0] = argv[0];
-	insArgv[1] = "-C";
-	string insStr = std::string(SHARE_DIR) + "/julius.jconf";
-	insArgv[2] = &insStr[0];
-	cout << "julius load file = " << insArgv[2] << endl;
+		char *insArgv[3];
+		insArgv[0] = argv[0];
+		insArgv[1] = "-C";
+		string insStr = std::string(SHARE_DIR) + "/julius.jconf";
+		insArgv[2] = &insStr[0];
+		cout << "julius load file = " << insArgv[2] << endl;
 
         Jconf *jconf = j_config_load_args_new(insArgc, insArgv);
 
@@ -51,7 +51,7 @@ namespace nui{
         if(m_isOpenStream){
             m_isOpenStream = false;
             j_close_stream(m_recog.get()); 
-	}
+		}
     }
 
     void SpeechRecognitionServer::pauseRecognition(const std_msgs::EmptyConstPtr &msg){
@@ -113,36 +113,28 @@ namespace nui{
                 
                 string ret;
                 for(int i=0; i < seqnum; i++){
-                    /*
-		    icu::UnicodeString src(winfo->woutput[seq[i]], "euc-jp");
-                    const int32_t len = src.extract(0, src.length(), NULL, "utf8");
-                    char* woutput = new char[len + 1];
-                    src.extract(0, src.length(), woutput, "utf8");
-                    */
-		    string woutput = srObj->stringConvert(string(winfo->woutput[seq[i]]), "euc-jp", "utf8");
-		    cout << "woutput[" << i << "] = " << woutput << endl;
-                    //ret += string(woutput);
+                    string woutput = srObj->stringConvert(string(winfo->woutput[seq[i]]), "euc-jp", "utf8");
+					cout << "woutput[" << i << "] = " << woutput << endl;
                     ret += woutput;
-		    //delete []woutput;
                 }
 
                 cout << "Result String" << n+1 << " = " << ret << endl;
                 std_msgs::String msg;
-		msg.data = ret;
-		srObj->m_resultPub.publish(msg);
+				msg.data = ret;
+				srObj->m_resultPub.publish(msg);
             }
         }
     }
 
     string SpeechRecognitionServer::stringConvert(const string &src, const char *srcEnc, const char *retEnc){
         icu::UnicodeString unicode(src.c_str(), srcEnc);
-	const int32_t len = unicode.extract(0, unicode.length(), NULL, retEnc);
-	char *ins = new char[len + 1];
-	unicode.extract(0, unicode.length(), ins, retEnc);
+		const int32_t len = unicode.extract(0, unicode.length(), NULL, retEnc);
+		char *ins = new char[len + 1];
+		unicode.extract(0, unicode.length(), ins, retEnc);
         string ret = ins;
-	delete []ins;
+		delete []ins;
 
-	return ret;
+		return ret;
     }
 
     void SpeechRecognitionServer::startRecognition(const std_msgs::EmptyConstPtr &msg){
@@ -171,10 +163,10 @@ namespace nui{
 
     void SpeechRecognitionServer::runServer(){
         ros::Rate loopRate(5);
-	while(ros::ok()){
-            ros::spinOnce();
-	    loopRate.sleep();
-	}
+		while(ros::ok()){
+			ros::spinOnce();
+			loopRate.sleep();
+		}
     }
 
 } //namespace nui

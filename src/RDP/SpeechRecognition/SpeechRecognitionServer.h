@@ -25,16 +25,16 @@ namespace nui{
     class SpeechRecognitionServer{
         atlas::Timer m_timer;
         boost::shared_ptr<Recog> m_recog;
-	ros::NodeHandle &m_node;
-	ros::Publisher  m_resultPub;
-	ros::Subscriber m_startSub;
-	ros::Subscriber m_pauseSub;
-	ros::Subscriber m_finishSub;
+		ros::NodeHandle &m_node;
+		ros::Publisher  m_resultPub;
+		ros::Subscriber m_startSub;
+		ros::Subscriber m_pauseSub;
+		ros::Subscriber m_finishSub;
         bool m_isValid;
         bool m_isOpenStream;
         bool m_isPausedStream;
         bool initJulius(int argc, char *argv[]);
-	std::string stringConvert(const std::string &src,const char *srcEnc,const char *retEnc);
+		std::string stringConvert(const std::string &src,const char *srcEnc,const char *retEnc);
         static void callWhenResult(Recog *recog, void *receiver);
         static void callInPause(Recog *recog, void *receiver);
         static void callWhenResume(Recog *recog, void *receiver);
@@ -45,7 +45,7 @@ namespace nui{
         void startRecognition(const std_msgs::EmptyConstPtr &msg);
         void finishRecognition(const std_msgs::EmptyConstPtr &msg);
         void pauseRecognition(const std_msgs::EmptyConstPtr &msg);
-	void runServer();
+		void runServer();
     };
 
 }; //namespace nui
