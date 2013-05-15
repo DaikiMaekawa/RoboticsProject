@@ -34,10 +34,6 @@ void Unity::startSpeechRecognition(){
     */
 }
 
-void Unity::startUserRecognition(){
-    m_userRecog->startRecognition();
-}
-
 void Unity::statusUpdate(){
     ros::spinOnce();
     sleep(1);

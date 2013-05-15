@@ -3,8 +3,10 @@
 
 #include <QMainWindow>
 #include "UserRecognitionClient.h"
-#include <cv_bridge/cv_bridge.h>
+#include <RDP/DetectUsers.h>
+#include <sensor_msgs/Image.h>
 #include <ros/ros.h>
+#include <QTimer>
 
 namespace Ui {
 class MotionCapture;
@@ -17,11 +19,18 @@ class MotionCapture : public QMainWindow
 public:
     explicit MotionCapture(ros::NodeHandle &node, QWidget *parent = 0);
     ~MotionCapture();
-    
+
+private slots:
+	void updateStatus();
+
 private:
     Ui::MotionCapture *m_ui;
 	nui::UserRecognitionClient m_userRecog;
-	void userRGBImageCb(const cv_bridge::CvImageConstPtr& image);
+	QTimer m_timer;
+	void rgbImageCb(const sensor_msgs::ImageConstPtr &image);
+	void detectUsersCb(const RDP::DetectUsersConstPtr &users);
+	//void depthImageCb(const sensor_msgs::ImageConstPtr &image);
+	void connectSignals();
 };
 
 #endif // MOTIONCAPTURE_H

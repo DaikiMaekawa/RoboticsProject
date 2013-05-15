@@ -15,6 +15,5 @@ class Unity{
 public:
     Unity(int argc, char *argv[]);
     void startSpeechRecognition();
-    void startUserRecognition();
     void statusUpdate();
 };

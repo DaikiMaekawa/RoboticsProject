@@ -15,7 +15,10 @@ find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs message_generation
 
 add_message_files(
   FILES
-  Num.msg
+  UserStatus.msg
+  DetectUsers.msg
+  UserJoint.msg
+  Pos3D.msg
 )
 
 add_service_files(
