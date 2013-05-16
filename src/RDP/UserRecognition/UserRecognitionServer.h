@@ -24,7 +24,7 @@ namespace nui{
     public:
         UserRecognitionServer(ros::NodeHandle &node);
 		void runServer();
-        NIMat userDepthImage(const UserStatus &user);
+        //NIMat userDepthImage(const UserStatus &user);
         //const std::vector<UserStatus>& detectUsers();
         bool isValid() const;
     };

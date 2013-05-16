@@ -78,7 +78,6 @@ class Unity(_object):
         try: self.this.append(this)
         except: self.this = this
     def startSpeechRecognition(self): return _unity.Unity_startSpeechRecognition(self)
-    def startUserRecognition(self): return _unity.Unity_startUserRecognition(self)
     def statusUpdate(self): return _unity.Unity_statusUpdate(self)
     __swig_destroy__ = _unity.delete_Unity
     __del__ = lambda self : None;

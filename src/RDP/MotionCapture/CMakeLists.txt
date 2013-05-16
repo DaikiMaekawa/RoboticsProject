@@ -36,11 +36,15 @@ link_directories(
 set(MotionCapture_SRCS
     main.cpp
 	MotionCapture.cpp
+	PoseManeger.cpp
+	Motion.cpp
 	../UserRecognition/UserRecognitionClient.cpp
 )
 
 set(MotionCapture_HDRS
     MotionCapture.h
+	PoseManeger.h
+	Motion.h
 	../UserRecognition/UserRecognitionClient.h
 )
 

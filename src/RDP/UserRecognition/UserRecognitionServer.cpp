@@ -75,10 +75,14 @@ namespace nui{
 				std::cout << "Failed sendRgbImage" << std::endl;
 			}
 		}
-
+		
+		/*
         NIMat userDepthImage(const UserStatus &user){
-            return m_userDetector->userDepthMetaData(user);
+            NIMat image = m_device->userDepthMetaData(user)
+			
+			return m_userDetector->userDepthMetaData(user);
         }
+		*/
 		
 		/*
         const std::vector<UserStatus>& detectUsers(){
@@ -133,10 +137,6 @@ namespace nui{
     UserRecognitionServer::UserRecognitionServer(ros::NodeHandle &node) : pImpl(new Impl(node))
     {
 
-    }
-
-    NIMat UserRecognitionServer::userDepthImage(const UserStatus &user){
-        return pImpl->userDepthImage(user);
     }
 
     bool UserRecognitionServer::isValid() const{
