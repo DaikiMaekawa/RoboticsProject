@@ -8,6 +8,7 @@
 #include <ros/ros.h>
 #include <QTimer>
 #include <QGraphicsScene>
+#include <QVector>
 
 namespace Ui {
 	class MotionCapture;
@@ -26,6 +27,7 @@ private slots:
 
 private:
     Ui::MotionCapture *m_ui;
+	QVector<QGraphicsItem*> m_gItems;
 	QGraphicsScene m_scene;
 	PoseManeger m_poseManeger;
 	nui::UserRecognitionClient m_userRecog;
@@ -33,6 +35,7 @@ private:
 	void rgbImageCb(const sensor_msgs::ImageConstPtr &image);
 	void detectUsersCb(const RDP::DetectUsersConstPtr &users);
 	void connectSignals();
+	void paintUserJoints(const RDP::UserStatus &user);
 };
 
 #endif // MOTIONCAPTURE_H

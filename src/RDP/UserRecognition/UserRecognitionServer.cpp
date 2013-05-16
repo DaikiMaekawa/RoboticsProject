@@ -12,6 +12,26 @@
 #include <RDP/DetectUsers.h>
 
 namespace nui{
+	
+	static const XnSkeletonJoint UseJointTable[] = {
+		XN_SKEL_HEAD,
+		XN_SKEL_NECK,
+		XN_SKEL_TORSO,
+		XN_SKEL_LEFT_ELBOW,
+		XN_SKEL_RIGHT_ELBOW,
+		XN_SKEL_LEFT_HIP,
+		XN_SKEL_RIGHT_HIP,
+		XN_SKEL_LEFT_KNEE,
+		XN_SKEL_RIGHT_KNEE,
+		XN_SKEL_LEFT_HAND,
+		XN_SKEL_RIGHT_HAND,
+		XN_SKEL_LEFT_SHOULDER,
+		XN_SKEL_RIGHT_SHOULDER,
+		XN_SKEL_LEFT_FOOT,
+		XN_SKEL_RIGHT_FOOT
+	};
+
+	static const int JointTableSize = 15;
 
     class UserRecognitionServer::Impl{
         xn::Context m_context;
@@ -95,17 +115,18 @@ namespace nui{
 			RDP::DetectUsers users;
 			m_userDetector->updateAllUserStatus();
 			std::vector<UserStatus> status = m_userDetector->detectUsers();
+			
 			for(int i=0; i < status.size(); i++){
 				users.data.push_back(RDP::UserStatus());
 				users.data[i].id = i;
 				users.data[i].isTracking = status[i].isTracking;
 				
-				for(int m=0; m < UserStatus::MAX_JOINT_NUM; m++){
+				for(int m=0; m < JointTableSize; m++){
 					users.data[i].joints.push_back(RDP::UserJoint());
-					users.data[i].joints[m].type =  status[i].joint((XnSkeletonJoint)(m+1)).jointType;
-					users.data[i].joints[m].pos.x = status[i].joint((XnSkeletonJoint)(m+1)).x;
-					users.data[i].joints[m].pos.y = status[i].joint((XnSkeletonJoint)(m+1)).y;	
-					users.data[i].joints[m].pos.z = status[i].joint((XnSkeletonJoint)(m+1)).z;	
+					users.data[i].joints[m].type =  status[i].joint(UseJointTable[m]).jointType;
+					users.data[i].joints[m].pos.x = status[i].joint(UseJointTable[m]).x;
+					users.data[i].joints[m].pos.y = status[i].joint(UseJointTable[m]).y;	
+					users.data[i].joints[m].pos.z = status[i].joint(UseJointTable[m]).z;	
 				}
 			}
 			m_detectUsersPub.publish(users);
