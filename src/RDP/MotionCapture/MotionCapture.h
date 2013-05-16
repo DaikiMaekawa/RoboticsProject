@@ -31,6 +31,7 @@ private:
 	nui::UserRecognitionClient m_userRecog;
 	QTimer m_timer;
 	void rgbImageCb(const sensor_msgs::ImageConstPtr &image);
+	void detectUsersCb(const RDP::DetectUsersConstPtr &users);
 	void connectSignals();
 };
 

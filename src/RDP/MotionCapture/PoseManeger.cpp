@@ -6,21 +6,21 @@
 #include <QFileDialog>
 
 PoseManeger::PoseManeger(Ui::MotionCapture *ui) : 
-	m_ui(ui),
-	m_currentId(0)
+	m_ui(ui)
 {
 }
 
-void PoseManeger::onChangeId(int id){
-	m_currentId = id;	
+void PoseManeger::setUserStatus(const RDP::UserStatus &currentStatus){
+	m_currentUserStatus = currentStatus;
 }
 
 void PoseManeger::onPushSave(){
 	//QString file = QFileDialog::getSaveFileName(m_ui->centralWidget, "Save File", "/", "Motion file (*.txt)");
-	m_motion.setUserStatus(m_currentId ,m_currentUserStatus);
+	m_motion.setUserStatus(m_ui->spinMotionId->value() ,m_currentUserStatus);
 	//m_motion.saveAs(file.toStdString());	
 }
 
+/*
 void PoseManeger::detectUsersCb(const RDP::DetectUsersConstPtr &users){
 	std::cout << "detectUsersCb" << std::endl;
 
@@ -33,9 +33,9 @@ void PoseManeger::detectUsersCb(const RDP::DetectUsersConstPtr &users){
 		}
 	}
 }
+*/
 
 void PoseManeger::connectSignals(){
-	connect(m_ui->spinMotionId, SIGNAL(valueChanged(int)), this, SLOT(onChangeId(int)));
 	connect(m_ui->pushSavePose, SIGNAL(clicked()), this, SLOT(onPushSave()));
 }
 
