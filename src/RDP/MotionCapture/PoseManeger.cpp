@@ -8,34 +8,22 @@
 PoseManeger::PoseManeger(Ui::MotionCapture *ui) : 
 	m_ui(ui)
 {
+
 }
 
 void PoseManeger::setUserStatus(const RDP::UserStatus &currentStatus){
 	m_currentUserStatus = currentStatus;
 }
 
-void PoseManeger::onPushSave(){
-	//QString file = QFileDialog::getSaveFileName(m_ui->centralWidget, "Save File", "/", "Motion file (*.txt)");
-	m_motion.setUserStatus(m_ui->spinMotionId->value() ,m_currentUserStatus);
-	//m_motion.saveAs(file.toStdString());	
+void PoseManeger::saveUserStatus(){
+	m_motion.setUserStatus(m_ui->spinMotionId->value(), m_currentUserStatus);
 }
 
-/*
-void PoseManeger::detectUsersCb(const RDP::DetectUsersConstPtr &users){
-	std::cout << "detectUsersCb" << std::endl;
-
-	for(int i=0; i < users->data.size(); i++){
-		if(m_ui->spinUserId->value() == users->data[i].id){
-			std::cout << "SelectUserStatusId = " << users->data[i].id << std::endl;
-			m_currentUserStatus = users->data[i];
-			
-			return;
-		}
-	}
+void PoseManeger::saveMotion(const QString &file){
+	m_motion.saveAs(file.toStdString());
 }
-*/
 
-void PoseManeger::connectSignals(){
-	connect(m_ui->pushSavePose, SIGNAL(clicked()), this, SLOT(onPushSave()));
+void PoseManeger::loadMotion(const QString &file){
+	m_motion.loadFrom(file.toStdString());
 }
 

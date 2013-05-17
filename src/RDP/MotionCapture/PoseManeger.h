@@ -1,5 +1,5 @@
 #pragma once
-#include <QObject>
+#include <QWidget>
 #include <RDP/UserStatus.h>
 #include "Motion.h"
 
@@ -7,23 +7,21 @@ namespace Ui {
 	class MotionCapture;
 }
 
-class PoseManeger : public QObject
+class PoseManeger : public QWidget
 {
 	Q_OBJECT
 
 public:
 	PoseManeger(Ui::MotionCapture *ui);
 	void setUserStatus(const RDP::UserStatus &currentStatus);
-	//void detectUsersCb(const RDP::DetectUsersConstPtr &users);
-
-private slots:
-	void onPushSave();
+	void saveUserStatus();
+	void saveMotion(const QString &file);
+	void loadMotion(const QString &file);
 
 private:
 	Ui::MotionCapture *m_ui;
 	Motion m_motion;
 	RDP::UserStatus m_currentUserStatus;
-	void connectSignals();
 
 };
 

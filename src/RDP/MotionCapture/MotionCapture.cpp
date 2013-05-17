@@ -5,6 +5,7 @@
 #include <boost/lambda/lambda.hpp>
 #include <boost/bind.hpp>
 #include <iostream>
+#include <QFileDialog>
 
 MotionCapture::MotionCapture(ros::NodeHandle &node, QWidget *parent) :
     QMainWindow(parent),
@@ -45,11 +46,28 @@ void MotionCapture::detectUsersCb(const RDP::DetectUsersConstPtr &users){
 
 void MotionCapture::connectSignals(){
 	connect(&m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
+	connect(m_ui->pushSavePose, SIGNAL(clicked()), this, SLOT(onPushSavePose()));
+	connect(m_ui->actionSaveFile, SIGNAL(triggered()), this, SLOT(onSaveFile()));
+	connect(m_ui->actionLoadFile, SIGNAL(triggered()), this, SLOT(onLoadFile()));
 }
 
 void MotionCapture::updateStatus(){
 	ros::spinOnce();
 	m_ui->graphicsView->setScene(&m_scene);
+}
+
+void MotionCapture::onPushSavePose(){
+	m_poseManeger.saveUserStatus();
+}
+
+void MotionCapture::onSaveFile(){
+	QString file = QFileDialog::getSaveFileName(this, "Save File", "/home", "Motion file (*.txt)");
+	m_poseManeger.saveMotion(file);
+}
+
+void MotionCapture::onLoadFile(){
+	QString file = QFileDialog::getOpenFileName(this, "Open File", "/home", "Motion file (*.txt)");
+	m_poseManeger.loadMotion(file);
 }
 
 void MotionCapture::paintUserJoints(const RDP::UserStatus &user){
