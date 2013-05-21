@@ -28,7 +28,7 @@ void PoseManeger::saveUserStatus(QGraphicsScene *scene){
 	m_ui->graphicsStorage->setScene(scene);
 }
 */
-
+/*
 void PoseManeger::saveMotion(const QString &file){
 	m_motion.saveAs(file.toStdString());
 }
@@ -36,7 +36,7 @@ void PoseManeger::saveMotion(const QString &file){
 void PoseManeger::loadMotion(const QString &file){
 	m_motion.loadFrom(file.toStdString());
 }
-
+*/
 void PoseManeger::onPushReadPose(){
 	
 	/*
@@ -50,6 +50,20 @@ void PoseManeger::onPushReadPose(){
 void PoseManeger::onPushSavePose(){
 	std::cout << "onPushSavePose" << std::endl;
 	m_motion.setPose(m_ui->spinPoseId->value(), m_joints);
+}
+
+void PoseManeger::onActionSave(){
+	QString file = QFileDialog::getSaveFileName(this, "Save File", "/home", "Motion file (*.txt)");
+	m_motion.saveAs(file.toStdString());
+}
+
+void PoseManeger::onActionLoad(){
+	QString file = QFileDialog::getOpenFileName(this, "Open File", "/home", "Motion file (*.txt)");
+	m_motion.loadFrom(file.toStdString());
+
+	m_joints = m_motion.pose(m_ui->spinPoseId->value());
+	assert(m_joints.size() == Motion::MAX_JOINT_NUM);
+	showStorageJoints();
 }
 
 void PoseManeger::onSpinPoseidChanged(int id){
@@ -115,6 +129,8 @@ void PoseManeger::connectSignals(){
 	connect(m_ui->spinPoseId, SIGNAL(valueChanged(int)), this, SLOT(onSpinPoseidChanged(int)));
 	connect(m_ui->pushReadPose, SIGNAL(clicked()), this, SLOT(onPushReadPose()));
 	connect(m_ui->pushSavePose, SIGNAL(clicked()), this, SLOT(onPushSavePose()));
+	connect(m_ui->actionSave, SIGNAL(triggered()), this, SLOT(onActionSave()));
+	connect(m_ui->actionLoad, SIGNAL(triggered()), this, SLOT(onActionLoad()));
 	connect(m_ui->radioX, SIGNAL(clicked()), this, SLOT(showStorageJoints()));
 	connect(m_ui->radioY, SIGNAL(clicked()), this, SLOT(showStorageJoints()));
 	connect(m_ui->radioZ, SIGNAL(clicked()), this, SLOT(showStorageJoints()));
@@ -122,7 +138,6 @@ void PoseManeger::connectSignals(){
 		connect(m_spinboxes[i], SIGNAL(valueChanged(double)), this, SLOT(onSpinJointChanged(double)));
 		connect(m_checkboxes[i], SIGNAL(stateChanged(int)), this, SLOT(onCheckJointChanged(int)));
 	}
-	
 }
 
 void PoseManeger::initJoints(){

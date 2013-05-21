@@ -14,6 +14,8 @@ void Motion::saveAs(const string &file){
 	using boost::lexical_cast;
 	ofstream ofs(file.c_str());
 	if(ofs){
+		ofs << m_poses.size() << endl;
+
 		for(int id=0; id < m_poses.size() ;id++){
 			
 			if(m_poses.find(id) == m_poses.end()){
@@ -21,7 +23,7 @@ void Motion::saveAs(const string &file){
 			}else{
 				const vector<RDP::UserJoint> &pose = m_poses[id];
 				assert(Motion::MAX_JOINT_NUM == pose.size());
-				for(int m=0; m < pose.size() ;m++){
+				for(int m=0; m < Motion::MAX_JOINT_NUM ;m++){
 					ofs << pose[m].pos.x << ","
 						<< pose[m].pos.y << ","
 						<< pose[m].pos.z << ","
@@ -46,15 +48,19 @@ void Motion::loadFrom(const std::string &file){
 		
 		char str[256];
 		char linebuf[1024];
-		unsigned int poseId = 0;
+		
+		ifs.getline(linebuf, 1024);
+		std::string linestr(linebuf);
+		const unsigned int maxPoseNum = lexical_cast<int>(linestr);
 
-		while(!ifs.eof()){
+		for(int poseId=0; poseId < maxPoseNum; poseId++){
 			ifs.getline(linebuf, 1024);
 			std::string linestr(linebuf);
 			std::istringstream sstrm(linestr);
 			m_poses[poseId] = vector<RDP::UserJoint>(Motion::MAX_JOINT_NUM);
 			
 			for(int jointNo=0; jointNo < Motion::MAX_JOINT_NUM; jointNo++){
+				cout << "jointNo = " << jointNo << endl;
 				sstrm.getline(str, 10, ',');
 				m_poses[poseId][jointNo].pos.x = lexical_cast<float>(str);
 				sstrm.getline(str, 10, ',');
@@ -62,15 +68,13 @@ void Motion::loadFrom(const std::string &file){
 				sstrm.getline(str, 10, ',');
 				m_poses[poseId][jointNo].pos.z = lexical_cast<float>(str);
 				sstrm.getline(str, 10, ',');
-				m_poses[poseId][jointNo].xIsKey = lexical_cast<bool>(str);
+				cout << "xIsKeyStr = " << str << endl;
+				m_poses[poseId][jointNo].xIsKey = lexical_cast<int>(str);
 				sstrm.getline(str, 10, ',');
-				m_poses[poseId][jointNo].yIsKey = lexical_cast<bool>(str);
+				m_poses[poseId][jointNo].yIsKey = lexical_cast<int>(str);
 				sstrm.getline(str, 10, ',');
-				m_poses[poseId][jointNo].zIsKey = lexical_cast<bool>(str);
-
+				m_poses[poseId][jointNo].zIsKey = lexical_cast<int>(str);
 			}
-
-			poseId++;
 		}
 	}else{
 		assert(false);

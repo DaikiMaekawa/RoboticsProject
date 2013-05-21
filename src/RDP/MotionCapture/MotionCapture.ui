@@ -50,8 +50,8 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionSaveFile"/>
-    <addaction name="actionLoadFile"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionLoad"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -502,12 +502,12 @@
     </layout>
    </widget>
   </widget>
-  <action name="actionSaveFile">
+  <action name="actionSave">
    <property name="text">
     <string>Save</string>
    </property>
   </action>
-  <action name="actionLoadFile">
+  <action name="actionLoad">
    <property name="text">
     <string>Load</string>
    </property>

@@ -26,8 +26,8 @@ public:
 private slots:
 	void updateStatus();
 	//void onPushSavePose();
-	void onSaveFile();
-	void onLoadFile();
+	//void onSaveFile();
+	//void onLoadFile();
 
 private:
     Ui::MotionCapture *m_ui;

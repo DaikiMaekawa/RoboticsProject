@@ -10,12 +10,13 @@
 #include <QCheckBox>
 
 typedef std::map<unsigned int, QGraphicsScene*> PoseScene;
-
+/*
 enum Pos{
 	X,
 	Y,
 	Z
 };
+*/
 
 namespace Ui {
 	class MotionCapture;
@@ -29,12 +30,14 @@ public:
 	PoseManeger(Ui::MotionCapture *ui);
 	void setUserStatus(const RDP::UserStatus &currentStatus);
 	//void saveUserStatus(QGraphicsScene *scene);
-	void saveMotion(const QString &file);
-	void loadMotion(const QString &file);
+	//void saveMotion(const QString &file);
+	//void loadMotion(const QString &file);
 
 private slots:
 	void onPushReadPose();
 	void onPushSavePose();
+	void onActionSave();
+	void onActionLoad();
 	void onSpinPoseidChanged(int id);
 	void onSpinJointChanged(double value);
 	void onCheckJointChanged(int state);

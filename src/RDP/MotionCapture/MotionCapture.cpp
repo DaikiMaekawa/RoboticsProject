@@ -46,15 +46,15 @@ void MotionCapture::detectUsersCb(const RDP::DetectUsersConstPtr &users){
 
 void MotionCapture::connectSignals(){
 	connect(&m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
-	connect(m_ui->actionSaveFile, SIGNAL(triggered()), this, SLOT(onSaveFile()));
-	connect(m_ui->actionLoadFile, SIGNAL(triggered()), this, SLOT(onLoadFile()));
+	//connect(m_ui->actionSaveFile, SIGNAL(triggered()), this, SLOT(onSaveFile()));
+	//connect(m_ui->actionLoadFile, SIGNAL(triggered()), this, SLOT(onLoadFile()));
 }
 
 void MotionCapture::updateStatus(){
 	ros::spinOnce();
 	m_ui->graphicsCurrent->setScene(&m_scene);
 }
-
+/*
 void MotionCapture::onSaveFile(){
 	QString file = QFileDialog::getSaveFileName(this, "Save File", "/home", "Motion file (*.txt)");
 	m_poseManeger->saveMotion(file);
@@ -64,6 +64,7 @@ void MotionCapture::onLoadFile(){
 	QString file = QFileDialog::getOpenFileName(this, "Open File", "/home", "Motion file (*.txt)");
 	m_poseManeger->loadMotion(file);
 }
+*/
 
 void MotionCapture::paintUserJoints(const RDP::UserStatus &user){
 	for(int i=0; i < m_gItems.size(); i++){
