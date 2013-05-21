@@ -9,6 +9,7 @@
 #include <QTimer>
 #include <QGraphicsScene>
 #include <QVector>
+#include <boost/shared_ptr.hpp>
 
 namespace Ui {
 	class MotionCapture;
@@ -24,15 +25,15 @@ public:
 
 private slots:
 	void updateStatus();
-	void onPushSavePose();
+	//void onPushSavePose();
 	void onSaveFile();
 	void onLoadFile();
 
 private:
     Ui::MotionCapture *m_ui;
-	QVector<QGraphicsItem*> m_gItems;
+	QVector<QGraphicsItem*>  m_gItems;
 	QGraphicsScene m_scene;
-	PoseManeger m_poseManeger;
+	boost::shared_ptr<PoseManeger> m_poseManeger;
 	nui::UserRecognitionClient m_userRecog;
 	QTimer m_timer;
 	void rgbImageCb(const sensor_msgs::ImageConstPtr &image);

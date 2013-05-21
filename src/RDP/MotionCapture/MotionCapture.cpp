@@ -10,10 +10,10 @@
 MotionCapture::MotionCapture(ros::NodeHandle &node, QWidget *parent) :
     QMainWindow(parent),
     m_ui(new Ui::MotionCapture),
-	m_userRecog(node),
-	m_poseManeger(m_ui)
+	m_userRecog(node)
 {
     m_ui->setupUi(this);
+	m_poseManeger = boost::shared_ptr<PoseManeger>(new PoseManeger(m_ui));
 	connectSignals();
 	m_userRecog.setRGBCb(boost::bind(&MotionCapture::rgbImageCb, this, boost::lambda::_1));
 	m_userRecog.setDetectUsersCb(boost::bind(&MotionCapture::detectUsersCb, this, boost::lambda::_1));
@@ -25,7 +25,7 @@ void MotionCapture::rgbImageCb(const sensor_msgs::ImageConstPtr& image){
 		QImage qimg(image->width, image->height, QImage::Format_RGB888);
 		memcpy(qimg.scanLine(0), &image->data[0], image->width * image->height * 3);
 		
-		m_scene.setSceneRect(m_ui->graphicsView->viewport()->geometry());
+		m_scene.setSceneRect(m_ui->graphicsCurrent->viewport()->geometry());
 		m_scene.setBackgroundBrush(QPixmap::fromImage(qimg.rgbSwapped()));
 	}
 }
@@ -36,7 +36,7 @@ void MotionCapture::detectUsersCb(const RDP::DetectUsersConstPtr &users){
 	for(int i=0; i < users->data.size(); i++){
 		if(m_ui->spinUserId->value() == users->data[i].id){
 			std::cout << "SelectUserStatusId = " << users->data[i].id << std::endl;
-			m_poseManeger.setUserStatus(users->data[i]);
+			m_poseManeger->setUserStatus(users->data[i]);
 			paintUserJoints(users->data[i]);
 
 			return;
@@ -46,28 +46,23 @@ void MotionCapture::detectUsersCb(const RDP::DetectUsersConstPtr &users){
 
 void MotionCapture::connectSignals(){
 	connect(&m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
-	connect(m_ui->pushSavePose, SIGNAL(clicked()), this, SLOT(onPushSavePose()));
 	connect(m_ui->actionSaveFile, SIGNAL(triggered()), this, SLOT(onSaveFile()));
 	connect(m_ui->actionLoadFile, SIGNAL(triggered()), this, SLOT(onLoadFile()));
 }
 
 void MotionCapture::updateStatus(){
 	ros::spinOnce();
-	m_ui->graphicsView->setScene(&m_scene);
-}
-
-void MotionCapture::onPushSavePose(){
-	m_poseManeger.saveUserStatus();
+	m_ui->graphicsCurrent->setScene(&m_scene);
 }
 
 void MotionCapture::onSaveFile(){
 	QString file = QFileDialog::getSaveFileName(this, "Save File", "/home", "Motion file (*.txt)");
-	m_poseManeger.saveMotion(file);
+	m_poseManeger->saveMotion(file);
 }
 
 void MotionCapture::onLoadFile(){
 	QString file = QFileDialog::getOpenFileName(this, "Open File", "/home", "Motion file (*.txt)");
-	m_poseManeger.loadMotion(file);
+	m_poseManeger->loadMotion(file);
 }
 
 void MotionCapture::paintUserJoints(const RDP::UserStatus &user){

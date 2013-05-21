@@ -1,92 +1,92 @@
 #include "Motion.h"
 #include <iostream>
 #include <fstream>
-#include <boost/tuple/tuple.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/tokenizer.hpp>
+#include <boost/lexical_cast.hpp>
 
-using namespace boost::filesystem;
+using namespace std;
 
 Motion::Motion() : 
 	m_motionId(0)
 {
 }
 
-unsigned int Motion::maxPoseId(){
-	unsigned int max = 0;
-	for(int i=0; i < m_poses.size(); i++){
-		if(max < m_poses[i].first) max = m_poses[i].first;
-	}
-
-	return max;
-}
-
-void Motion::saveAs(const std::string &file){
-	
-	std::ofstream ofs(file.c_str());
-	if(!ofs){
-		for(int i=0; i < m_poses.size() ;i++){
-			unsigned int id;
-			RDP::UserStatus pose;
-			boost::tie(id, pose) = m_poses[i];
-			for(int m=0; m < pose.joints.size() ;m++){
-				ofs << pose.joints[m].pos.x << ","
-				    << pose.joints[m].pos.y << ","
-					<< pose.joints[m].pos.z << ",";
+void Motion::saveAs(const string &file){
+	using boost::lexical_cast;
+	ofstream ofs(file.c_str());
+	if(ofs){
+		for(int id=0; id < m_poses.size() ;id++){
+			
+			if(m_poses.find(id) == m_poses.end()){
+				cout << "m_poses[" << id << "] is not found" << endl;
+			}else{
+				const vector<RDP::UserJoint> &pose = m_poses[id];
+				assert(Motion::MAX_JOINT_NUM == pose.size());
+				for(int m=0; m < pose.size() ;m++){
+					ofs << pose[m].pos.x << ","
+						<< pose[m].pos.y << ","
+						<< pose[m].pos.z << ","
+						<< static_cast<int>(pose[m].xIsKey) << ","
+						<< static_cast<int>(pose[m].yIsKey) << ","
+						<< static_cast<int>(pose[m].zIsKey) << ",";
+				}
+				ofs << "0x0" << endl;
 			}
-			ofs << std::endl;
 		}
+	}else{
+		assert(false);
 	}
 }
 
 void Motion::loadFrom(const std::string &file){
+	using boost::lexical_cast;
 	std::ifstream ifs(file.c_str());
 
-	if(!ifs){
+	if(ifs){
+		m_poses.clear();
+		
 		char str[256];
 		char linebuf[1024];
+		unsigned int poseId = 0;
 
-	}
-	
-	/*
-	std::vector<path> files;
-	path dir(file.c_str());
-	directory_iterator end;
-	
-	if(exists(dir)){
-		copy(directory_iterator(dir), directory_iterator(), back_inserter(files));
+		while(!ifs.eof()){
+			ifs.getline(linebuf, 1024);
+			std::string linestr(linebuf);
+			std::istringstream sstrm(linestr);
+			m_poses[poseId] = vector<RDP::UserJoint>(Motion::MAX_JOINT_NUM);
+			
+			for(int jointNo=0; jointNo < Motion::MAX_JOINT_NUM; jointNo++){
+				sstrm.getline(str, 10, ',');
+				m_poses[poseId][jointNo].pos.x = lexical_cast<float>(str);
+				sstrm.getline(str, 10, ',');
+				m_poses[poseId][jointNo].pos.y = lexical_cast<float>(str);
+				sstrm.getline(str, 10, ',');
+				m_poses[poseId][jointNo].pos.z = lexical_cast<float>(str);
+				sstrm.getline(str, 10, ',');
+				m_poses[poseId][jointNo].xIsKey = lexical_cast<bool>(str);
+				sstrm.getline(str, 10, ',');
+				m_poses[poseId][jointNo].yIsKey = lexical_cast<bool>(str);
+				sstrm.getline(str, 10, ',');
+				m_poses[poseId][jointNo].zIsKey = lexical_cast<bool>(str);
 
-		for(int i=0; i < files.size(); i++){
-			path &p = files[i];
-			if(!is_directory(p)){
-				std::string fleaf = p.filename().string();
-				std::string ext = p.extension().string();
-				
-				sscanf(fleaf.substr(0, 3).c_str(), "%d", &m_motionId);
-				ifstream ifs(p.)
 			}
+
+			poseId++;
 		}
+	}else{
+		assert(false);
 	}
-	*/
 }
 
-void Motion::setUserStatus(unsigned int poseId, RDP::UserStatus &user){
+void Motion::setPose(unsigned int poseId, vector<RDP::UserJoint> &joints){
+	m_poses[poseId] = joints;
+}
+
+const vector<RDP::UserJoint>& Motion::pose(unsigned int poseId){
+	if(m_poses.find(poseId) == m_poses.end()){
+		std::cout << "m_poses[" << poseId << "] is not found" << std::endl;
+		m_poses[poseId] = vector<RDP::UserJoint>(Motion::MAX_JOINT_NUM);
+	}	
 	
-	if(maxPoseId()+1 == poseId){
-		m_poses.push_back(Pose(poseId, user));
-		return;
-	}
-
-	for(int i=0; i < m_poses.size(); i++){
-		unsigned int id;
-		RDP::UserStatus pose;
-		boost::tie(id, pose) = m_poses[i];
-		if(id == poseId){
-			m_poses[i].second = user;
-			return;
-		}
-	}
-
-	std::cout << "Motion::setUserStatus out of range" << std::endl;
+	return m_poses[poseId];
 }
 

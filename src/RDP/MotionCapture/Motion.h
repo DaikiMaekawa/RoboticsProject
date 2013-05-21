@@ -1,23 +1,24 @@
 #pragma once
 
 #include <string>
-#include <RDP/DetectUsers.h>
+#include <RDP/UserJoint.h>
 #include <vector>
 #include <map>
 
-typedef std::pair<unsigned int, RDP::UserStatus> Pose;
+typedef std::map<unsigned int, std::vector<RDP::UserJoint> > PoseTable;
 
 class Motion
 {
-	std::vector<Pose> m_poses;
+	PoseTable m_poses;
 	unsigned int m_motionId;
-	unsigned int maxPoseId();
 
 public:
+	static const int MAX_JOINT_NUM = 15;
 	Motion();
 	void saveAs(const std::string &file);
 	void loadFrom(const std::string &file);
-	void setUserStatus(unsigned int poseId, RDP::UserStatus &user);
+	void setPose(unsigned int poseId, std::vector<RDP::UserJoint> &joints);
+	const std::vector<RDP::UserJoint>& pose(unsigned int poseId);
 
 };
 
