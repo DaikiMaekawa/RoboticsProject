@@ -82,7 +82,9 @@ set(UserRecognition_SRC
     UserDetector.cpp
     UserRecognitionServer.cpp
     UserRecognitionClient.cpp
-    Xtion.cpp
+    Motion.cpp
+	MotionDetector.cpp
+	Xtion.cpp
     XnErrorChecker.cpp
     main.cpp
 )
@@ -92,7 +94,9 @@ set(UserRecognition_HDR
     UserStatus.h
     UserRecognitionServer.h
     UserRecognitionClient.h
-    AudioDevice.h
+    Motion.h
+	MotionDetector.h
+	AudioDevice.h
     ImageDevice.h
     Xtion.h
     XnErrorChecker.h

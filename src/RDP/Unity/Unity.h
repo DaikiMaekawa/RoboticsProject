@@ -17,3 +17,4 @@ public:
     void startSpeechRecognition();
     void statusUpdate();
 };
+

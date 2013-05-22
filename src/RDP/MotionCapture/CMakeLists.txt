@@ -3,15 +3,19 @@ project(MotionCapture)
 
 find_package(Qt4 REQUIRED)
 set(QT_USE_QTMAIN true)
-set(QT_USE_QTGUI true)
-set(QT_USE_QTNETWORK true)
+set(QT_USE_QTGUI true) 
+set(QT_USE_QTNETWORK true) 
 set(Boost_DEBUG TRUE)
 include(${QT_USE_FILE})
 
-#set(Boost_USE_STATIC_LIBS        ON)
-set(Boost_USE_STATIC_LIBS ${OGRE_STATIC})
-set(Boost_USE_MULTITHREADED      ON)
-set(Boost_USE_STATIC_RUNTIME    OFF)
+if(UNIX)
+	set(Boost_USE_STATIC_LIBS ON)
+else()
+	set(Boost_USE_STATIC_LIBS ${OGRE_STATIC})
+endif(UNIX)
+
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
 
 find_package(Boost COMPONENTS system thread REQUIRED)
 find_package(catkin REQUIRED COMPONENTS roscpp std_msgs message_generation cv_bridge)
@@ -36,16 +40,18 @@ link_directories(
 set(MotionCapture_SRCS
     main.cpp
 	MotionCapture.cpp
-	PoseManeger.cpp
-	Motion.cpp
-	../UserRecognition/UserRecognitionClient.cpp
+	PoseManager.cpp
+	../UserRecognition/Motion.cpp
+	../UserRecognition/UserRecognitionClient.cpp #TODO Link Libraly
+	#../UserRecognition/MotionDetector.cpp
 )
 
 set(MotionCapture_HDRS
     MotionCapture.h
-	PoseManeger.h
-	Motion.h
+	PoseManager.h
+	../UserRecognition/Motion.h
 	../UserRecognition/UserRecognitionClient.h
+	#../UserRecognition/MotionDetector.h
 )
 
 set(MotionCapture_UIS
@@ -67,5 +73,10 @@ target_link_libraries(MotionCapture
 	${Boost_LIBRARIES}
 	${catkin_LIBRARIES}
 	${OpenCV_LIBS}
+)
+
+install(DIRECTORY
+	motions
+	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 

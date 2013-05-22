@@ -11,7 +11,7 @@ struct UserJoint{
     XnSkeletonJoint jointType;
 
     UserJoint(XnSkeletonJoint jointType,float x=0, float y=0, float z=0) : 
-        jointType(jointType),x(x),y(y),z(z)
+        jointType(jointType), x(x), y(y), z(z)
     {
 
     }
@@ -44,7 +44,7 @@ public:
     }
 
     UserStatus(int id, bool isTracking=false) : 
-        id(id),isTracking(isTracking)
+        id(id), isTracking(isTracking)
     {
         for(int i=1; i <= MAX_JOINT_NUM; i++)
             joints.push_back( UserJoint((XnSkeletonJoint)i) );

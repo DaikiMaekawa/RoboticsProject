@@ -16,6 +16,7 @@ find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs message_generation
 add_message_files(
   FILES
   UserStatus.msg
+  UserPose.msg
   DetectUsers.msg
   UserJoint.msg
   Pos3D.msg

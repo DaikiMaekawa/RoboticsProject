@@ -1,3 +1,12 @@
+/*******************************************************************
+ * Copyright (c) 2012 Daiki Maekawa
+ *
+ * @file Xtion.h
+ * @brief get image data from Xtion
+ * @author Daiki Maekawa
+ * @date 2012-01-13
+ *******************************************************************/
+
 #pragma once
 
 #include "ImageDevice.h"
@@ -28,3 +37,4 @@ namespace nui{
     };
 
 } //namespace nui
+

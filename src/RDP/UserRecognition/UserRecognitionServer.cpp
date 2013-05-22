@@ -2,6 +2,7 @@
 #include "UserRecognitionClient.h"
 #include <XnCppWrapper.h>
 #include "UserDetector.h"
+#include "MotionDetector.h"
 #include "Xtion.h"
 #include "XnErrorChecker.h"
 #include <cv_bridge/cv_bridge.h>
@@ -34,7 +35,8 @@ namespace nui{
 	static const int JointTableSize = 15;
 
     class UserRecognitionServer::Impl{
-        xn::Context m_context;
+        xn::Context    m_context;
+		MotionDetector m_motionDetector;
         boost::shared_ptr<Xtion>           m_device;
         boost::shared_ptr<UserDetector>    m_userDetector;
 		ros::Publisher m_rgbPub;
@@ -48,6 +50,7 @@ namespace nui{
 			m_detectUsersPub(node.advertise<RDP::DetectUsers>(DETECT_USERS, 100))
 		{
             try{
+				m_motionDetector.loadFromMotionFiles(std::string(SHARE_DIR) + "/motions");
 				std::string initFile = std::string(SHARE_DIR) + "/InitDevice.xml";
 				ROS_INFO("UserRecognition Initfile = %s", initFile.c_str());
                 xnErrorCheck(m_context.InitFromXmlFile(initFile.c_str()));
@@ -122,11 +125,11 @@ namespace nui{
 				users.data[i].isTracking = status[i].isTracking;
 				
 				for(int m=0; m < JointTableSize; m++){
-					users.data[i].joints.push_back(RDP::UserJoint());
-					users.data[i].joints[m].type =  status[i].joint(UseJointTable[m]).jointType;
-					users.data[i].joints[m].pos.x = status[i].joint(UseJointTable[m]).x;
-					users.data[i].joints[m].pos.y = status[i].joint(UseJointTable[m]).y;	
-					users.data[i].joints[m].pos.z = status[i].joint(UseJointTable[m]).z;	
+					users.data[i].pose.joints.push_back(RDP::UserJoint());
+					users.data[i].pose.joints[m].type =  status[i].joint(UseJointTable[m]).jointType;
+					users.data[i].pose.joints[m].pos.x = status[i].joint(UseJointTable[m]).x;
+					users.data[i].pose.joints[m].pos.y = status[i].joint(UseJointTable[m]).y;	
+					users.data[i].pose.joints[m].pos.z = status[i].joint(UseJointTable[m]).z;	
 				}
 			}
 			m_detectUsersPub.publish(users);

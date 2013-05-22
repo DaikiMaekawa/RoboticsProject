@@ -1,3 +1,4 @@
 int32 id
-UserJoint[] joints
+#UserJoint[] joints
+UserPose pose
 bool isTracking

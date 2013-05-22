@@ -13,7 +13,7 @@ MotionCapture::MotionCapture(ros::NodeHandle &node, QWidget *parent) :
 	m_userRecog(node)
 {
     m_ui->setupUi(this);
-	m_poseManeger = boost::shared_ptr<PoseManeger>(new PoseManeger(m_ui));
+	m_poseManager = boost::shared_ptr<PoseManager>(new PoseManager(m_ui));
 	connectSignals();
 	m_userRecog.setRGBCb(boost::bind(&MotionCapture::rgbImageCb, this, boost::lambda::_1));
 	m_userRecog.setDetectUsersCb(boost::bind(&MotionCapture::detectUsersCb, this, boost::lambda::_1));
@@ -36,7 +36,7 @@ void MotionCapture::detectUsersCb(const RDP::DetectUsersConstPtr &users){
 	for(int i=0; i < users->data.size(); i++){
 		if(m_ui->spinUserId->value() == users->data[i].id){
 			std::cout << "SelectUserStatusId = " << users->data[i].id << std::endl;
-			m_poseManeger->setUserStatus(users->data[i]);
+			m_currentUserStatus = users->data[i];
 			paintUserJoints(users->data[i]);
 
 			return;
@@ -46,25 +46,17 @@ void MotionCapture::detectUsersCb(const RDP::DetectUsersConstPtr &users){
 
 void MotionCapture::connectSignals(){
 	connect(&m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
-	//connect(m_ui->actionSaveFile, SIGNAL(triggered()), this, SLOT(onSaveFile()));
-	//connect(m_ui->actionLoadFile, SIGNAL(triggered()), this, SLOT(onLoadFile()));
+	connect(m_ui->pushReadPose, SIGNAL(clicked()), this, SLOT(onPushReadPose()));
 }
 
 void MotionCapture::updateStatus(){
 	ros::spinOnce();
 	m_ui->graphicsCurrent->setScene(&m_scene);
 }
-/*
-void MotionCapture::onSaveFile(){
-	QString file = QFileDialog::getSaveFileName(this, "Save File", "/home", "Motion file (*.txt)");
-	m_poseManeger->saveMotion(file);
-}
 
-void MotionCapture::onLoadFile(){
-	QString file = QFileDialog::getOpenFileName(this, "Open File", "/home", "Motion file (*.txt)");
-	m_poseManeger->loadMotion(file);
+void MotionCapture::onPushReadPose(){
+	m_poseManager->setStoragePose(m_currentUserStatus.pose);
 }
-*/
 
 void MotionCapture::paintUserJoints(const RDP::UserStatus &user){
 	for(int i=0; i < m_gItems.size(); i++){
@@ -73,14 +65,14 @@ void MotionCapture::paintUserJoints(const RDP::UserStatus &user){
 	}
 	m_gItems.clear();
 	
-	for(int i=0; i < user.joints.size(); i++){
+	for(int i=0; i < user.pose.joints.size(); i++){
 		QColor color(255, 255, 0);
 		QPen pen(color);
 		QBrush brush(color);
 
-		std::cout << "joints[" << i << "][x,y] = " << user.joints[i].pos.x << "," << user.joints[i].pos.y << std::endl;
+		std::cout << "joints[" << i << "][x,y] = " << user.pose.joints[i].pos.x << "," << user.pose.joints[i].pos.y << std::endl;
 
-		m_gItems << static_cast<QGraphicsItem*>(m_scene.addEllipse(user.joints[i].pos.x, user.joints[i].pos.y, 8, 8, pen, brush));
+		m_gItems << static_cast<QGraphicsItem*>(m_scene.addEllipse(user.pose.joints[i].pos.x, user.pose.joints[i].pos.y, 8, 8, pen, brush));
 	}
 }
 

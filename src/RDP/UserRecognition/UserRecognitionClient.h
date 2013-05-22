@@ -1,3 +1,12 @@
+/*******************************************************************
+ * Copyright (c) 2012 Daiki Maekawa
+ *
+ * @file UserRecognitionClient.h
+ * @brief User Recognition Client
+ * @author Daiki Maekawa
+ * @date 2012-01-10
+ *******************************************************************/
+
 #pragma once
 #include <ros/ros.h>
 #include <sensor_msgs/Image.h>
@@ -8,7 +17,6 @@
 
 namespace nui{
     
-    //static const char * const START_USER_RECOGNITION = "StartUserRecognition";
     static const char * const DETECT_USERS           = "DetectUsers";
 	static const char * const RGB_IMAGE              = "RGBImage";
 	static const char * const DEPTH_IMAGE            = "DepthImage";

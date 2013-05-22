@@ -1,11 +1,22 @@
+/*******************************************************************
+ * Copyright (c) 2013 Daiki Maekawa
+ *
+ * @file MotionCapture.h
+ * @brief motion capture ui
+ * @author Daiki Maekawa
+ * @date 2013-03-22
+ *******************************************************************/
+
+#pragma once
 #ifndef MOTIONCAPTURE_H
 #define MOTIONCAPTURE_H
 
 #include <QMainWindow>
 #include "UserRecognitionClient.h"
-#include "PoseManeger.h"
+#include "PoseManager.h"
 #include <sensor_msgs/Image.h>
 #include <ros/ros.h>
+#include <RDP/UserStatus.h>
 #include <QTimer>
 #include <QGraphicsScene>
 #include <QVector>
@@ -25,16 +36,15 @@ public:
 
 private slots:
 	void updateStatus();
-	//void onPushSavePose();
-	//void onSaveFile();
-	//void onLoadFile();
+	void onPushReadPose();
 
 private:
     Ui::MotionCapture *m_ui;
 	QVector<QGraphicsItem*>  m_gItems;
 	QGraphicsScene m_scene;
-	boost::shared_ptr<PoseManeger> m_poseManeger;
+	boost::shared_ptr<PoseManager> m_poseManager;
 	nui::UserRecognitionClient m_userRecog;
+	RDP::UserStatus m_currentUserStatus;
 	QTimer m_timer;
 	void rgbImageCb(const sensor_msgs::ImageConstPtr &image);
 	void detectUsersCb(const RDP::DetectUsersConstPtr &users);
