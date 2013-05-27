@@ -42,6 +42,7 @@ void MotionDetector::loadFromMotionFiles(const string &dirpath){
 
 void MotionDetector::toDetect(const RDP::UserStatus &user, unsigned int elapsedTime){
     for(int i=0; i < m_motions.size(); i++){
+
     }
 }
 

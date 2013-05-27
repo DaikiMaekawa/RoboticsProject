@@ -18,9 +18,9 @@ bool Motion::saveAs(const string &file){
 	if(ofs){
 		ofs << m_poses.size() << endl;
 
-		for(int id=1; id <= m_poses.size() ;id++){
+		for(int id=0; id < m_poses.size() ;id++){
 			
-			if(poseIsExist(id)){
+			if(m_poses.find(id) == m_poses.end()){
 				cout << "m_poses[" << id << "] is not found" << endl;
 			}else{
 				const RDP::UserPose &pose = m_poses[id];
@@ -62,7 +62,7 @@ bool Motion::loadFrom(const std::string &file){
 		std::string linestr(linebuf);
 		const unsigned int maxPoseNum = lexical_cast<int>(linestr);
 
-		for(int poseId=1; poseId <= maxPoseNum; poseId++){
+		for(int poseId=1; poseId < maxPoseNum; poseId++){
 			ifs.getline(linebuf, 1024);
 			std::string linestr(linebuf);
 			std::istringstream sstrm(linestr);

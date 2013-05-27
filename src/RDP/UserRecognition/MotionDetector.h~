@@ -32,7 +32,7 @@ public:
     void loadFromMotionFiles(const std::string &dirpath);
     void setDetectCb(DetectMotion callback){ m_detectCb = callback; }
     void updateUsers(const std::vector<RDP::UserStatus> &users, unsigned int elapsedTime); //elapsedTime[sec]
-    void toDetect(const RDP::UserStatus &user, unsigned int elapsedTime);
+    void toDetect(const RDP::UserStatus &user);
 
 };
 

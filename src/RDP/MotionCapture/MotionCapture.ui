@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>621</width>
-    <height>689</height>
+    <width>681</width>
+    <height>686</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,6 +39,14 @@
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <pointsize>8</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>UserId</string>
         </property>
@@ -52,6 +60,14 @@
       </item>
       <item>
        <widget class="QPushButton" name="pushReadPose">
+        <property name="font">
+         <font>
+          <pointsize>8</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>ReadCurrentPose</string>
         </property>
@@ -66,16 +82,16 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>621</width>
-     <height>25</height>
+     <width>681</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionSave"/>
-    <addaction name="actionLoad"/>
+    <addaction name="actionSave_2"/>
+    <addaction name="actionLoad_2"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -118,6 +134,14 @@
        </item>
        <item row="1" column="1">
         <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+           <weight>75</weight>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>PoseId</string>
          </property>
@@ -126,15 +150,16 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="3">
-        <widget class="QPushButton" name="pushSavePose">
-         <property name="text">
-          <string>SaveStoragePose</string>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="2">
         <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+           <weight>75</weight>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>WaitTime[sec]</string>
          </property>
@@ -142,6 +167,48 @@
        </item>
        <item row="2" column="2">
         <widget class="QSpinBox" name="spinTime"/>
+       </item>
+       <item row="2" column="4">
+        <widget class="QPushButton" name="pushAddPose">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+           <weight>75</weight>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>AddStoragePose</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QPushButton" name="pushSavePose">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+           <weight>75</weight>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>SaveStoragePose</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -253,6 +320,14 @@
         </item>
         <item row="12" column="0">
          <widget class="QCheckBox" name="checkHandR">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Hand[R]</string>
           </property>
@@ -364,6 +439,14 @@
         </item>
         <item row="11" column="0">
          <widget class="QCheckBox" name="checkHandL">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Hand[L]</string>
           </property>
@@ -371,6 +454,14 @@
         </item>
         <item row="2" column="0">
          <widget class="QCheckBox" name="checkHead">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Head</string>
           </property>
@@ -378,6 +469,14 @@
         </item>
         <item row="13" column="0">
          <widget class="QCheckBox" name="checkShoulderL">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Shoulder[L]</string>
           </property>
@@ -385,6 +484,14 @@
         </item>
         <item row="7" column="0">
          <widget class="QCheckBox" name="checkHipL">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Hip[L]</string>
           </property>
@@ -392,6 +499,14 @@
         </item>
         <item row="6" column="0">
          <widget class="QCheckBox" name="checkElbowR">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Elbow[R]</string>
           </property>
@@ -399,6 +514,14 @@
         </item>
         <item row="10" column="0">
          <widget class="QCheckBox" name="checkKneeR">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Knee[R]</string>
           </property>
@@ -406,6 +529,14 @@
         </item>
         <item row="4" column="0">
          <widget class="QCheckBox" name="checkTorso">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Torso</string>
           </property>
@@ -413,6 +544,14 @@
         </item>
         <item row="8" column="0">
          <widget class="QCheckBox" name="checkHipR">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Hip[R]</string>
           </property>
@@ -420,6 +559,14 @@
         </item>
         <item row="9" column="0">
          <widget class="QCheckBox" name="checkKneeL">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Knee[L]</string>
           </property>
@@ -427,6 +574,14 @@
         </item>
         <item row="3" column="0">
          <widget class="QCheckBox" name="checkNeck">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Neck</string>
           </property>
@@ -434,6 +589,14 @@
         </item>
         <item row="5" column="0">
          <widget class="QCheckBox" name="checkElbowL">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Elbow[L]</string>
           </property>
@@ -441,6 +604,14 @@
         </item>
         <item row="14" column="0">
          <widget class="QCheckBox" name="checkShoulderR">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Shoulder[R]</string>
           </property>
@@ -448,6 +619,14 @@
         </item>
         <item row="15" column="0">
          <widget class="QCheckBox" name="checkFootL">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Foot[L]</string>
           </property>
@@ -455,6 +634,14 @@
         </item>
         <item row="16" column="0">
          <widget class="QCheckBox" name="checkFootR">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>Foot[R]</string>
           </property>
@@ -467,6 +654,14 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+            <weight>75</weight>
+            <italic>true</italic>
+            <bold>true</bold>
+           </font>
           </property>
           <property name="text">
            <string>KeyJoint</string>
@@ -522,6 +717,16 @@
    </property>
   </action>
   <action name="actionLoad">
+   <property name="text">
+    <string>Load</string>
+   </property>
+  </action>
+  <action name="actionSave_2">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionLoad_2">
    <property name="text">
     <string>Load</string>
    </property>
