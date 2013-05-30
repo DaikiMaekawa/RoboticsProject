@@ -17,6 +17,7 @@
 #include <boost/functional.hpp>
 #include <boost/shared_ptr.hpp>
 #include <RDP/UserStatus.h>
+//#include <RDP/DetectMotion.h>
 
 namespace nui{
 
@@ -32,7 +33,7 @@ public:
     void loadFromMotionFiles(const std::string &dirpath);
     void setDetectCb(DetectMotion callback){ m_detectCb = callback; }
     void updateUsers(const std::vector<RDP::UserStatus> &users, unsigned int elapsedTime); //elapsedTime[sec]
-    void toDetect(const RDP::UserStatus &user);
+    bool isDetectedPose(PoseManager &target, const RDP::UserStatus &user, unsigned int elapsedTime);
 
 };
 

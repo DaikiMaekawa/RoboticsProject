@@ -33,19 +33,20 @@ namespace nui{
 	};
 
 	static const int JointTableSize = 15;
+    static const float PERIOD = 0.5f;    //sec
 
     class UserRecognitionServer::Impl{
         xn::Context    m_context;
-		MotionDetector m_motionDetector;
+        MotionDetector m_motionDetector;
         boost::shared_ptr<Xtion>           m_device;
         boost::shared_ptr<UserDetector>    m_userDetector;
-		ros::Publisher m_rgbPub;
-		ros::Publisher m_depthPub;
-		ros::Publisher m_detectUsersPub;
+        ros::Publisher m_rgbPub;
+        ros::Publisher m_depthPub;
+        ros::Publisher m_detectUsersPub;
 
     public:
         Impl(ros::NodeHandle &node) : 
-			m_rgbPub(node.advertise<sensor_msgs::Image>(RGB_IMAGE, 100)),
+            m_rgbPub(node.advertise<sensor_msgs::Image>(RGB_IMAGE, 100)),
 			m_depthPub(node.advertise<sensor_msgs::Image>(DEPTH_IMAGE, 100)),
 			m_detectUsersPub(node.advertise<RDP::DetectUsers>(DETECT_USERS, 100))
 		{
@@ -75,9 +76,23 @@ namespace nui{
 
         void waitUpdateAll(){
             m_context.WaitAndUpdateAll();
+            m_userDetector->updateAllUserStatus();
         }
 
         void sendDepthImage(){
+            std::vector<UserStatus> status = detectUsers();
+            if(status.size() > 0){
+                NIMat image = m_userDetector->userDepthMetaData(status[0]);
+                if(image){
+                    cv_bridge::CvImage depth;
+                    depth.image = *image;
+                    m_depthPub.publish(depth.toImageMsg());
+                }else{
+                    std::cout << "Failed sendDepthImage" << std::endl;
+                }
+            }
+
+            /*
 			NIMat image = m_device->depthImage();
 			if(image){
             	cv_bridge::CvImage depth;
@@ -86,6 +101,7 @@ namespace nui{
 			}else{
 				std::cout << "Failed sendDepthImage" << std::endl;
 			}
+            */
 		}
         
         void sendRgbImage(){
@@ -107,18 +123,18 @@ namespace nui{
         }
 		*/
 		
-		/*
+		
         const std::vector<UserStatus>& detectUsers(){
             m_userDetector->updateAllUserStatus();
             return m_userDetector->detectUsers();
         }
-		*/
 
 		void sendDetectUsers(){
 			RDP::DetectUsers users;
-			m_userDetector->updateAllUserStatus();
-			std::vector<UserStatus> status = m_userDetector->detectUsers();
-			
+			//m_userDetector->updateAllUserStatus();
+			//std::vector<UserStatus> status = m_userDetector->detectUsers();
+			std::vector<UserStatus> status = detectUsers();
+
 			for(int i=0; i < status.size(); i++){
 				users.data.push_back(RDP::UserStatus());
 				users.data[i].id = i;
@@ -132,6 +148,7 @@ namespace nui{
 					users.data[i].pose.joints[m].pos.z = status[i].joint(UseJointTable[m]).z;	
 				}
 			}
+            m_motionDetector.updateUsers(users.data, PERIOD);
 			m_detectUsersPub.publish(users);
 		}
     	
@@ -141,7 +158,7 @@ namespace nui{
 
 		void runServer(){
 			startRecognition();
-			ros::Rate loopRate(5);
+			ros::Rate loopRate(1.f/PERIOD);
 			while(ros::ok()){
 				waitUpdateAll();
 				ros::spinOnce();

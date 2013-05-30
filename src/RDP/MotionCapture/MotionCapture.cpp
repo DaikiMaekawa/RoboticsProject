@@ -15,15 +15,17 @@ MotionCapture::MotionCapture(ros::NodeHandle &node, QWidget *parent) :
     m_ui->setupUi(this);
 	m_poseManager = boost::shared_ptr<PoseManager>(new PoseManager(m_ui));
 	connectSignals();
-	m_userRecog.setRGBCb(boost::bind(&MotionCapture::rgbImageCb, this, boost::lambda::_1));
-	m_userRecog.setDetectUsersCb(boost::bind(&MotionCapture::detectUsersCb, this, boost::lambda::_1));
-	m_timer.start(10);
+	//m_userRecog.setRGBCb(boost::bind(&MotionCapture::rgbImageCb, this, boost::lambda::_1));
+    m_userRecog.setDepthCb(boost::bind(&MotionCapture::rgbImageCb, this, boost::lambda::_1));
+    m_userRecog.setDetectUsersCb(boost::bind(&MotionCapture::detectUsersCb, this, boost::lambda::_1));
+	m_timer.start(5);
 }
 
 void MotionCapture::rgbImageCb(const sensor_msgs::ImageConstPtr& image){
+    std::cout << "rgbImageCb" << std::endl;
 	if(image->width > 0 && image->height > 0){
 		QImage qimg(image->width, image->height, QImage::Format_RGB888);
-		memcpy(qimg.scanLine(0), &image->data[0], image->width * image->height * 3);
+        memcpy(qimg.scanLine(0), &image->data[0], image->width * image->height * 3);
 		
 		m_scene.setSceneRect(m_ui->graphicsCurrent->viewport()->geometry());
 		m_scene.setBackgroundBrush(QPixmap::fromImage(qimg.rgbSwapped()));
@@ -45,8 +47,11 @@ void MotionCapture::detectUsersCb(const RDP::DetectUsersConstPtr &users){
 }
 
 void MotionCapture::connectSignals(){
-	connect(&m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
-	connect(m_ui->pushReadPose, SIGNAL(clicked()), this, SLOT(onPushReadPose()));
+	bool ret;
+    ret = connect(&m_timer, SIGNAL(timeout()), this, SLOT(updateStatus()));
+	assert(ret);
+    ret = connect(m_ui->pushReadPose, SIGNAL(clicked()), this, SLOT(onPushReadPose()));
+    assert(ret);
 }
 
 void MotionCapture::updateStatus(){
@@ -66,13 +71,13 @@ void MotionCapture::paintUserJoints(const RDP::UserStatus &user){
 	m_gItems.clear();
 	
 	for(int i=0; i < user.pose.joints.size(); i++){
-		QColor color(255, 255, 0);
+		QColor color(255, 0, 0);
 		QPen pen(color);
 		QBrush brush(color);
 
 		std::cout << "joints[" << i << "][x,y] = " << user.pose.joints[i].pos.x << "," << user.pose.joints[i].pos.y << std::endl;
 
-		m_gItems << static_cast<QGraphicsItem*>(m_scene.addEllipse(user.pose.joints[i].pos.x, user.pose.joints[i].pos.y, 8, 8, pen, brush));
+		m_gItems << static_cast<QGraphicsItem*>(m_scene.addEllipse(user.pose.joints[i].pos.x, user.pose.joints[i].pos.y, 16, 16, pen, brush));
 	}
 }
 

@@ -40,23 +40,37 @@ void PoseManager::setStoragePose(const RDP::UserPose &pose){
 void PoseManager::onPushSavePose(){
     std::cout << "onPushSavePose" << std::endl;
     //m_motion.setPose(m_ui->spinPoseId->value(), m_joints);
-    if(!m_motion.setPose(m_ui->spinPoseId->value(), m_pose)){
+    m_pose.id = m_ui->spinPoseId->value();
+    if(!m_motion.setPose(m_pose)){
         RDP::UserPose pose;
         pose.joints.resize(nui::Motion::MAX_JOINT_NUM);
-        assert(m_motion.addPose(m_ui->spinPoseId->value() ,pose));
+        pose.id = m_ui->spinPoseId->value();
+        assert(m_motion.addPose(pose));
     }
 }
 
 void PoseManager::onPushAddPose(){
+    RDP::UserPose pose;
+    pose.id = m_poseId+1;
+    pose.joints.resize(nui::Motion::MAX_JOINT_NUM);
+    pose.waitTime = 0;
+
+    assert(m_motion.addPose(pose));
+    m_ui->spinPoseId->setValue(pose.id);
+    
+    /*
     if(!m_motion.pose(m_poseId+1, m_pose)){
         RDP::UserPose pose;
         pose.joints.resize(nui::Motion::MAX_JOINT_NUM);
         assert(m_motion.addPose(m_poseId+1, pose));
         m_ui->spinPoseId->setValue(m_poseId+1);
     }
+    */
+
 }
 
 void PoseManager::onActionSave(){
+    std::cout << "onActionSave" << std::endl;
     QString file = QFileDialog::getSaveFileName(this, "Save File", "/home", "Motion file (*.txt)");
     m_motion.saveAs(file.toStdString());
 }
@@ -78,6 +92,17 @@ void PoseManager::onActionLoad(){
 
 void PoseManager::onSpinPoseidChanged(int id){
 	
+    if(m_motion.poseIsExist(id)){
+        m_pose = m_motion.pose(id);
+        m_poseId = id;
+        assert(m_pose.joints.size() == nui::Motion::MAX_JOINT_NUM);
+        showStoragePose();
+    }else{
+        m_ui->spinPoseId->setValue(m_poseId);
+        showMessage("Error" ,QString("Does not exist pose%1").arg(id));
+    }
+    
+    /*
 	if(m_motion.pose(id, m_pose)){
 		m_poseId = id;
 		assert(m_pose.joints.size() == nui::Motion::MAX_JOINT_NUM);
@@ -86,6 +111,7 @@ void PoseManager::onSpinPoseidChanged(int id){
 		m_ui->spinPoseId->setValue(m_poseId);
 		showMessage("Error" ,QString("Does not exist pose%1").arg(id));
 	}
+    */
 
 	//TODO change scene
 	//m_ui->graphicsStorage->setScene();
@@ -149,19 +175,31 @@ void PoseManager::onCheckJointChanged(int state){
 }
 
 void PoseManager::connectSignals(){
-	connect(m_ui->spinPoseId, SIGNAL(valueChanged(int)), this, SLOT(onSpinPoseidChanged(int)));
-	connect(m_ui->spinTime, SIGNAL(valueChanged(int)), this, SLOT(onSpinTimeChanged(int)));
-	connect(m_ui->pushSavePose, SIGNAL(clicked()), this, SLOT(onPushSavePose()));
-    connect(m_ui->pushAddPose, SIGNAL(clicked()), this, SLOT(onPushAddPose()));
-	connect(m_ui->actionSave, SIGNAL(triggered()), this, SLOT(onActionSave()));
-	connect(m_ui->actionLoad, SIGNAL(triggered()), this, SLOT(onActionLoad()));
-	connect(m_ui->radioX, SIGNAL(clicked()), this, SLOT(showStoragePose()));
-	connect(m_ui->radioY, SIGNAL(clicked()), this, SLOT(showStoragePose()));
-	connect(m_ui->radioZ, SIGNAL(clicked()), this, SLOT(showStoragePose()));
-	for(int i=0; i < nui::Motion::MAX_JOINT_NUM; i++){
-		connect(m_spinboxes[i], SIGNAL(valueChanged(double)), this, SLOT(onSpinJointChanged(double)));
-		connect(m_checkboxes[i], SIGNAL(stateChanged(int)), this, SLOT(onCheckJointChanged(int)));
-	}
+	bool ret;
+    ret = connect(m_ui->spinPoseId, SIGNAL(valueChanged(int)), this, SLOT(onSpinPoseidChanged(int)));
+	assert(ret);
+    ret = connect(m_ui->spinTime, SIGNAL(valueChanged(int)), this, SLOT(onSpinTimeChanged(int)));
+	assert(ret);
+    ret = connect(m_ui->pushSavePose, SIGNAL(clicked()), this, SLOT(onPushSavePose()));
+    assert(ret);
+    ret = connect(m_ui->pushAddPose, SIGNAL(clicked()), this, SLOT(onPushAddPose()));
+	assert(ret);
+    ret = connect(m_ui->actionSave, SIGNAL(triggered()), this, SLOT(onActionSave()));
+	assert(ret);
+    ret = connect(m_ui->actionLoad, SIGNAL(triggered()), this, SLOT(onActionLoad()));
+	assert(ret);
+    ret = connect(m_ui->radioX, SIGNAL(clicked()), this, SLOT(showStoragePose()));
+	assert(ret);
+    ret = connect(m_ui->radioY, SIGNAL(clicked()), this, SLOT(showStoragePose()));
+	assert(ret);
+    ret = connect(m_ui->radioZ, SIGNAL(clicked()), this, SLOT(showStoragePose()));
+	assert(ret);
+    for(int i=0; i < nui::Motion::MAX_JOINT_NUM; i++){
+		ret = connect(m_spinboxes[i], SIGNAL(valueChanged(double)), this, SLOT(onSpinJointChanged(double)));
+		assert(ret);
+        ret = connect(m_checkboxes[i], SIGNAL(stateChanged(int)), this, SLOT(onCheckJointChanged(int)));
+	    assert(ret);
+    }
 }
 
 void PoseManager::initJoints(){
@@ -218,5 +256,6 @@ void PoseManager::showStoragePose(){
 		}
 	}
 }
+
 
 

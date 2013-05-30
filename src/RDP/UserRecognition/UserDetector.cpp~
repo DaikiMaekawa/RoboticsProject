@@ -80,6 +80,7 @@ NIMat UserDetector::userDepthMetaData(const UserStatus &user){
                 rgb->data[pos++] = 255;
                 rgb->data[pos++] = 255;
                 rgb->data[pos++] = 255;
+                //depth->data[pos++] = 255;
             }
         }
 	}
