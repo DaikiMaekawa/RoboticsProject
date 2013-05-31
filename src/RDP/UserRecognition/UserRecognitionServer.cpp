@@ -65,6 +65,10 @@ namespace nui{
             }
         }
     	
+        void motionDetectCb(int id){
+            std::cout << "motionDetectCb(" << id << ")" << std::endl;
+        }
+
         void startRecognition(){
             ROS_INFO("start UserRecognition");
 			try{

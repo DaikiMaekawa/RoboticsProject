@@ -9,8 +9,11 @@ namespace nui{
 
 Motion::Motion() : 
 	m_motionId(0),
-    m_detectTime(0)
+    m_detectTime(0),
+    m_detectingPoseId(1),
+    m_allPosesIsDetected(false)
 {
+
 }
 
 bool Motion::saveAs(const string &file){
@@ -51,8 +54,8 @@ bool Motion::loadFrom(const std::string &file){
 	std::ifstream ifs(file.c_str());
 
 	if(ifs){
-		sscanf(file.substr(0, 3).c_str(), "%d", &m_motionId);
-		std::cout << "No." << m_motionId << " " << file << std::endl;
+		sscanf(file.substr(0, 3).c_str(), "%d", &m_motionId); //TODO: erase '/'
+        std::cout << "No." << m_motionId << " " << file << std::endl;
 
 		m_poses.clear();
 		
@@ -78,22 +81,16 @@ bool Motion::loadFrom(const std::string &file){
 			for(int jointNo=0; jointNo < Motion::MAX_JOINT_NUM; jointNo++){
 				sstrm.getline(str, 10, ',');
 				uPose.joints[jointNo].pos.x = lexical_cast<float>(str);
-                //m_poses[poseId].joints[jointNo].pos.x = lexical_cast<float>(str);
 				sstrm.getline(str, 10, ',');
 				uPose.joints[jointNo].pos.y = lexical_cast<float>(str);
-                //m_poses[poseId].joints[jointNo].pos.y = lexical_cast<float>(str);
 				sstrm.getline(str, 10, ',');
 				uPose.joints[jointNo].pos.z = lexical_cast<float>(str);
-                //m_poses[poseId].joints[jointNo].pos.z = lexical_cast<float>(str);
 				sstrm.getline(str, 10, ',');
 				uPose.joints[jointNo].xIsKey = lexical_cast<int>(str);
-                //m_poses[poseId].joints[jointNo].xIsKey = lexical_cast<int>(str);
 				sstrm.getline(str, 10, ',');
 				uPose.joints[jointNo].yIsKey = lexical_cast<int>(str);
-                //m_poses[poseId].joints[jointNo].yIsKey = lexical_cast<int>(str);
 				sstrm.getline(str, 10, ',');
 				uPose.joints[jointNo].zIsKey = lexical_cast<int>(str);
-                //m_poses[poseId].joints[jointNo].zIsKey = lexical_cast<int>(str);
 			}
 
             m_poses.push_back(uPose);
@@ -155,19 +152,41 @@ bool Motion::addPose(const RDP::UserPose &pose){
 
 bool Motion::erasePose(unsigned int poseId){
 	//TODO implementation
-	return false;
+	
+    return false;
 }
 
-bool Motion::update(unsigned int elapsedTime){
+void Motion::update(unsigned int elapsedTime, bool isDetectedPose){
     //TODO implementation
     m_detectTime += elapsedTime;
-    //if(m_detectTime > m_detectingPose)
-    return true;
+    assert(poseIsExist(m_detectingPoseId));
+    
+    if(m_detectTime > pose(m_detectingPoseId).waitTime){
+        cout << "timeout" << endl;
+        m_detectingPoseId = 1;
+        m_detectTime = 0;
+        assert(poseIsExist(m_detectingPoseId));
+        return;
+    }
+    
+    if(isDetectedPose){
+        if(poseIsExist(m_detectingPoseId+1)){
+            cout << "shift next pose" << endl;
+            m_detectingPoseId = ++m_detectingPoseId;
+        }else{
+            cout << "return first pose" << endl;
+            m_detectingPoseId = 1;
+            m_allPosesIsDetected = true;
+            assert(poseIsExist(m_detectingPoseId));
+        }
+    }
+
 }
 
-bool Motion::shouldDetectPose(RDP::UserPose &pose){
+const RDP::UserPose& Motion::shouldDetectPose(){
     //TODO
-    return true;
+    assert(poseIsExist(m_detectingPoseId));
+    return pose(m_detectingPoseId);
 }
 
 bool Motion::poseIsExist(unsigned int poseId){
@@ -176,6 +195,15 @@ bool Motion::poseIsExist(unsigned int poseId){
         if(m_poses[i].id == poseId) return true;
     }
     
+    return false;
+}
+
+bool Motion::allPosesIsDetected(){
+    if(m_allPosesIsDetected){
+        m_allPosesIsDetected = false;
+        return true;
+    }
+
     return false;
 }
 

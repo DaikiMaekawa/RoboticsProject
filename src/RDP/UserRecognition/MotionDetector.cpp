@@ -42,43 +42,46 @@ void MotionDetector::loadFromMotionFiles(const string &dirpath){
 }
 
 bool MotionDetector::isDetectedPose(Motion &target ,const RDP::UserStatus &user, unsigned int elapsedTime){
-    /*
     assert(user.isTracking);
-    RDP::UserPose targetPose;
-    if(target.shouldDetectPose(elapsedTime, targetPose)){
-        assert(user.pose.joints.size() == targetPose.joints.size());
-        for(int jointNo=0; jointNo < user.pose.joints.size(); jointNo++){
-            float targetPos = 0, pos = 0;
-            if(targetPose.joints[jointNo].xIsKey){
-                targetPos = targetPose.joints[jointNo].pos.x;
-                pos       = user.pose.joints[jointNo].pos.x;
-            }else if(targetPose.joints[jointNo].yIsKey){
-                targetPos = targetPose.joints[jointNo].pos.y;
-                pos       = user.pose.joints[jointNo].pos.y;
-            }else if(targetPose.joints[jointNo].zIsKey){
-                targetPos = targetPose.joints[jointNo].pos.z;
-                pos       = user.pose.joints[jointNo].pos.z;
-            }else{
-                continue;
-            }
-            if(targetPos - 100 > pos && pos > targetPos + 100) return false;
+    RDP::UserPose targetPose = target.shouldDetectPose();
+    assert(user.pose.joints.size() == targetPose.joints.size());
+    for(int jointNo=0; jointNo < user.pose.joints.size(); jointNo++){
+        float targetPos = 0, pos = 0;
+        if(targetPose.joints[jointNo].xIsKey){
+            targetPos = targetPose.joints[jointNo].pos.x;
+            pos       = user.pose.joints[jointNo].pos.x;
+        }else if(targetPose.joints[jointNo].yIsKey){
+            targetPos = targetPose.joints[jointNo].pos.y;
+            pos       = user.pose.joints[jointNo].pos.y;
+        }else if(targetPose.joints[jointNo].zIsKey){
+            targetPos = targetPose.joints[jointNo].pos.z;
+            pos       = user.pose.joints[jointNo].pos.z;
+        }else{
+            continue;
         }
-        target.setDetectPoseId(target.)
-        return true;
-    }else{
-        return false;
+        if(targetPos - 100 > pos && pos > targetPos + 100){
+            std::cout << "isDetectedPose: false" << std::endl;
+            return false;
+        }
     }
-    */
+
+    std::cout << "isDetectedPose: true" << std::endl;
+    return true;
 }
 
 void MotionDetector::updateUsers(const std::vector<RDP::UserStatus> &users, unsigned int elapsedTime){
-    /*
     for(int i=0; i < users.size(); i++){
         for(int m=0; m < m_motions.size(); m++){
-            isDetectedPose(m_motions[m], users[i], elapsedTime);
+            bool ret = isDetectedPose(m_motions[m], users[i], elapsedTime);
+            m_motions[m].update(elapsedTime, ret);
+            
+            if(m_motions[m].allPosesIsDetected()){
+                std::cout << "allPosesIsDetected: true" << std::endl;
+                m_detectCb(m_motions[m].id());
+            }
         }
     }
-    */
 }
 
 } //namespace nui
+

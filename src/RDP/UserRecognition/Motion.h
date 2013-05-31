@@ -7,14 +7,14 @@
 
 namespace nui{
 
-//typedef std::map<unsigned int, RDP::UserPose> PoseTable;
-
 class Motion
 {
     std::vector<RDP::UserPose> m_poses;
     unsigned int m_motionId;
     unsigned int m_detectTime;
-    
+    unsigned int m_detectingPoseId;
+    bool m_allPosesIsDetected;
+
 public:
     static const int MAX_JOINT_NUM = 15;
     Motion();
@@ -27,9 +27,10 @@ public:
     const RDP::UserPose& pose(unsigned int poseId);
     bool addPose(const RDP::UserPose &pose);
     bool erasePose(unsigned int poseId);
-    bool update(unsigned int elapsedTime);
-    bool shouldDetectPose(RDP::UserPose &pose);
+    void update(unsigned int elapsedTime, bool isDetectedPose);
+    const RDP::UserPose& shouldDetectPose();
     unsigned int id(){ return m_motionId; }
+    bool allPosesIsDetected(); 
 
 };
 

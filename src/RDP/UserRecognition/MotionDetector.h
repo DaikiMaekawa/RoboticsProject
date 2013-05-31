@@ -25,7 +25,6 @@ typedef boost::function<void(int)> DetectMotion;
 
 class MotionDetector{
     std::vector<Motion> m_motions;
-    //std::vector<PoseManager> m_motions;
     DetectMotion m_detectCb;
 
 public:
@@ -34,7 +33,6 @@ public:
     void setDetectCb(DetectMotion callback){ m_detectCb = callback; }
     void updateUsers(const std::vector<RDP::UserStatus> &users, unsigned int elapsedTime); //elapsedTime[sec]
     bool isDetectedPose(Motion &target, const RDP::UserStatus &user, unsigned int elapsedTime);
-    //bool isDetectedPose(PoseManager &target, const RDP::UserStatus &user, unsigned int elapsedTime);
 
 };
 
