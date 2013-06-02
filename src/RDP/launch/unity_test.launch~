@@ -1,0 +1,20 @@
+<launch>
+  <!-- RDP Node-->
+  <node pkg="RDP" 
+        type="SpeechRecognition" 
+		name="speechrecognition"
+        output="screen"
+		respawn="false"
+  />
+  <node pkg="RDP" 
+        type="UserRecognition" 
+		name="userrecognition"
+        output="screen"
+		respawn="false"
+  />
+  <node pkg="RDP"
+        type="Unity"
+        name="unity"
+        output="screen"
+        respawn="false"
+</launch>

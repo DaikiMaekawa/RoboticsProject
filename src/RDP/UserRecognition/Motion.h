@@ -11,7 +11,7 @@ class Motion
 {
     std::vector<RDP::UserPose> m_poses;
     unsigned int m_motionId;
-    unsigned int m_detectTime;
+    float m_detectTime;
     unsigned int m_detectingPoseId;
     bool m_allPosesIsDetected;
 
@@ -27,7 +27,7 @@ public:
     const RDP::UserPose& pose(unsigned int poseId);
     bool addPose(const RDP::UserPose &pose);
     bool erasePose(unsigned int poseId);
-    void update(unsigned int elapsedTime, bool isDetectedPose);
+    void update(float elapsedTime, bool isDetectedPose);
     const RDP::UserPose& shouldDetectPose();
     unsigned int id(){ return m_motionId; }
     bool allPosesIsDetected(); 

@@ -11,10 +11,13 @@
 #include <iostream>
 #include <RDP/UserStatus.h>
 #include <RDP/DetectUsers.h>
+#include <RDP/DetectMotion.h>
+#include <boost/lambda/lambda.hpp>
+#include <boost/bind.hpp>
 
 namespace nui{
-	
-	static const XnSkeletonJoint UseJointTable[] = {
+
+    static const XnSkeletonJoint UseJointTable[] = {
 		XN_SKEL_HEAD,
 		XN_SKEL_NECK,
 		XN_SKEL_TORSO,
@@ -30,9 +33,9 @@ namespace nui{
 		XN_SKEL_RIGHT_SHOULDER,
 		XN_SKEL_LEFT_FOOT,
 		XN_SKEL_RIGHT_FOOT
-	};
+    };
 
-	static const int JointTableSize = 15;
+    static const int JointTableSize = 15;
     static const float PERIOD = 0.5f;    //sec
 
     class UserRecognitionServer::Impl{
@@ -43,30 +46,36 @@ namespace nui{
         ros::Publisher m_rgbPub;
         ros::Publisher m_depthPub;
         ros::Publisher m_detectUsersPub;
+        ros::Publisher m_motionPub;
 
     public:
-        Impl(ros::NodeHandle &node) : 
+        Impl(ros::NodeHandle &node) :
             m_rgbPub(node.advertise<sensor_msgs::Image>(RGB_IMAGE, 100)),
-			m_depthPub(node.advertise<sensor_msgs::Image>(DEPTH_IMAGE, 100)),
-			m_detectUsersPub(node.advertise<RDP::DetectUsers>(DETECT_USERS, 100))
-		{
+            m_depthPub(node.advertise<sensor_msgs::Image>(DEPTH_IMAGE, 100)),
+            m_detectUsersPub(node.advertise<RDP::DetectUsers>(DETECT_USERS, 100)),
+            m_motionPub(node.advertise<RDP::DetectMotion>(DETECT_MOTION, 100))
+        {
             try{
-				m_motionDetector.loadFromMotionFiles(std::string(SHARE_DIR) + "/motions");
-				std::string initFile = std::string(SHARE_DIR) + "/InitDevice.xml";
-				ROS_INFO("UserRecognition Initfile = %s", initFile.c_str());
+                m_motionDetector.setDetectCb(boost::bind(&UserRecognitionServer::Impl::detectMotionCb, this, boost::lambda::_1));
+                m_motionDetector.loadFromMotionFiles(std::string(SHARE_DIR) + "/motions");
+                std::string initFile = std::string(SHARE_DIR) + "/InitDevice.xml";
+                ROS_INFO("UserRecognition Initfile = %s", initFile.c_str());
                 xnErrorCheck(m_context.InitFromXmlFile(initFile.c_str()));
                 xnErrorCheck(xnPrintRegisteredLicenses());
                 m_context.SetGlobalMirror(true);
-                
+
                 m_device = boost::shared_ptr<Xtion>(new Xtion(m_context));
                 m_userDetector = boost::shared_ptr<UserDetector>(new UserDetector(*m_device,m_context));
             }catch(std::exception &ex){
                 std::cout << ex.what() << std::endl;
             }
         }
-    	
-        void motionDetectCb(int id){
-            std::cout << "motionDetectCb(" << id << ")" << std::endl;
+
+        void detectMotionCb(int id){
+            std::cout << "detectMotionCb(" << id << ")" << std::endl;
+            RDP::DetectMotion msg;
+            msg.id = id;
+            m_motionPub.publish(msg);
         }
 
         void startRecognition(){
@@ -75,7 +84,7 @@ namespace nui{
 				xnErrorCheck(m_context.StartGeneratingAll());
 			}catch(std::exception &ex){
 				std::cout << ex.what() << std::endl;
-			}
+            }
         }
 
         void waitUpdateAll(){
@@ -111,7 +120,7 @@ namespace nui{
         void sendRgbImage(){
             NIMat image = m_device->rgbImage();
             if(image){
-		    	cv_bridge::CvImage rgb;
+                cv_bridge::CvImage rgb;
 				rgb.image = *image;
 				m_rgbPub.publish(rgb.toImageMsg()); 
 			}else{
@@ -135,32 +144,32 @@ namespace nui{
 
 		void sendDetectUsers(){
 			RDP::DetectUsers users;
-			//m_userDetector->updateAllUserStatus();
-			//std::vector<UserStatus> status = m_userDetector->detectUsers();
 			std::vector<UserStatus> status = detectUsers();
 
 			for(int i=0; i < status.size(); i++){
-				users.data.push_back(RDP::UserStatus());
-				users.data[i].id = i;
-				users.data[i].isTracking = status[i].isTracking;
-				
-				for(int m=0; m < JointTableSize; m++){
-					users.data[i].pose.joints.push_back(RDP::UserJoint());
-					users.data[i].pose.joints[m].type =  status[i].joint(UseJointTable[m]).jointType;
-					users.data[i].pose.joints[m].pos.x = status[i].joint(UseJointTable[m]).x;
-					users.data[i].pose.joints[m].pos.y = status[i].joint(UseJointTable[m]).y;	
-					users.data[i].pose.joints[m].pos.z = status[i].joint(UseJointTable[m]).z;	
-				}
+				if(status[i].isTracking){
+                    users.data.push_back(RDP::UserStatus());
+                    users.data[i].id = i;
+                    users.data[i].isTracking = status[i].isTracking;
+                    
+                    for(int m=0; m < JointTableSize; m++){
+                        users.data[i].pose.joints.push_back(RDP::UserJoint());
+                        users.data[i].pose.joints[m].type =  status[i].joint(UseJointTable[m]).jointType;
+                        users.data[i].pose.joints[m].pos.x = status[i].joint(UseJointTable[m]).x;
+                        users.data[i].pose.joints[m].pos.y = status[i].joint(UseJointTable[m]).y;	
+                        users.data[i].pose.joints[m].pos.z = status[i].joint(UseJointTable[m]).z;	
+                    }
+                }
 			}
             m_motionDetector.updateUsers(users.data, PERIOD);
 			m_detectUsersPub.publish(users);
 		}
-    	
+
         bool isValid() const{
             return m_userDetector->isValid() && m_device->isValid();
         }
 
-		void runServer(){
+        void runServer(){
 			startRecognition();
 			ros::Rate loopRate(1.f/PERIOD);
 			while(ros::ok()){
@@ -171,7 +180,7 @@ namespace nui{
 				sendDetectUsers();
 				loopRate.sleep();
 			}
-		}
+        }
 
         ~Impl(){
             m_context.Shutdown();

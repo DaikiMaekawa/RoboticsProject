@@ -31,8 +31,8 @@ public:
     MotionDetector();
     void loadFromMotionFiles(const std::string &dirpath);
     void setDetectCb(DetectMotion callback){ m_detectCb = callback; }
-    void updateUsers(const std::vector<RDP::UserStatus> &users, unsigned int elapsedTime); //elapsedTime[sec]
-    bool isDetectedPose(Motion &target, const RDP::UserStatus &user, unsigned int elapsedTime);
+    void updateUsers(const std::vector<RDP::UserStatus> &users, float elapsedTime); //elapsedTime[sec]
+    bool isDetectedPose(Motion &target, const RDP::UserStatus &user);
 
 };
 

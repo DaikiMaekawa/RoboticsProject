@@ -60,7 +60,7 @@ void MotionCapture::updateStatus(){
 }
 
 void MotionCapture::onPushReadPose(){
-	m_poseManager->setStoragePose(m_currentUserStatus.pose);
+    if(m_currentUserStatus.isTracking)  m_poseManager->setStoragePose(m_currentUserStatus.pose);
 }
 
 void MotionCapture::paintUserJoints(const RDP::UserStatus &user){

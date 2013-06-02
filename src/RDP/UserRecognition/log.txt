@@ -1,0 +1,1740 @@
+motion.loadFrom(/home/maekawa/RoboticsProject/install/share/RDP/motions/001_head.txt)
+No.1 /home/maekawa/RoboticsProject/install/share/RDP/motions/001_head.txt
+[0m[ INFO] [1370156013.468980375]: UserRecognition Initfile = /home/maekawa/RoboticsProject/install/share/RDP/InitDevice.xml[0m
+      181 INFO       New log started on 2013-06-02 15:53:33
+      189 INFO       OpenNI version is 1.5.4 (Build 0)-Linux-x86 (May 16 2012 10:23:34)
+      191 INFO       --- Filter Info --- Minimum Severity: WARNING
+VENDOR              KEY                 
+======              ===                 
+PrimeSense          0KOIk2JeIBYClPWVnMoRKn5cdY4=
+[0m[ INFO] [1370156014.410487743]: start UserRecognitionPsi[0m
+  1052208 WARNING    Could not create file '4ñ¶p4ñ¶01@2.3-SM' for shared memory (2).
+updateUsers: users.size() = 0
+updateUsers: users.size() = 0
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+NewUserId = 1
+StartCalibrationId = 1
+updateUsers: users.size() = 0
+detectUsersCb
+rgbImageCb
+updateUsers: users.size() = 0
+detectUsersCb
+rgbImageCb
+updateUsers: users.size() = 0
+detectUsersCb
+rgbImageCb
+updateUsers: users.size() = 0
+rgbImageCb
+detectUsersCb
+updateUsers: users.size() = 0
+rgbImageCb
+detectUsersCb
+updateUsers: users.size() = 0
+rgbImageCb
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+rgbImageCb
+updateUsers: users.size() = 0
+rgbImageCb
+detectUsersCb
+updateUsers: users.size() = 0
+detectUsersCb
+rgbImageCb
+updateUsers: users.size() = 0
+rgbImageCb
+detectUsersCb
+EndCalibrationId = 1
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 221.848
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 221.848,81.2958
+joints[1][x,y] = 231.136,143.784
+joints[2][x,y] = 236.3,193.253
+joints[3][x,y] = 190.631,215.856
+joints[4][x,y] = 301.171,199.791
+joints[5][x,y] = 222.058,244.386
+joints[6][x,y] = 261.094,240.585
+joints[7][x,y] = 222.058,350.82
+joints[8][x,y] = 261.094,348.495
+joints[9][x,y] = 157.507,275.857
+joints[10][x,y] = 351.231,246.027
+joints[11][x,y] = 196.016,148.445
+joints[12][x,y] = 267.152,139.005
+joints[13][x,y] = 222.058,453.161
+joints[14][x,y] = 261.094,452.255
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 223.857
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 223.857,82.1741
+joints[1][x,y] = 233.014,144.36
+joints[2][x,y] = 238.689,192.909
+joints[3][x,y] = 190.928,211.592
+joints[4][x,y] = 299.306,195.828
+joints[5][x,y] = 222.418,243.868
+joints[6][x,y] = 266.575,238.792
+joints[7][x,y] = 224.221,350.057
+joints[8][x,y] = 288.762,342.855
+joints[9][x,y] = 151.849,278.853
+joints[10][x,y] = 346.441,244.733
+joints[11][x,y] = 197.998,149.419
+joints[12][x,y] = 268.783,139.192
+joints[13][x,y] = 237.05,438.506
+joints[14][x,y] = 310.793,438.771
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 236.544
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 236.544,82.4057
+joints[1][x,y] = 243.636,148.921
+joints[2][x,y] = 248.103,196.578
+joints[3][x,y] = 197.337,213.553
+joints[4][x,y] = 307.351,200.575
+joints[5][x,y] = 229.018,246.187
+joints[6][x,y] = 276.306,241.949
+joints[7][x,y] = 225.759,349.577
+joints[8][x,y] = 291.318,344.76
+joints[9][x,y] = 165.197,277.609
+joints[10][x,y] = 351.138,252.547
+joints[11][x,y] = 206.244,152.952
+joints[12][x,y] = 281.566,144.831
+joints[13][x,y] = 237.396,437.485
+joints[14][x,y] = 313.379,438.328
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 243.28
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 243.28,82.0211
+joints[1][x,y] = 249.136,150.699
+joints[2][x,y] = 252.685,197.986
+joints[3][x,y] = 197.62,213.676
+joints[4][x,y] = 311.962,204
+joints[5][x,y] = 232.673,246.942
+joints[6][x,y] = 279.95,243.469
+joints[7][x,y] = 227.169,349.406
+joints[8][x,y] = 295.636,347.095
+joints[9][x,y] = 163.142,276.809
+joints[10][x,y] = 351.907,258.082
+joints[11][x,y] = 210.872,154.042
+joints[12][x,y] = 287.835,147.317
+joints[13][x,y] = 237.534,437.343
+joints[14][x,y] = 314.689,437.577
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 247.151
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 247.151,81.5908
+joints[1][x,y] = 251.87,152.15
+joints[2][x,y] = 254.855,198.56
+joints[3][x,y] = 199.429,214.896
+joints[4][x,y] = 313.772,206.18
+joints[5][x,y] = 234.245,246.541
+joints[6][x,y] = 281.581,243.462
+joints[7][x,y] = 228.314,349.315
+joints[8][x,y] = 297.141,347.693
+joints[9][x,y] = 165.132,275.509
+joints[10][x,y] = 351.604,260.469
+joints[11][x,y] = 213.88,155.067
+joints[12][x,y] = 290.226,149.205
+joints[13][x,y] = 237.255,437.253
+joints[14][x,y] = 313.796,436.911
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 249.323
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 249.323,81.4114
+joints[1][x,y] = 254.3,152.133
+joints[2][x,y] = 256.235,198.118
+joints[3][x,y] = 207.382,214.408
+joints[4][x,y] = 313.734,207.85
+joints[5][x,y] = 235.597,245.249
+joints[6][x,y] = 280.867,243.215
+joints[7][x,y] = 229.302,348.112
+joints[8][x,y] = 297.968,347.894
+joints[9][x,y] = 185.81,277.535
+joints[10][x,y] = 341.309,264.801
+joints[11][x,y] = 217.126,154.187
+joints[12][x,y] = 291.786,150.062
+joints[13][x,y] = 236.753,435.899
+joints[14][x,y] = 313.471,438.036
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 258.516
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 258.516,79.745
+joints[1][x,y] = 257.385,150.991
+joints[2][x,y] = 258.647,197.272
+joints[3][x,y] = 212.709,214.335
+joints[4][x,y] = 313.279,209.745
+joints[5][x,y] = 237.763,244.548
+joints[6][x,y] = 282.143,243.107
+joints[7][x,y] = 231.462,347.292
+joints[8][x,y] = 298.61,347.595
+joints[9][x,y] = 206.451,271.674
+joints[10][x,y] = 325.356,271.862
+joints[11][x,y] = 219.659,152.472
+joints[12][x,y] = 295.319,149.503
+joints[13][x,y] = 236.435,435.014
+joints[14][x,y] = 312.104,438.269
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 262.482
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 262.482,78.4419
+joints[1][x,y] = 259.127,151.713
+joints[2][x,y] = 260.065,197.728
+joints[3][x,y] = 216.331,219.375
+joints[4][x,y] = 313.104,210.494
+joints[5][x,y] = 239.267,244.619
+joints[6][x,y] = 282.816,243.484
+joints[7][x,y] = 233.749,345.164
+joints[8][x,y] = 298.279,347.553
+joints[9][x,y] = 204.796,272.537
+joints[10][x,y] = 325.539,273.146
+joints[11][x,y] = 222.199,152.904
+joints[12][x,y] = 296.238,150.517
+joints[13][x,y] = 236.194,433.683
+joints[14][x,y] = 311.435,438.845
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 264.931
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 264.931,78.766
+joints[1][x,y] = 262.413,152.531
+joints[2][x,y] = 262.2,197.973
+joints[3][x,y] = 218.397,220.544
+joints[4][x,y] = 313.048,210.136
+joints[5][x,y] = 240.393,243.82
+joints[6][x,y] = 283.604,243.764
+joints[7][x,y] = 233.754,344.902
+joints[8][x,y] = 298.583,347.454
+joints[9][x,y] = 205.011,274.075
+joints[10][x,y] = 326.537,274.688
+joints[11][x,y] = 224.404,152.684
+joints[12][x,y] = 300.508,152.379
+joints[13][x,y] = 236.194,432.667
+joints[14][x,y] = 311.725,439.042
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 272.556
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 272.556,78.4906
+joints[1][x,y] = 267.045,152.366
+joints[2][x,y] = 265.211,197.439
+joints[3][x,y] = 221.517,219.105
+joints[4][x,y] = 316.711,214.461
+joints[5][x,y] = 241.706,242.136
+joints[6][x,y] = 285.011,243.671
+joints[7][x,y] = 234.281,344.064
+joints[8][x,y] = 299.136,347.778
+joints[9][x,y] = 209.599,272.282
+joints[10][x,y] = 333.072,274.718
+joints[11][x,y] = 228.72,150.99
+joints[12][x,y] = 305.355,153.742
+joints[13][x,y] = 236.498,432.13
+joints[14][x,y] = 311.92,439.66
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 281.436
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 281.436,77.5138
+joints[1][x,y] = 274.506,149.608
+joints[2][x,y] = 270.336,194.964
+joints[3][x,y] = 224.028,215.926
+joints[4][x,y] = 320.528,218.606
+joints[5][x,y] = 243.801,238.949
+joints[6][x,y] = 288.415,242.769
+joints[7][x,y] = 236.068,343.152
+joints[8][x,y] = 300.566,346.971
+joints[9][x,y] = 216.835,266.168
+joints[10][x,y] = 340.106,280.01
+joints[11][x,y] = 235.155,146.18
+joints[12][x,y] = 313.805,153.032
+joints[13][x,y] = 236.541,431.361
+joints[14][x,y] = 311.931,440.022
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 319.85
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 319.85,77.3002
+joints[1][x,y] = 289.947,146.462
+joints[2][x,y] = 284.135,192.411
+joints[3][x,y] = 254.263,195.039
+joints[4][x,y] = 333.421,214.271
+joints[5][x,y] = 255.163,236.395
+joints[6][x,y] = 301.212,241.996
+joints[7][x,y] = 240.839,341.841
+joints[8][x,y] = 306.481,346.795
+joints[9][x,y] = 236.169,252.802
+joints[10][x,y] = 361.312,277.666
+joints[11][x,y] = 250.449,141.452
+joints[12][x,y] = 329.272,151.451
+joints[13][x,y] = 236.656,429.665
+joints[14][x,y] = 312.068,441.128
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 331.215
+matching pos
+isDetectedPose: true
+shift next pose
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 331.215,77.3088
+joints[1][x,y] = 316.189,143.334
+joints[2][x,y] = 300.68,190.482
+joints[3][x,y] = 261.733,194.315
+joints[4][x,y] = 347.258,216.93
+joints[5][x,y] = 261.455,230.474
+joints[6][x,y] = 308.208,246.008
+joints[7][x,y] = 246.832,336.876
+joints[8][x,y] = 308.84,350.532
+joints[9][x,y] = 247.423,255.266
+joints[10][x,y] = 368.651,277.015
+joints[11][x,y] = 287.994,133.285
+joints[12][x,y] = 344.024,153.255
+joints[13][x,y] = 235.128,424.954
+joints[14][x,y] = 311.019,444.504
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 338.095
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 338.095,77.3915
+joints[1][x,y] = 320.743,142.861
+joints[2][x,y] = 305.119,189.854
+joints[3][x,y] = 265.528,195.155
+joints[4][x,y] = 354.837,216.87
+joints[5][x,y] = 264.499,229.24
+joints[6][x,y] = 313.828,245.755
+joints[7][x,y] = 249.182,336.458
+joints[8][x,y] = 312.123,350.866
+joints[9][x,y] = 249.387,254.349
+joints[10][x,y] = 371.032,275.189
+joints[11][x,y] = 289.441,131.817
+joints[12][x,y] = 351.714,153.787
+joints[13][x,y] = 234.943,423.241
+joints[14][x,y] = 311.038,444.488
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 341.325
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 341.325,77.1279
+joints[1][x,y] = 322.697,143.091
+joints[2][x,y] = 307.156,189.694
+joints[3][x,y] = 266.832,197.653
+joints[4][x,y] = 358.449,216.835
+joints[5][x,y] = 266.511,228.555
+joints[6][x,y] = 316.145,245.174
+joints[7][x,y] = 250.426,336.283
+joints[8][x,y] = 313.964,350.809
+joints[9][x,y] = 249.422,257.772
+joints[10][x,y] = 373.089,276.76
+joints[11][x,y] = 290.637,131.877
+joints[12][x,y] = 354.465,154.203
+joints[13][x,y] = 236.941,422.163
+joints[14][x,y] = 311.17,443.993
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 343.065
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 343.065,77.254
+joints[1][x,y] = 323.448,143.808
+joints[2][x,y] = 308.403,189.518
+joints[3][x,y] = 268.171,202.708
+joints[4][x,y] = 360.716,217.465
+joints[5][x,y] = 269.009,227.725
+joints[6][x,y] = 317.284,243.619
+joints[7][x,y] = 252.065,336.586
+joints[8][x,y] = 314.975,349.272
+joints[9][x,y] = 256.516,259.44
+joints[10][x,y] = 375.619,274.033
+joints[11][x,y] = 291.242,132.869
+joints[12][x,y] = 355.444,154.676
+joints[13][x,y] = 236.752,422.63
+joints[14][x,y] = 311.502,442.737
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 344.348
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 344.348,77.4794
+joints[1][x,y] = 324.251,144.679
+joints[2][x,y] = 309.036,189.751
+joints[3][x,y] = 268.342,202.311
+joints[4][x,y] = 362.588,219.921
+joints[5][x,y] = 269.476,227.155
+joints[6][x,y] = 317.7,243.456
+joints[7][x,y] = 252.487,335.385
+joints[8][x,y] = 315.156,349.286
+joints[9][x,y] = 250.775,262.625
+joints[10][x,y] = 375.411,275.556
+joints[11][x,y] = 291.878,133.379
+joints[12][x,y] = 356.397,155.899
+joints[13][x,y] = 236.911,422.607
+joints[14][x,y] = 311.435,443.267
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 344.657
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 344.657,77.5882
+joints[1][x,y] = 324.777,145.325
+joints[2][x,y] = 310.583,191.594
+joints[3][x,y] = 268.422,204.621
+joints[4][x,y] = 362.597,218.567
+joints[5][x,y] = 273.889,231.44
+joints[6][x,y] = 318.588,245.101
+joints[7][x,y] = 252.141,333.637
+joints[8][x,y] = 315.801,351.147
+joints[9][x,y] = 249.798,265.549
+joints[10][x,y] = 374.523,275.741
+joints[11][x,y] = 292.146,135.197
+joints[12][x,y] = 357.308,155.422
+joints[13][x,y] = 238.769,423.958
+joints[14][x,y] = 311.499,444.761
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 344.455
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 344.455,77.9868
+joints[1][x,y] = 324.569,145.921
+joints[2][x,y] = 310.305,191.353
+joints[3][x,y] = 268.261,204.174
+joints[4][x,y] = 362.098,218.99
+joints[5][x,y] = 273.105,230.162
+joints[6][x,y] = 318.569,244.424
+joints[7][x,y] = 252.491,334.625
+joints[8][x,y] = 315.913,350.97
+joints[9][x,y] = 254.38,264.274
+joints[10][x,y] = 371.813,277.577
+joints[11][x,y] = 291.939,135.423
+joints[12][x,y] = 357.03,156.364
+joints[13][x,y] = 238.484,424.271
+joints[14][x,y] = 311.283,444.204
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 342.612
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 342.612,80.0914
+joints[1][x,y] = 324.39,146.474
+joints[2][x,y] = 309.927,191.408
+joints[3][x,y] = 267.604,203.069
+joints[4][x,y] = 361.54,219.539
+joints[5][x,y] = 272.141,229.487
+joints[6][x,y] = 318.315,244.349
+joints[7][x,y] = 252.714,335.377
+joints[8][x,y] = 315.879,351.342
+joints[9][x,y] = 248.654,257.072
+joints[10][x,y] = 371.867,278.643
+joints[11][x,y] = 291.628,135.641
+joints[12][x,y] = 356.964,157.245
+joints[13][x,y] = 239.437,426.245
+joints[14][x,y] = 311.18,443.923
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 341.58
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 341.58,81.3344
+joints[1][x,y] = 324.078,146.575
+joints[2][x,y] = 309.385,191.354
+joints[3][x,y] = 264.571,200.853
+joints[4][x,y] = 361.231,219.839
+joints[5][x,y] = 271.424,229.175
+joints[6][x,y] = 317.475,244.272
+joints[7][x,y] = 253.136,335.939
+joints[8][x,y] = 316.08,351.319
+joints[9][x,y] = 246.112,254.13
+joints[10][x,y] = 369.718,278.698
+joints[11][x,y] = 291.6,135.653
+joints[12][x,y] = 356.378,157.438
+joints[13][x,y] = 239.225,426.217
+joints[14][x,y] = 311.258,443.232
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 342.25
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 342.25,80.7331
+joints[1][x,y] = 323.715,146.623
+joints[2][x,y] = 309.107,191.417
+joints[3][x,y] = 264.887,202.182
+joints[4][x,y] = 361.103,220.048
+joints[5][x,y] = 270.949,229.214
+joints[6][x,y] = 317.562,244.397
+joints[7][x,y] = 253.186,336.082
+joints[8][x,y] = 316.144,351.44
+joints[9][x,y] = 246.793,254.977
+joints[10][x,y] = 370.604,279.167
+joints[11][x,y] = 291.189,135.759
+joints[12][x,y] = 356.066,157.428
+joints[13][x,y] = 239.17,426.133
+joints[14][x,y] = 311.291,442.629
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 330.515
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 330.515,80.459
+joints[1][x,y] = 318.678,149.547
+joints[2][x,y] = 304.048,194.603
+joints[3][x,y] = 262.992,198.666
+joints[4][x,y] = 358.446,224.108
+joints[5][x,y] = 264.085,232.033
+joints[6][x,y] = 314.383,248.243
+joints[7][x,y] = 252.846,333.916
+joints[8][x,y] = 315.794,354.26
+joints[9][x,y] = 237.624,251.407
+joints[10][x,y] = 362.806,285.074
+joints[11][x,y] = 283.743,138.137
+joints[12][x,y] = 353.507,160.922
+joints[13][x,y] = 238.737,423.563
+joints[14][x,y] = 311.423,445.056
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 324.955
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 324.955,80.5146
+joints[1][x,y] = 311.101,148.88
+joints[2][x,y] = 299.765,194.938
+joints[3][x,y] = 259.528,200.037
+joints[4][x,y] = 353.128,220.699
+joints[5][x,y] = 261.517,234.735
+joints[6][x,y] = 315.209,247.833
+joints[7][x,y] = 251.048,335.255
+joints[8][x,y] = 315.645,355.918
+joints[9][x,y] = 237.95,253.63
+joints[10][x,y] = 361.997,286.976
+joints[11][x,y] = 278.063,140.843
+joints[12][x,y] = 344.155,156.921
+joints[13][x,y] = 237.825,424.624
+joints[14][x,y] = 312.057,446.905
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 313.415
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 313.415,78.0278
+joints[1][x,y] = 302.984,147.197
+joints[2][x,y] = 294.026,194.144
+joints[3][x,y] = 254.94,199.965
+joints[4][x,y] = 347.66,217.698
+joints[5][x,y] = 259.475,236.836
+joints[6][x,y] = 310.567,246.308
+joints[7][x,y] = 245.343,339.704
+joints[8][x,y] = 314.962,354.335
+joints[9][x,y] = 230.785,257.37
+joints[10][x,y] = 353.379,282.758
+joints[11][x,y] = 266.924,140.747
+joints[12][x,y] = 339.219,153.679
+joints[13][x,y] = 236.857,427.584
+joints[14][x,y] = 312.298,444.744
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 306.599
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 306.599,77.3937
+joints[1][x,y] = 297.753,146.093
+joints[2][x,y] = 289.919,192.773
+joints[3][x,y] = 249.257,198.284
+joints[4][x,y] = 341.442,218.002
+joints[5][x,y] = 256.7,236.132
+joints[6][x,y] = 307.333,244.169
+joints[7][x,y] = 242.707,343.03
+joints[8][x,y] = 313.572,351.982
+joints[9][x,y] = 226.638,261.736
+joints[10][x,y] = 348.665,282.355
+joints[11][x,y] = 261.831,140.643
+joints[12][x,y] = 333.863,151.572
+joints[13][x,y] = 236.679,431.009
+joints[14][x,y] = 312.136,442.262
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 268.884
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 268.884,76.2598
+joints[1][x,y] = 275.571,148.305
+joints[2][x,y] = 274.358,192.908
+joints[3][x,y] = 220.431,215.424
+joints[4][x,y] = 328.167,209.928
+joints[5][x,y] = 249.849,237.88
+joints[6][x,y] = 296.485,238.564
+joints[7][x,y] = 240.107,342.316
+joints[8][x,y] = 304.666,346.948
+joints[9][x,y] = 207.14,279.006
+joints[10][x,y] = 319.105,267.817
+joints[11][x,y] = 247.471,148.084
+joints[12][x,y] = 303.791,148.528
+joints[13][x,y] = 236.629,429.807
+joints[14][x,y] = 312.245,439.806
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 268.126
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 268.126,78.032
+joints[1][x,y] = 270.631,150.452
+joints[2][x,y] = 269.835,193.686
+joints[3][x,y] = 220.74,213.714
+joints[4][x,y] = 320.357,210.956
+joints[5][x,y] = 246.976,237.732
+joints[6][x,y] = 291.258,237.584
+joints[7][x,y] = 239.238,341.021
+joints[8][x,y] = 302.858,346.98
+joints[9][x,y] = 208.377,275.963
+joints[10][x,y] = 321.04,270.668
+joints[11][x,y] = 238.46,151.076
+joints[12][x,y] = 303.187,149.82
+joints[13][x,y] = 236.313,429.734
+joints[14][x,y] = 312.186,439.013
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 267.444
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 267.444,79.2018
+joints[1][x,y] = 267.644,150.821
+joints[2][x,y] = 267.212,194.358
+joints[3][x,y] = 220.42,218.257
+joints[4][x,y] = 317.452,211.136
+joints[5][x,y] = 245.372,238.784
+joints[6][x,y] = 288.352,238.346
+joints[7][x,y] = 238.92,342.184
+joints[8][x,y] = 300.684,346.138
+joints[9][x,y] = 207.383,276.662
+joints[10][x,y] = 319.39,270.501
+joints[11][x,y] = 233.39,151.739
+joints[12][x,y] = 302.347,149.891
+joints[13][x,y] = 235.67,431.768
+joints[14][x,y] = 311.971,438.507
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 266.869
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 266.869,79.1733
+joints[1][x,y] = 265.98,151.476
+joints[2][x,y] = 266.225,195.052
+joints[3][x,y] = 220.601,221.506
+joints[4][x,y] = 316.096,211.215
+joints[5][x,y] = 244.667,239.651
+joints[6][x,y] = 288.45,238.702
+joints[7][x,y] = 238.963,342.81
+joints[8][x,y] = 299.72,345.293
+joints[9][x,y] = 207.064,278.328
+joints[10][x,y] = 319.696,270.227
+joints[11][x,y] = 230.577,152.793
+joints[12][x,y] = 301.833,150.143
+joints[13][x,y] = 235.721,430.202
+joints[14][x,y] = 312.139,438.454
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 256.267
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 256.267,80.0003
+joints[1][x,y] = 260.426,151.705
+joints[2][x,y] = 262.534,195.265
+joints[3][x,y] = 219.399,223.2
+joints[4][x,y] = 310.615,210.674
+joints[5][x,y] = 241.933,240.742
+joints[6][x,y] = 287.56,237.887
+joints[7][x,y] = 237.887,343.482
+joints[8][x,y] = 298.439,344.836
+joints[9][x,y] = 204.557,281.243
+joints[10][x,y] = 313.739,267.117
+joints[11][x,y] = 222.29,154.616
+joints[12][x,y] = 299.025,148.757
+joints[13][x,y] = 235.924,430.231
+joints[14][x,y] = 312.076,438.354
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 218.408
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 218.408,83.0314
+joints[1][x,y] = 242.505,151.997
+joints[2][x,y] = 248.534,196.815
+joints[3][x,y] = 206.363,222.964
+joints[4][x,y] = 293.397,207.618
+joints[5][x,y] = 230.163,245.615
+joints[6][x,y] = 279.187,238.495
+joints[7][x,y] = 232.184,347.156
+joints[8][x,y] = 293.691,343.497
+joints[9][x,y] = 186.468,287.32
+joints[10][x,y] = 299.061,258.843
+joints[11][x,y] = 209.505,157.063
+joints[12][x,y] = 275.704,146.901
+joints[13][x,y] = 235.572,432.371
+joints[14][x,y] = 311.35,436.401
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 209.168
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 209.168,84.9645
+joints[1][x,y] = 231.571,152.402
+joints[2][x,y] = 238.044,197.956
+joints[3][x,y] = 194.789,221.826
+joints[4][x,y] = 287.158,209.131
+joints[5][x,y] = 220.624,247.615
+joints[6][x,y] = 268.749,240.103
+joints[7][x,y] = 225.849,347.908
+joints[8][x,y] = 288.668,343.963
+joints[9][x,y] = 171.286,289.778
+joints[10][x,y] = 290.101,262.779
+joints[11][x,y] = 197.553,158.367
+joints[12][x,y] = 266.073,146.353
+joints[13][x,y] = 235.333,431.79
+joints[14][x,y] = 306.859,434.352
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 180.642
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 180.642,84.3042
+joints[1][x,y] = 213.44,148.033
+joints[2][x,y] = 221.94,196.876
+joints[3][x,y] = 183.515,219.207
+joints[4][x,y] = 274.318,207.531
+joints[5][x,y] = 209.575,249.155
+joints[6][x,y] = 251.725,241.926
+joints[7][x,y] = 217.954,353.436
+joints[8][x,y] = 239.063,354.702
+joints[9][x,y] = 159.568,290.271
+joints[10][x,y] = 275.485,258.957
+joints[11][x,y] = 184.122,154.629
+joints[12][x,y] = 243.703,141.224
+joints[13][x,y] = 240.079,435.276
+joints[14][x,y] = 240.108,467.954
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 168.67
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 168.67,81.9768
+joints[1][x,y] = 201.579,144.936
+joints[2][x,y] = 203.269,196.224
+joints[3][x,y] = 176.292,213.395
+joints[4][x,y] = 244.996,203.228
+joints[5][x,y] = 191.782,249.202
+joints[6][x,y] = 218.594,246.954
+joints[7][x,y] = 204.535,355.399
+joints[8][x,y] = 187.463,355.276
+joints[9][x,y] = 148.644,285.894
+joints[10][x,y] = 247.065,263.712
+joints[11][x,y] = 175.643,150.264
+joints[12][x,y] = 229.199,139.261
+joints[13][x,y] = 231.187,440.213
+joints[14][x,y] = 229.224,431.261
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 2
+target pos x = 120
+user   pos x = 116.001
+matching pos
+isDetectedPose: true
+return first pose
+allPosesIsDetected: true
+detectMotionCb(1)
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 116.001,65.3431
+joints[1][x,y] = 157.524,136.547
+joints[2][x,y] = 167.966,193.144
+joints[3][x,y] = 147.294,213.844
+joints[4][x,y] = 185.858,194.389
+joints[5][x,y] = 173.313,251.089
+joints[6][x,y] = 183.939,248.095
+joints[7][x,y] = 103.418,369.252
+joints[8][x,y] = 189.182,359.221
+joints[9][x,y] = 110.639,292.809
+joints[10][x,y] = 187.586,261.562
+joints[11][x,y] = 151.426,145.527
+joints[12][x,y] = 164.47,126.318
+joints[13][x,y] = 215.475,445.388
+joints[14][x,y] = 198.291,457.205
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 79.4367
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 79.4367,73.9982
+joints[1][x,y] = 124.55,141.402
+joints[2][x,y] = 125.864,196.549
+joints[3][x,y] = 121.639,219.86
+joints[4][x,y] = 174.828,205.282
+joints[5][x,y] = 108.975,254.177
+joints[6][x,y] = 146.267,250.686
+joints[7][x,y] = 91.0592,371.465
+joints[8][x,y] = 135.167,371.493
+joints[9][x,y] = 53.5009,301.527
+joints[10][x,y] = 169.67,252.225
+joints[11][x,y] = 97.7829,147.55
+joints[12][x,y] = 153.191,134.823
+joints[13][x,y] = 217.878,444.416
+joints[14][x,y] = 179.958,458.705
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 71.3787
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 71.3787,75.0685
+joints[1][x,y] = 100.385,150.48
+joints[2][x,y] = 102.104,200.778
+joints[3][x,y] = 122.387,210.485
+joints[4][x,y] = 142.388,215.122
+joints[5][x,y] = 90.86,253.057
+joints[6][x,y] = 117.244,250.252
+joints[7][x,y] = 85.2935,366.448
+joints[8][x,y] = 126.936,371.47
+joints[9][x,y] = 41.3041,278.084
+joints[10][x,y] = 136.365,265.556
+joints[11][x,y] = 69.7966,157.456
+joints[12][x,y] = 133.394,142.952
+joints[13][x,y] = 202.696,444.208
+joints[14][x,y] = 179.383,459.435
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 58.8751
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 58.8751,84.2863
+joints[1][x,y] = 89.8184,148.088
+joints[2][x,y] = 91.858,200.758
+joints[3][x,y] = 115.326,212.995
+joints[4][x,y] = 134.919,214.647
+joints[5][x,y] = 79.1402,255.358
+joints[6][x,y] = 109.188,252.532
+joints[7][x,y] = 82.4465,366.982
+joints[8][x,y] = 116.134,371.037
+joints[9][x,y] = 37.9354,284.598
+joints[10][x,y] = 117.569,282.082
+joints[11][x,y] = 60.0589,154.342
+joints[12][x,y] = 121.647,141.4
+joints[13][x,y] = 191.974,448.847
+joints[14][x,y] = 171.741,447.121
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 64.622
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 64.622,80.2791
+joints[1][x,y] = 84.3563,144.999
+joints[2][x,y] = 86.5682,199.302
+joints[3][x,y] = 107.832,213.668
+joints[4][x,y] = 131.464,213.296
+joints[5][x,y] = 72.8158,255.114
+joints[6][x,y] = 105.294,252.767
+joints[7][x,y] = 77.8274,368.123
+joints[8][x,y] = 111.173,370.15
+joints[9][x,y] = 41.3977,285.234
+joints[10][x,y] = 109.571,285.725
+joints[11][x,y] = 54.3203,150.426
+joints[12][x,y] = 116.296,139.228
+joints[13][x,y] = 181.214,452.755
+joints[14][x,y] = 169.214,451.19
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 65.1456
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 65.1456,77.818
+joints[1][x,y] = 82.2444,144.628
+joints[2][x,y] = 85.262,198.968
+joints[3][x,y] = 56.802,218.847
+joints[4][x,y] = 133.327,213.411
+joints[5][x,y] = 71.0452,255.116
+joints[6][x,y] = 106.106,252.098
+joints[7][x,y] = 79.6505,368.969
+joints[8][x,y] = 111.89,368.294
+joints[9][x,y] = 31.9304,289.035
+joints[10][x,y] = 110.943,296.27
+joints[11][x,y] = 51.7658,150.29
+joints[12][x,y] = 114.513,138.633
+joints[13][x,y] = 172.783,455.956
+joints[14][x,y] = 166.114,450.044
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 67.7002
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 67.7002,73.0675
+joints[1][x,y] = 91.4147,138.62
+joints[2][x,y] = 95.5234,193.571
+joints[3][x,y] = 63.4594,215.122
+joints[4][x,y] = 143.854,206.253
+joints[5][x,y] = 80.6693,251.652
+joints[6][x,y] = 119.311,246.506
+joints[7][x,y] = 81.6897,366.925
+joints[8][x,y] = 124.452,368.058
+joints[9][x,y] = 38.1035,288.982
+joints[10][x,y] = 112.946,293.892
+joints[11][x,y] = 61.1755,145.502
+joints[12][x,y] = 123.284,131.366
+joints[13][x,y] = 165.647,455.668
+joints[14][x,y] = 176.805,452.104
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 174.349
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 174.349,47.4378
+joints[1][x,y] = 180.329,132.209
+joints[2][x,y] = 176.073,187.285
+joints[3][x,y] = 141.168,197.837
+joints[4][x,y] = 240.449,202.709
+joints[5][x,y] = 151.92,241.341
+joints[6][x,y] = 192.42,244.048
+joints[7][x,y] = 153.416,358.931
+joints[8][x,y] = 185.677,377.486
+joints[9][x,y] = 100.141,270.345
+joints[10][x,y] = 246.547,276.681
+joints[11][x,y] = 147.404,133.342
+joints[12][x,y] = 215.358,131.003
+joints[13][x,y] = 167.835,446.068
+joints[14][x,y] = 189.488,459.607
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 183.485
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 183.485,48.2257
+joints[1][x,y] = 186.123,131.638
+joints[2][x,y] = 183.199,186.202
+joints[3][x,y] = 143.871,199.302
+joints[4][x,y] = 242.186,202.813
+joints[5][x,y] = 160.946,239.963
+joints[6][x,y] = 200.227,241.909
+joints[7][x,y] = 164.72,354.299
+joints[8][x,y] = 187.063,374.57
+joints[9][x,y] = 109.831,267.452
+joints[10][x,y] = 249.987,279.603
+joints[11][x,y] = 150.823,133.069
+joints[12][x,y] = 223.598,130.12
+joints[13][x,y] = 229.223,441.407
+joints[14][x,y] = 193.276,458.482
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 231.827
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 231.827,73.1834
+joints[1][x,y] = 242.697,144.221
+joints[2][x,y] = 241.681,194.925
+joints[3][x,y] = 228.257,209.57
+joints[4][x,y] = 284.237,201.945
+joints[5][x,y] = 227.616,247.417
+joints[6][x,y] = 254.823,245.006
+joints[7][x,y] = 236.341,351.673
+joints[8][x,y] = 240.753,352.464
+joints[9][x,y] = 209.733,270.684
+joints[10][x,y] = 294.718,273.083
+joints[11][x,y] = 223.964,151.699
+joints[12][x,y] = 263.846,135.778
+joints[13][x,y] = 211.436,477.361
+joints[14][x,y] = 202.171,456.149
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 233.564
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 233.564,73.7563
+joints[1][x,y] = 245.513,144.864
+joints[2][x,y] = 245.112,195.118
+joints[3][x,y] = 226.824,211.863
+joints[4][x,y] = 293.09,204.403
+joints[5][x,y] = 229.692,247.735
+joints[6][x,y] = 260.867,244.445
+joints[7][x,y] = 240.155,352.748
+joints[8][x,y] = 241.072,351.902
+joints[9][x,y] = 202.911,286.488
+joints[10][x,y] = 306.226,268.369
+joints[11][x,y] = 224.425,152.14
+joints[12][x,y] = 268.939,136.781
+joints[13][x,y] = 213.421,478.355
+joints[14][x,y] = 206.889,455.638
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 237.93
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 237.93,75.085
+joints[1][x,y] = 253.659,145.257
+joints[2][x,y] = 253.647,194.819
+joints[3][x,y] = 224.342,214.6
+joints[4][x,y] = 309.037,203.074
+joints[5][x,y] = 235.485,247.401
+joints[6][x,y] = 272.843,243.34
+joints[7][x,y] = 246.805,353.762
+joints[8][x,y] = 286.581,355.141
+joints[9][x,y] = 199.192,286.171
+joints[10][x,y] = 351.085,239.142
+joints[11][x,y] = 226.435,152.361
+joints[12][x,y] = 283.34,137.511
+joints[13][x,y] = 270.175,445.5
+joints[14][x,y] = 290.394,455.036
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 246.757
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 246.757,74.2068
+joints[1][x,y] = 262.258,144.384
+joints[2][x,y] = 261.999,194.858
+joints[3][x,y] = 225.506,216.043
+joints[4][x,y] = 352.639,177.775
+joints[5][x,y] = 241.014,248.413
+joints[6][x,y] = 283.469,244.659
+joints[7][x,y] = 249.121,355.936
+joints[8][x,y] = 291.879,357.715
+joints[9][x,y] = 202.414,284.46
+joints[10][x,y] = 398.581,145.707
+joints[11][x,y] = 232.157,150.505
+joints[12][x,y] = 294.544,137.819
+joints[13][x,y] = 271.042,446.995
+joints[14][x,y] = 297.402,460.701
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 250.978
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 250.978,73.8214
+joints[1][x,y] = 265.565,143.64
+joints[2][x,y] = 265.088,194.112
+joints[3][x,y] = 228.515,214.443
+joints[4][x,y] = 361.673,159.551
+joints[5][x,y] = 243.766,247.349
+joints[6][x,y] = 286.341,244.209
+joints[7][x,y] = 252.309,356.034
+joints[8][x,y] = 291.859,357.339
+joints[9][x,y] = 208.804,286.098
+joints[10][x,y] = 390.704,80.0374
+joints[11][x,y] = 234.131,149.175
+joints[12][x,y] = 299.114,137.732
+joints[13][x,y] = 271.783,446.243
+joints[14][x,y] = 297.726,462.598
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 250.528
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 250.528,74.352
+joints[1][x,y] = 267.146,143.485
+joints[2][x,y] = 267.008,193.67
+joints[3][x,y] = 230.91,214.561
+joints[4][x,y] = 361.064,156.677
+joints[5][x,y] = 246.831,246.589
+joints[6][x,y] = 287.7,243.458
+joints[7][x,y] = 253.535,355.846
+joints[8][x,y] = 292.475,356.813
+joints[9][x,y] = 207.589,286.588
+joints[10][x,y] = 382.537,70.9364
+joints[11][x,y] = 235.35,149.006
+joints[12][x,y] = 300.998,137.608
+joints[13][x,y] = 273.273,444.814
+joints[14][x,y] = 298.067,464.29
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 248.776
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 248.776,74.4335
+joints[1][x,y] = 270.905,143.672
+joints[2][x,y] = 269.516,193.453
+joints[3][x,y] = 232.193,214.179
+joints[4][x,y] = 330.825,142.69
+joints[5][x,y] = 248.979,245.944
+joints[6][x,y] = 288.01,243.172
+joints[7][x,y] = 253.301,352.817
+joints[8][x,y] = 292.049,356.506
+joints[9][x,y] = 207.942,284.668
+joints[10][x,y] = 333.097,69.6117
+joints[11][x,y] = 240.851,149.023
+joints[12][x,y] = 303.009,137.956
+joints[13][x,y] = 274.676,442.923
+joints[14][x,y] = 299.27,464.03
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 250.145
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 250.145,74.3355
+joints[1][x,y] = 260.547,140.795
+joints[2][x,y] = 264.605,193.203
+joints[3][x,y] = 190.631,153.454
+joints[4][x,y] = 231.313,152.955
+joints[5][x,y] = 258.431,247.067
+joints[6][x,y] = 279.693,244.526
+joints[7][x,y] = 255.277,354.655
+joints[8][x,y] = 287.709,360.589
+joints[9][x,y] = 217.401,136.234
+joints[10][x,y] = 172.736,144.638
+joints[11][x,y] = 246.059,147.859
+joints[12][x,y] = 276.656,132.941
+joints[13][x,y] = 277.477,438.082
+joints[14][x,y] = 301.206,478.623
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 251.561
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 251.561,73.9627
+joints[1][x,y] = 264.446,141.447
+joints[2][x,y] = 266.924,193.428
+joints[3][x,y] = 224.837,195.862
+joints[4][x,y] = 307.744,206.521
+joints[5][x,y] = 257.95,246.113
+joints[6][x,y] = 281.697,244.826
+joints[7][x,y] = 255.196,352.352
+joints[8][x,y] = 288.239,361.368
+joints[9][x,y] = 212.575,268.606
+joints[10][x,y] = 296.505,282.764
+joints[11][x,y] = 247.048,147.858
+joints[12][x,y] = 283.882,134.286
+joints[13][x,y] = 278.021,436.483
+joints[14][x,y] = 301.921,480.675
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 256.298
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 256.298,71.1105
+joints[1][x,y] = 266.144,140.262
+joints[2][x,y] = 267.712,192.651
+joints[3][x,y] = 227.662,199.67
+joints[4][x,y] = 309.018,204.635
+joints[5][x,y] = 255.999,245.977
+joints[6][x,y] = 283.617,244.456
+joints[7][x,y] = 253.876,351.586
+joints[8][x,y] = 289.848,361.303
+joints[9][x,y] = 209.162,273.653
+joints[10][x,y] = 310.864,280.968
+joints[11][x,y] = 246.94,146.912
+joints[12][x,y] = 287.634,132.82
+joints[13][x,y] = 277.393,435.904
+joints[14][x,y] = 303.895,480.95
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 281.148
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 281.148,60.6143
+joints[1][x,y] = 272.374,135.687
+joints[2][x,y] = 271.623,190.937
+joints[3][x,y] = 237.294,209.005
+joints[4][x,y] = 311.813,205.655
+joints[5][x,y] = 253.876,245.075
+joints[6][x,y] = 289.379,247.015
+joints[7][x,y] = 251.121,348.636
+joints[8][x,y] = 292.828,362.674
+joints[9][x,y] = 214.472,272.558
+joints[10][x,y] = 295.99,280.906
+joints[11][x,y] = 251.496,140.05
+joints[12][x,y] = 295.565,130.841
+joints[13][x,y] = 275.375,440.41
+joints[14][x,y] = 306.514,480.337
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 284.742
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 284.742,60.2465
+joints[1][x,y] = 275.526,133.218
+joints[2][x,y] = 273.64,186.487
+joints[3][x,y] = 233.958,209.721
+joints[4][x,y] = 317.783,202.982
+joints[5][x,y] = 255.234,241.29
+joints[6][x,y] = 289.098,239.878
+joints[7][x,y] = 254.097,353.865
+joints[8][x,y] = 291.836,357.375
+joints[9][x,y] = 207.267,271.254
+joints[10][x,y] = 296.031,274.185
+joints[11][x,y] = 248.783,138.729
+joints[12][x,y] = 304.657,127.215
+joints[13][x,y] = 279.55,445.785
+joints[14][x,y] = 309.818,466.95
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 316.101
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 316.101,52.5973
+joints[1][x,y] = 287.13,128.519
+joints[2][x,y] = 282.958,183.257
+joints[3][x,y] = 239.754,203.157
+joints[4][x,y] = 326.263,207.273
+joints[5][x,y] = 255.73,235.617
+joints[6][x,y] = 302.693,239.867
+joints[7][x,y] = 255.145,350.277
+joints[8][x,y] = 300.197,360.459
+joints[9][x,y] = 221.708,261.485
+joints[10][x,y] = 325.793,292.127
+joints[11][x,y] = 256.843,128.202
+joints[12][x,y] = 318.815,128.85
+joints[13][x,y] = 273.634,441.886
+joints[14][x,y] = 312.892,464.725
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 318.843
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 318.843,47.7595
+joints[1][x,y] = 293.156,127.098
+joints[2][x,y] = 290.66,182.462
+joints[3][x,y] = 246.631,199.621
+joints[4][x,y] = 341.015,201.02
+joints[5][x,y] = 264.832,238.336
+joints[6][x,y] = 311.677,239.513
+joints[7][x,y] = 264.84,363.581
+joints[8][x,y] = 308.324,364.025
+joints[9][x,y] = 232.249,269.42
+joints[10][x,y] = 353.79,283.117
+joints[11][x,y] = 257.296,127.225
+joints[12][x,y] = 329.686,126.968
+joints[13][x,y] = 268.189,487.724
+joints[14][x,y] = 311.014,465.112
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 319.111
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 319.111,45.0633
+joints[1][x,y] = 296.932,124.342
+joints[2][x,y] = 294.783,181.358
+joints[3][x,y] = 245.583,199.82
+joints[4][x,y] = 347.921,199.258
+joints[5][x,y] = 267.6,238.816
+joints[6][x,y] = 317.641,240.317
+joints[7][x,y] = 266.434,372.338
+joints[8][x,y] = 315.572,370.558
+joints[9][x,y] = 235.363,272.881
+joints[10][x,y] = 355.583,284.351
+joints[11][x,y] = 257.203,123.376
+joints[12][x,y] = 336.818,125.311
+joints[13][x,y] = 268.713,487.798
+joints[14][x,y] = 310.973,466.52
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 302.332,37.8926
+joints[1][x,y] = 293.864,118.06
+joints[2][x,y] = 292.54,184.251
+joints[3][x,y] = 232.392,195.873
+joints[4][x,y] = 351.333,204.342
+joints[5][x,y] = 261.853,248.704
+joints[6][x,y] = 320.942,250.517
+joints[7][x,y] = 266.104,385.085
+joints[8][x,y] = 320.413,384.014
+joints[9][x,y] = 227.189,288.546
+joints[10][x,y] = 327.242,282.213
+joints[11][x,y] = 248.515,117.793
+joints[12][x,y] = 340.002,118.33
+joints[13][x,y] = 272.782,484.238
+joints[14][x,y] = 311.679,465.52
+rgbImageCb
+NewUserId = 2
+StartCalibrationId = 2
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 302.332,37.8926
+joints[1][x,y] = 293.864,118.06
+joints[2][x,y] = 292.54,184.251
+joints[3][x,y] = 232.392,195.873
+joints[4][x,y] = 351.333,204.342
+joints[5][x,y] = 261.853,248.704
+joints[6][x,y] = 320.942,250.517
+joints[7][x,y] = 266.104,385.085
+joints[8][x,y] = 320.413,384.014
+joints[9][x,y] = 227.189,288.546
+joints[10][x,y] = 327.242,282.213
+joints[11][x,y] = 248.515,117.793
+joints[12][x,y] = 340.002,118.33
+joints[13][x,y] = 272.782,484.238
+joints[14][x,y] = 311.679,465.52
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 302.332,37.8926
+joints[1][x,y] = 293.864,118.06
+joints[2][x,y] = 292.54,184.251
+joints[3][x,y] = 232.392,195.873
+joints[4][x,y] = 351.333,204.342
+joints[5][x,y] = 261.853,248.704
+joints[6][x,y] = 320.942,250.517
+joints[7][x,y] = 266.104,385.085
+joints[8][x,y] = 320.413,384.014
+joints[9][x,y] = 227.189,288.546
+joints[10][x,y] = 327.242,282.213
+joints[11][x,y] = 248.515,117.793
+joints[12][x,y] = 340.002,118.33
+joints[13][x,y] = 272.782,484.238
+joints[14][x,y] = 311.679,465.52
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 302.332,37.8926
+joints[1][x,y] = 293.864,118.06
+joints[2][x,y] = 292.54,184.251
+joints[3][x,y] = 232.392,195.873
+joints[4][x,y] = 351.333,204.342
+joints[5][x,y] = 261.853,248.704
+joints[6][x,y] = 320.942,250.517
+joints[7][x,y] = 266.104,385.085
+joints[8][x,y] = 320.413,384.014
+joints[9][x,y] = 227.189,288.546
+joints[10][x,y] = 327.242,282.213
+joints[11][x,y] = 248.515,117.793
+joints[12][x,y] = 340.002,118.33
+joints[13][x,y] = 272.782,484.238
+joints[14][x,y] = 311.679,465.52
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 302.332,37.8926
+joints[1][x,y] = 293.864,118.06
+joints[2][x,y] = 292.54,184.251
+joints[3][x,y] = 232.392,195.873
+joints[4][x,y] = 351.333,204.342
+joints[5][x,y] = 261.853,248.704
+joints[6][x,y] = 320.942,250.517
+joints[7][x,y] = 266.104,385.085
+joints[8][x,y] = 320.413,384.014
+joints[9][x,y] = 227.189,288.546
+joints[10][x,y] = 327.242,282.213
+joints[11][x,y] = 248.515,117.793
+joints[12][x,y] = 340.002,118.33
+joints[13][x,y] = 272.782,484.238
+joints[14][x,y] = 311.679,465.52
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 302.332,37.8926
+joints[1][x,y] = 293.864,118.06
+joints[2][x,y] = 292.54,184.251
+joints[3][x,y] = 232.392,195.873
+joints[4][x,y] = 351.333,204.342
+joints[5][x,y] = 261.853,248.704
+joints[6][x,y] = 320.942,250.517
+joints[7][x,y] = 266.104,385.085
+joints[8][x,y] = 320.413,384.014
+joints[9][x,y] = 227.189,288.546
+joints[10][x,y] = 327.242,282.213
+joints[11][x,y] = 248.515,117.793
+joints[12][x,y] = 340.002,118.33
+joints[13][x,y] = 272.782,484.238
+joints[14][x,y] = 311.679,465.52
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 302.332,37.8926
+joints[1][x,y] = 293.864,118.06
+joints[2][x,y] = 292.54,184.251
+joints[3][x,y] = 232.392,195.873
+joints[4][x,y] = 351.333,204.342
+joints[5][x,y] = 261.853,248.704
+joints[6][x,y] = 320.942,250.517
+joints[7][x,y] = 266.104,385.085
+joints[8][x,y] = 320.413,384.014
+joints[9][x,y] = 227.189,288.546
+joints[10][x,y] = 327.242,282.213
+joints[11][x,y] = 248.515,117.793
+joints[12][x,y] = 340.002,118.33
+joints[13][x,y] = 272.782,484.238
+joints[14][x,y] = 311.679,465.52
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 302.332,37.8926
+joints[1][x,y] = 293.864,118.06
+joints[2][x,y] = 292.54,184.251
+joints[3][x,y] = 232.392,195.873
+joints[4][x,y] = 351.333,204.342
+joints[5][x,y] = 261.853,248.704
+joints[6][x,y] = 320.942,250.517
+joints[7][x,y] = 266.104,385.085
+joints[8][x,y] = 320.413,384.014
+joints[9][x,y] = 227.189,288.546
+joints[10][x,y] = 327.242,282.213
+joints[11][x,y] = 248.515,117.793
+joints[12][x,y] = 340.002,118.33
+joints[13][x,y] = 272.782,484.238
+joints[14][x,y] = 311.679,465.52
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 302.332,37.8926
+joints[1][x,y] = 293.864,118.06
+joints[2][x,y] = 292.54,184.251
+joints[3][x,y] = 232.392,195.873
+joints[4][x,y] = 351.333,204.342
+joints[5][x,y] = 261.853,248.704
+joints[6][x,y] = 320.942,250.517
+joints[7][x,y] = 266.104,385.085
+joints[8][x,y] = 320.413,384.014
+joints[9][x,y] = 227.189,288.546
+joints[10][x,y] = 327.242,282.213
+joints[11][x,y] = 248.515,117.793
+joints[12][x,y] = 340.002,118.33
+joints[13][x,y] = 272.782,484.238
+joints[14][x,y] = 311.679,465.52
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 302.332,37.8926
+joints[1][x,y] = 293.864,118.06
+joints[2][x,y] = 292.54,184.251
+joints[3][x,y] = 232.392,195.873
+joints[4][x,y] = 351.333,204.342
+joints[5][x,y] = 261.853,248.704
+joints[6][x,y] = 320.942,250.517
+joints[7][x,y] = 266.104,385.085
+joints[8][x,y] = 320.413,384.014
+joints[9][x,y] = 227.189,288.546
+joints[10][x,y] = 327.242,282.213
+joints[11][x,y] = 248.515,117.793
+joints[12][x,y] = 340.002,118.33
+joints[13][x,y] = 272.782,484.238
+joints[14][x,y] = 311.679,465.52
+rgbImageCb
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+rgbImageCb
+detectUsersCb
+SelectUserStatusId = 0
+joints[0][x,y] = 302.332,37.8926
+joints[1][x,y] = 293.864,118.06
+joints[2][x,y] = 292.54,184.251
+joints[3][x,y] = 232.392,195.873
+joints[4][x,y] = 351.333,204.342
+joints[5][x,y] = 261.853,248.704
+joints[6][x,y] = 320.942,250.517
+joints[7][x,y] = 266.104,385.085
+joints[8][x,y] = 320.413,384.014
+joints[9][x,y] = 227.189,288.546
+joints[10][x,y] = 327.242,282.213
+joints[11][x,y] = 248.515,117.793
+joints[12][x,y] = 340.002,118.33
+joints[13][x,y] = 272.782,484.238
+joints[14][x,y] = 311.679,465.52
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+updateUsers: users.size() = 1
+Motion::shouldDetectPose: m_detectingPoseId = 1
+target pos x = 350
+user   pos x = 302.332
+isDetectedPose: false
+... logging to /home/maekawa/.ros/log/238ee986-cb51-11e2-ae84-64809911db2c/roslaunch-maekawa-VPCSB1AGJA-12482.log
+Checking log directory for disk usage. This may take awhile.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;/home/maekawa/RoboticsProject/src/RDP/launch/MotionCapture.launch
+[1mstarted roslaunch server http://maekawa-VPCSB1AGJA:55449/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /rosdistro
+ * /rosversion
+
+NODES
+  /
+    MotionCapture (RDP/MotionCapture)
+    UserRecognition (RDP/UserRecognition)
+
+auto-starting new master
+[1mprocess[master]: started with pid [12496][0m
+[1mROS_MASTER_URI=http://localhost:11311[0m
+]2;/home/maekawa/RoboticsProject/src/RDP/launch/MotionCapture.launch http://localhost:11311
+[1msetting /run_id to 238ee986-cb51-11e2-ae84-64809911db2c[0m
+[1mprocess[rosout-1]: started with pid [12509][0m
+started core service [/rosout]
+[1mprocess[MotionCapture-2]: started with pid [12521][0m
+[1mprocess[UserRecognition-3]: started with pid [12535][0m
+[1m[MotionCapture-2] process has finished cleanly
+log file: /home/maekawa/.ros/log/238ee986-cb51-11e2-ae84-64809911db2c/MotionCapture-2*.log[0m
+[UserRecognition-3] killing on exit
+[rosout-1] killing on exit
+[master] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m

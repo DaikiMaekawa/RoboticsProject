@@ -79,8 +79,9 @@ void PoseManager::onActionLoad(){
     QString file = QFileDialog::getOpenFileName(this, "Open File", "/home", "Motion file (*.txt)");
     if(m_motion.loadFrom(file.toStdString())){
         m_ui->spinPoseId->setValue(1);
-        //assert(m_motion.pose(m_ui->spinPoseId->value(), m_pose));
-        //assert(m_pose.joints.size() == nui::Motion::MAX_JOINT_NUM);
+        assert(m_motion.poseIsExist(m_ui->spinPoseId->value()));
+        m_pose = m_motion.pose(m_ui->spinPoseId->value());
+        assert(m_pose.joints.size() == nui::Motion::MAX_JOINT_NUM);
         showStoragePose();
     }else{
         showMessage("Error", "File does not exist");

@@ -49,7 +49,6 @@ include_directories(${Include_DIR})
 add_definitions(-DSHARE_DIR="${CMAKE_INSTALL_PREFIX}/${CATKIN_PACKAGE_SHARE_DESTINATION}")
 
 set(Unity_SRCS
-    #main.cpp
     Unity.h
     Unity.cpp
     ../SpeechRecognition/SpeechRecognitionClient.h
@@ -74,9 +73,10 @@ link_directories(
     ${Boost_LIBRARY_DIR}
 )
 
-#add_executable(Unity
-#    ${Unity_SRCS}
-#)
+add_executable(Unity
+    TestUnity.cpp
+    ${Unity_SRCS}
+)
 
 set(Unity_LINKS
     ${Boost_LIBRARIES}
@@ -95,9 +95,9 @@ install(TARGETS _unity
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${outdir}unity.py DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/../UnityScripts)
 
-#target_link_libraries(Unity
-#    ${Boost_LIBRARIES}
-#    ${catkin_LIBRARIES}
+target_link_libraries(Unity
+    ${Boost_LIBRARIES}
+    ${catkin_LIBRARIES}
     #${Boost_SYSTEM_LIBRARY}
-#)
+)
 

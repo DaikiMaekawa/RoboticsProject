@@ -16,7 +16,7 @@ public:
     Impl(const string &port,int baud) : 
         m_isConnect(m_com.open(port,baud))
     {
-        
+
     }
     void motor(int id,int duty){
         string cmd = boost::lexical_cast<string>(SET_MOTOR_DUTY) + "," + boost::lexical_cast<string>(id) + "," + boost::lexical_cast<string>(duty) + "\r";

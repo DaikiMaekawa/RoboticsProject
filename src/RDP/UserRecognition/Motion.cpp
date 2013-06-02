@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <boost/lexical_cast.hpp>
+#include <boost/algorithm/string.hpp>
 
 using namespace std;
 
@@ -54,7 +55,10 @@ bool Motion::loadFrom(const std::string &file){
 	std::ifstream ifs(file.c_str());
 
 	if(ifs){
-		sscanf(file.substr(0, 3).c_str(), "%d", &m_motionId); //TODO: erase '/'
+        std::list<std::string> ret;
+        boost::split(ret, file, boost::is_any_of("/"));
+
+		sscanf(ret.back().substr(0, 3).c_str(), "%d", &m_motionId); //TODO: erase '/'
         std::cout << "No." << m_motionId << " " << file << std::endl;
 
 		m_poses.clear();
@@ -97,6 +101,7 @@ bool Motion::loadFrom(const std::string &file){
 		}
 		return true;
 	}else{
+        cout << "Motion::loadFrom: failed" << endl;
 		return false;
 	}
 }
@@ -156,7 +161,7 @@ bool Motion::erasePose(unsigned int poseId){
     return false;
 }
 
-void Motion::update(unsigned int elapsedTime, bool isDetectedPose){
+void Motion::update(float elapsedTime, bool isDetectedPose){
     //TODO implementation
     m_detectTime += elapsedTime;
     assert(poseIsExist(m_detectingPoseId));
@@ -185,6 +190,7 @@ void Motion::update(unsigned int elapsedTime, bool isDetectedPose){
 
 const RDP::UserPose& Motion::shouldDetectPose(){
     //TODO
+    cout << "Motion::shouldDetectPose: m_detectingPoseId = " << m_detectingPoseId <<  endl;
     assert(poseIsExist(m_detectingPoseId));
     return pose(m_detectingPoseId);
 }

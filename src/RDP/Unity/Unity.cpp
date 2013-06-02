@@ -9,29 +9,22 @@ Unity::Unity(int argc, char *argv[]){
     
     m_node = boost::shared_ptr<ros::NodeHandle>(new ros::NodeHandle());
     m_speechRecog = boost::shared_ptr<nui::SpeechRecognitionClient>(new nui::SpeechRecognitionClient(*m_node));
-    m_speechRecog->setResultCallback(boost::bind(&Unity::speechRetCallback, this, boost::lambda::_1));
-    
+    m_speechRecog->setResultCallback(boost::bind(&Unity::speechRetCb, this, boost::lambda::_1));
+        
     m_userRecog = boost::shared_ptr<nui::UserRecognitionClient>(new nui::UserRecognitionClient(*m_node));
-
+    m_userRecog->setDetectMotionCb(boost::bind(&Unity::detectMotionCb, this, boost::lambda::_1));
 }
 
-void Unity::speechRetCallback(const std_msgs::StringConstPtr &ret){
-    std::cout << "speechRetCallback = " << ret->data << std::endl;  
+void Unity::speechRetCb(const std_msgs::StringConstPtr &ret){
+    std::cout << "speechRetCb = " << ret->data << std::endl;
+}
+
+void Unity::detectMotionCb(const RDP::DetectMotionConstPtr &motion){
+    std::cout << "detectMotionCb = " << motion->id << std::endl;
 }
 
 void Unity::startSpeechRecognition(){
     m_speechRecog->startRecognition();
-    /*
-    ros::Rate loopRate(5);
-    ros::Publisher publisher = m_node->advertise<std_msgs::Empty>("startSpeechRecognition", 100);
-    for(int i=0; i < 3; i++) loopRate.sleep();
-    
-    std_msgs::Empty msg;
-    publisher.publish(msg);
-    ROS_INFO("publish startSpeechRecognition");
-    ros::spinOnce();
-    loopRate.sleep();
-    */
 }
 
 void Unity::statusUpdate(){

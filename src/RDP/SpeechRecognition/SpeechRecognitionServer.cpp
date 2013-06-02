@@ -162,6 +162,20 @@ namespace nui{
     }
 
     void SpeechRecognitionServer::runServer(){
+        
+        switch(j_open_stream(m_recog.get(), NULL)) {
+        case 0:	
+            m_isOpenStream = true;
+            break;
+        case -1:      		
+            fprintf(stderr, "error in input stream\n");
+            return;
+        case -2:			
+            fprintf(stderr, "failed to begin input stream\n");
+            return;
+        }
+        j_recognize_stream(m_recog.get());
+
         ros::Rate loopRate(5);
 		while(ros::ok()){
 			ros::spinOnce();

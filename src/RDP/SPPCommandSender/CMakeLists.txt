@@ -7,13 +7,9 @@ set(Boost_USE_STATIC_RUNTIME OFF)
 set(Boost_DEBUG TRUE)
 
 set(Boost_USE_STATIC_LIBS ${OGRE_STATIC})
-#set(Boost_USE_STATIC_LIBS TRUE)
 
 find_package(Boost COMPONENTS system thread date_time serialization)
-find_package(PythonLibs 2.7)
-find_package(SWIG REQUIRED)
-
-include (${SWIG_USE_FILE})
+find_package(catkin REQUIRED COMPONENTS roscpp message_generation)
 
 include_directories(
    ${CMAKE_CURRENT_BINARY_DIR}
@@ -44,19 +40,5 @@ SET(SPP_LINKS
     ${Boost_SYSTEM_LIBRARY}
 )
 
-SET(INTERFACE_FILES
-    synthesis.i
-)
 
-SET_SOURCE_FILES_PROPERTIES(${INTERFACE_FILES} PROPERTIES CPLUSPLUS ON)
-
-SET_SOURCE_FILES_PROPERTIES(${INTERFACE_FILES} PROPERTIES SWIG_FLAGS "-threads")
-
-SWIG_ADD_MODULE(synthesis python ${INTERFACE_FILES}
-    ${SPP_SRCS}   
-)
-
-SWIG_LINK_LIBRARIES(synthesis
-    ${SPP_LINKS}
-)
 

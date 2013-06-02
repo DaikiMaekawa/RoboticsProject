@@ -18,6 +18,7 @@ add_message_files(
   UserStatus.msg
   UserPose.msg
   DetectUsers.msg
+  DetectMotion.msg
   UserJoint.msg
   Pos3D.msg
 )
