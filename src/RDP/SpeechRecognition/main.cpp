@@ -50,13 +50,12 @@ int main(int argc, char *argv[]){
 }
 */
 
-int main(int argc, char *argv[])
-{
-  
-  ros::init(argc, argv, "SpeechRecognition");
-  ros::NodeHandle node;
-  nui::SpeechRecognitionServer server(argc,argv,node);
-  server.runServer();
+int main(int argc, char *argv[]){
+    ros::init(argc, argv, "SpeechRecognition");
+    ros::NodeHandle node;
+    nui::SpeechRecognitionServer server(argc,argv,node);
+    server.runServer();
 
+    return 0;
 }
 

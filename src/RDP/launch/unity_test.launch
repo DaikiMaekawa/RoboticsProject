@@ -2,19 +2,25 @@
   <!-- RDP Node-->
   <node pkg="RDP" 
         type="SpeechRecognition" 
-		name="speechrecognition"
+		name="speech_recognition"
         output="screen"
 		respawn="false"
   />
   <node pkg="RDP" 
         type="UserRecognition" 
-		name="userrecognition"
+		name="user_recognition"
         output="screen"
 		respawn="false"
   />
   <node pkg="RDP"
         type="Unity"
         name="unity"
+        output="screen"
+        respawn="false"
+  />
+  <node pkg="RDP"
+        type="SPP"
+        name="spp_command_sender"
         output="screen"
         respawn="false"
   />

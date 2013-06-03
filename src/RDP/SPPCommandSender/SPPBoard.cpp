@@ -1,5 +1,4 @@
 #include "SPPBoard.h"
-#include "SerialCommunication.h"
 #include "SPPCommand.h"
 #include <boost/lexical_cast.hpp>
 #include <boost/algorithm/string.hpp>
@@ -9,45 +8,53 @@ using namespace std;
 
 class SPPBoard::Impl
 {
-    SerialCommunication m_com;
-    bool m_isConnect;
+    //SerialCommunication m_com;
+    //bool m_isConnect;
 
 public:
+    /*
     Impl(const string &port,int baud) : 
         m_isConnect(m_com.open(port,baud))
     {
 
     }
-    void motor(int id,int duty){
-        string cmd = boost::lexical_cast<string>(SET_MOTOR_DUTY) + "," + boost::lexical_cast<string>(id) + "," + boost::lexical_cast<string>(duty) + "\r";
-        m_com.write(cmd.c_str(),cmd.length());
+    */
+
+    Impl() { }
+
+    string motor(int id, int duty){
+        return boost::lexical_cast<string>(SET_MOTOR_DUTY) + "," + boost::lexical_cast<string>(id) + "," + boost::lexical_cast<string>(duty) + "\r";
+        //m_com.write(cmd.c_str(),cmd.length());
     }
 
-    void lcdPuts(const string &str){
-        string cmd = boost::lexical_cast<string>(LCD_PUTS) + "," + str + "\r";
-        m_com.write(cmd.c_str(),cmd.length());
+    string lcdPuts(const string &str){
+        return boost::lexical_cast<string>(LCD_PUTS) + "," + str + "\r";
+        //m_com.write(cmd.c_str(),cmd.length());
     }
 
-    void lcdClear(){
-        string cmd = boost::lexical_cast<string>(LCD_CLEAR) + "\r";
-        m_com.write(cmd.c_str(),cmd.length());
+    string lcdClear(){
+        return boost::lexical_cast<string>(LCD_CLEAR) + "\r";
+        //m_com.write(cmd.c_str(),cmd.length());
     }
 
-    void commandCancel(){
-        string cmd = boost::lexical_cast<string>(COMMAND_CANCEL) + "\r";
-        m_com.write(cmd.c_str(),cmd.length());
+    string commandCancel(){
+        return boost::lexical_cast<string>(COMMAND_CANCEL) + "\r";
+        //m_com.write(cmd.c_str(),cmd.length());
     }
 
-    void servo(int angle){
-        string cmd = boost::lexical_cast<string>(SET_SERVO_ANGLE) + "," + boost::lexical_cast<string>(angle) + "\r";
-        m_com.write(cmd.c_str(),cmd.length());
+    string servo(int angle){
+        return boost::lexical_cast<string>(SET_SERVO_ANGLE) + "," + boost::lexical_cast<string>(angle) + "\r";
+        //m_com.write(cmd.c_str(),cmd.length());
     }
-
+    
+    /*
     bool open(const string &port,int baud){
         if(!m_isConnect) m_isConnect = m_com.open(port,baud);
         return m_isConnect;
     }
-
+    */
+   
+    /*
     vector<float> gyroStatus(){
         string cmd = boost::lexical_cast<string>(GET_GYRO) + "\r";
         m_com.write(cmd.c_str(),cmd.length());
@@ -64,56 +71,62 @@ public:
             cout << gyro[i] << endl;
             //ret.push_back(boost::lexical_cast<float>(gyro[i]));
            
-        /*
-        BOOST_FOREACH(string axis, gyro){
-            ret.push_back(boost::lexical_cast<float>(axis));
-        }
-        */
+        //BOOST_FOREACH(string axis, gyro){
+        //    ret.push_back(boost::lexical_cast<float>(axis));
+        //}
         
         return ret;
     }
+    */
 
-    void calibrationGyroStatus(){
-        string cmd = boost::lexical_cast<string>(CALIBRATION_GYRO) + "\r";
-        m_com.write(cmd.c_str(),cmd.length());
+    string calibrationGyroStatus(){
+        return boost::lexical_cast<string>(CALIBRATION_GYRO) + "\r";
+        //m_com.write(cmd.c_str(),cmd.length());
     }
 };
-
+/*
 SPPBoard::SPPBoard(const string &port,int baud) : 
     pImpl(new Impl(port,baud))
 {
 
 }
+*/
 
-void SPPBoard::motor(int id,int duty){
-    pImpl->motor(id,duty);
+SPPBoard::SPPBoard() : pImpl(new Impl())
+{
+
 }
 
-void SPPBoard::lcdPuts(const string &str){
-    pImpl->lcdPuts(str);
+string SPPBoard::motor(int id,int duty){
+    return pImpl->motor(id,duty);
 }
 
-void SPPBoard::lcdClear(){
-    pImpl->lcdClear();
+string SPPBoard::lcdPuts(const string &str){
+    return pImpl->lcdPuts(str);
 }
 
-void SPPBoard::commandCancel(){
-    pImpl->commandCancel();
+string SPPBoard::lcdClear(){
+    return pImpl->lcdClear();
 }
 
-void SPPBoard::servo(int angle){
-    pImpl->servo(angle);
+string SPPBoard::commandCancel(){
+    return pImpl->commandCancel();
 }
 
+string SPPBoard::servo(int angle){
+    return pImpl->servo(angle);
+}
+/*
 bool SPPBoard::open(const string &port,int baud){
     return pImpl->open(port,baud);
 }
-
+*/
+/*
 vector<float> SPPBoard::gyroStatus(){
     return pImpl->gyroStatus();
 }
-
-void SPPBoard::calibrationGyroStatus(){
-    pImpl->calibrationGyroStatus();
+*/
+string SPPBoard::calibrationGyroStatus(){
+    return pImpl->calibrationGyroStatus();
 }
 

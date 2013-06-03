@@ -27,6 +27,7 @@ set(Include_DIR
     ${PYTHON_INCLUDE_PATH}
     ${CMAKE_CURRENT_SOURCE_DIR}/../SpeechRecognition
     ${CMAKE_CURRENT_SOURCE_DIR}/../UserRecognition
+    ${CMAKE_CURRENT_SOURCE_DIR}/../SPPCommandSender
 )
 
 if(UNIX)
@@ -55,6 +56,10 @@ set(Unity_SRCS
     ../SpeechRecognition/SpeechRecognitionClient.cpp
     ../UserRecognition/UserRecognitionClient.h
     ../UserRecognition/UserRecognitionClient.cpp
+    ../SPPCommandSender/CommandSenderClient.h
+    ../SPPCommandSender/CommandSenderClient.cpp
+    ../SPPCommandSender/SPPBoard.h
+    ../SPPCommandSender/SPPBoard.cpp
 )
 
 set(INTERFACE_FILES

@@ -56,7 +56,6 @@ add_subdirectory(SpeechRecognition)
 add_subdirectory(UserRecognition)
 add_subdirectory(MotionCapture)
 add_subdirectory(Unity)
-add_subdirectory(SPPCommandSender)
 
 #include_directories(include
 #    SpeechRecognition

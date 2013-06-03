@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
+project(SPP)
 
 set(Boost_FIND_REQUIRED TRUE)
 set(Boost_FIND_QUIETLY TRUE)
@@ -15,9 +16,8 @@ include_directories(
    ${CMAKE_CURRENT_BINARY_DIR}
    ${CMAKE_CURRENT_SOURCE_DIR}
    ${BOOST_INCLUDE_DIRS}
-   ${Boost_INCLUDE_DIRS}
    ${Boost_INCLUDE_DIR}
-   ${PYTHON_INCLUDE_PATH}
+   ${PROJECT_SOURCE_DIR}
    ${PROJECT_BINARY_DIR}
 )
 
@@ -32,6 +32,11 @@ SET(SPP_SRCS
     SPPCommand.h
     SPPBoard.h
     SPPBoard.cpp
+    CommandSenderServer.h
+    CommandSenderServer.cpp
+    CommandSenderClient.h
+    CommandSenderClient.cpp
+    main.cpp
 )
 
 SET(SPP_LINKS
@@ -40,5 +45,14 @@ SET(SPP_LINKS
     ${Boost_SYSTEM_LIBRARY}
 )
 
+add_executable(SPP
+    ${SPP_SRCS}
+)
+
+target_link_libraries(SPP
+    ${catkin_LIBRARIES}
+    ${Boost_LIBRARIES}
+    ${Boost_SYSTEM_LIBRARY}
+)
 
 

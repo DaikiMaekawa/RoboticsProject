@@ -1,0 +1,15 @@
+<launch>
+	<node pkg="RDP"
+		  type="MotionCapture"
+		  name="motion_capture"
+		  output="screen"
+		  respawn="false"
+    />
+	<node pkg="RDP"
+	      type="UserRecognition"
+		  name="user_recognition"
+		  output="screen"
+		  respawn="false"
+    />
+</launch>
+

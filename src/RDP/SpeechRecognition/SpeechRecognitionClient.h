@@ -23,7 +23,7 @@ namespace nui{
     public:
         SpeechRecognitionClient(ros::NodeHandle &node);
 		void setResultCallback(boost::function<void(const std_msgs::StringConstPtr&)> callback){
-			m_retsultSub = m_node.subscribe(RESULT_SPEECH_RECOGNITION, 100, callback);   	
+			m_retsultSub = m_node.subscribe(RESULT_SPEECH_RECOGNITION, 100, callback);
 		}
         void startRecognition(){ 
 			ROS_INFO("publish startRecognition");
