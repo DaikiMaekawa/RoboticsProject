@@ -1,13 +1,7 @@
 RoboticsProject
-
 ==========
 
 千葉工業大学　中島研究室　ロボティクスプロジェクト
-
-[![endorse](https://api.coderwall.com/daikimaekawa/endorsecount.png)](https://coderwall.com/daikimaekawa)
-
---------------------------------------------------
-##ロボティクスプロジェクトとは？
 
 BeagleBoard上でSPPBoardとXtionを操作するためのPythonAPIを提供することを目的としたプロジェクトである。
 
