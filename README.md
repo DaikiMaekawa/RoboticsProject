@@ -93,9 +93,3 @@ git clone https://github.com/DaikiMaekawa/RoboticsProject
 cd RoboticsProject
 
 catkin_make install
-
-##免責事項
-
-
-このプログラムによって発生した、いかなる障害・損害も作成者は一切責任を負わないものとする。
----------------------------------------------------
