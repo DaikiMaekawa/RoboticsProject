@@ -93,3 +93,7 @@ git clone https://github.com/DaikiMaekawa/RoboticsProject
 cd RoboticsProject
 
 catkin_make install
+
+## ライセンス
+
+MIT
