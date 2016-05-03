@@ -1,7 +1,7 @@
 RoboticsProject
 ==========
 
-千葉工業大学　中島研究室　ロボティクスプロジェクト
+千葉工業大学　(中島研究室)　ロボティクスプロジェクト
 
 BeagleBoard上でSPPBoardとXtionを操作するためのPythonAPIを提供することを目的としたプロジェクトである。
 
