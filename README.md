@@ -5,8 +5,6 @@ RoboticsProject
 
 BeagleBoard上でSPPBoardとXtionを操作するためのPythonAPIを提供することを目的としたプロジェクトである。
 
-※千葉工業大学ではプロジェクトとして申請し学科に認可されることで学部1・２年次から担当教授の指導の元、必要な研究設備や開発資金を受けて各々が目指すロボットを制作出来るチャンスに恵まれている。
-
 SPPBoardに関しては以下のURLを参照
 
 http://daikimaekawa.github.io/sppboard/2011/05/10/SPPBoard/
