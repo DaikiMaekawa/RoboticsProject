@@ -22,8 +22,6 @@ http://daikimaekawa.github.io/sppboard/2011/05/10/SPPBoard/
  
 ##動作環境
 
-
-
 #### ハードウェア
 
  - beagleboard-xm(ubuntu11.10 ARM Coretex-A8)
@@ -87,10 +85,6 @@ http://daikimaekawa.github.io/sppboard/2011/05/10/SPPBoard/
  - MPLAB C30 C Compiler v3.23
 
 ##インストール手順
-
-git clone https://github.com/DaikiMaekawa/RoboticsProject
-
-cd RoboticsProject
 
 catkin_make install
 
