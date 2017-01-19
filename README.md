@@ -83,7 +83,3 @@ http://daikimaekawa.github.io/sppboard/2011/05/10/SPPBoard/
  - gcc4.6.3
 
  - MPLAB C30 C Compiler v3.2
- 
-## ライセンス
-
-MIT
